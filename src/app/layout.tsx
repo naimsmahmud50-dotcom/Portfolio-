@@ -76,6 +76,8 @@ export default function RootLayout({
       <body className="bg-canvas dark:bg-canvas text-slate-100 selection:bg-cyan selection:text-slate-950 font-sans antialiased min-h-screen flex flex-col relative">
         <ThemeProvider>
           <ToastProvider>
+            {/* Ambient Cosmic Nebula Mesh (Luminous Aurora Depth) */}
+            <div className="fixed inset-0 pointer-events-none z-0 cosmic-nebula-mesh" aria-hidden="true" />
             <InteractiveBackground />
             <Navbar />
             <div className="flex-1 relative z-10">{children}</div>

@@ -4,14 +4,14 @@
 
 @layer base {
   :root {
-    --bg-canvas: #070A13;
-    --bg-surface: #0C1222;
-    --bg-card: #10192F;
+    --bg-canvas: #050814;
+    --bg-surface: #090F1F;
+    --bg-card: #0D162B;
     --text-primary: #F8FAFC;
     --text-secondary: #94A3B8;
     --accent-electric: #3B82F6;
     --accent-cyan: #06B6D4;
-    --border-subtle: rgba(59, 130, 246, 0.16);
+    --border-subtle: rgba(56, 189, 248, 0.14);
   }
 
   .light {
@@ -56,25 +56,36 @@
   }
 }
 
+/* Ambient Cosmic Nebula Mesh (Atmospheric Depth & Celestial Luxury) */
+.cosmic-nebula-mesh {
+  background: 
+    radial-gradient(ellipse 90% 60% at 15% -5%, rgba(37, 99, 235, 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 50% at 85% 15%, rgba(6, 182, 212, 0.13) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 60% at 50% 50%, rgba(139, 92, 246, 0.09) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 60% at 15% 85%, rgba(14, 165, 233, 0.11) 0%, transparent 55%),
+    radial-gradient(ellipse 85% 55% at 85% 95%, rgba(99, 102, 241, 0.10) 0%, transparent 60%),
+    #050814;
+}
+
 /* Subtle tech grid background */
 .tech-grid-bg {
-  background-image: radial-gradient(rgba(59, 130, 246, 0.08) 1px, transparent 1px),
-                    radial-gradient(rgba(6, 182, 212, 0.04) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(56, 189, 248, 0.07) 1px, transparent 1px),
+                    radial-gradient(rgba(99, 102, 241, 0.04) 1px, transparent 1px);
   background-size: 32px 32px, 64px 64px;
   background-position: 0 0, 16px 16px;
 }
 
 /* Glass card utility */
 .tech-card {
-  background: linear-gradient(135deg, rgba(16, 25, 47, 0.75) 0%, rgba(12, 18, 34, 0.85) 100%);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(59, 130, 246, 0.15);
-  box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(135deg, rgba(13, 22, 43, 0.72) 0%, rgba(9, 15, 31, 0.82) 100%);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(56, 189, 248, 0.14);
+  box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.45);
 }
 
 .tech-card:hover {
-  border-color: rgba(6, 182, 212, 0.35);
-  box-shadow: 0 8px 32px -2px rgba(6, 182, 212, 0.15);
+  border-color: rgba(6, 182, 212, 0.40);
+  box-shadow: 0 10px 36px -2px rgba(6, 182, 212, 0.16);
 }
 
 /* Custom scrollbar */
@@ -83,7 +94,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #070A13;
+  background: #050814;
 }
 
 ::-webkit-scrollbar-thumb {

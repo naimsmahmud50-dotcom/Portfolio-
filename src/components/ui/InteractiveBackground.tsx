@@ -13,8 +13,8 @@ interface Star {
   glowColor: string;
   twinkleSpeed: number;
   twinklePhase: number;
-  hasSpikes: boolean;
-  spikeLength: number;
+  hasFlare: boolean;
+  flareSize: number;
 }
 
 interface ShootingStar {
@@ -26,25 +26,28 @@ interface ShootingStar {
   speed: number;
   opacity: number;
   color: string;
+  glowColor: string;
   active: boolean;
 }
 
-const STAR_PALETTE = [
-  // Cyan & Aqua Starlight (Core Cyber Tech)
-  { color: "#38BDF8", glow: "rgba(56, 189, 248, 0.45)" },
-  { color: "#00F0FF", glow: "rgba(0, 240, 255, 0.55)" },
-  { color: "#06B6D4", glow: "rgba(6, 182, 212, 0.4)" },
-  // Electric Azure & Blue
-  { color: "#60A5FA", glow: "rgba(96, 165, 250, 0.45)" },
-  { color: "#818CF8", glow: "rgba(129, 140, 248, 0.4)" },
-  // Cosmic Violet & Nebula Pink
-  { color: "#C084FC", glow: "rgba(192, 132, 252, 0.45)" },
-  { color: "#E879F9", glow: "rgba(232, 121, 249, 0.4)" },
-  // Warm Golden Starlight
-  { color: "#FDE047", glow: "rgba(253, 224, 71, 0.5)" },
-  { color: "#FCD34D", glow: "rgba(252, 211, 77, 0.45)" },
-  // Pure Diamond White
+// Sophisticated celestial palette (High-end Luxury Tech & Starlight)
+const CELESTIAL_PALETTE = [
+  // Crisp Diamond Starlight
   { color: "#FFFFFF", glow: "rgba(255, 255, 255, 0.65)" },
+  { color: "#F0F9FF", glow: "rgba(224, 242, 254, 0.55)" },
+  // Cyber Cyan & Aqua Starlight
+  { color: "#38BDF8", glow: "rgba(56, 189, 248, 0.50)" },
+  { color: "#00F0FF", glow: "rgba(0, 240, 255, 0.55)" },
+  { color: "#22D3EE", glow: "rgba(34, 211, 238, 0.45)" },
+  // Electric Azure & Royal Blue
+  { color: "#60A5FA", glow: "rgba(96, 165, 250, 0.45)" },
+  { color: "#818CF8", glow: "rgba(129, 140, 248, 0.40)" },
+  // Cosmic Violet & Nebula Lilac
+  { color: "#C084FC", glow: "rgba(192, 132, 252, 0.45)" },
+  { color: "#E879F9", glow: "rgba(232, 121, 249, 0.40)" },
+  // Warm Golden Champagne Nova (Creates authentic contrast)
+  { color: "#FEF08A", glow: "rgba(254, 240, 138, 0.55)" },
+  { color: "#FDE047", glow: "rgba(253, 224, 71, 0.50)" },
 ];
 
 export function InteractiveBackground() {
@@ -54,68 +57,119 @@ export function InteractiveBackground() {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext("2d", { alpha: true });
     if (!ctx) return;
 
     let animationFrameId: number;
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
-    // Responsive star count for silky 60fps
+    // Responsive star allocation
     const isMobile = width < 768;
-    const starCount = isMobile ? 70 : Math.min(Math.floor(width / 11), 160);
+    const totalStars = isMobile ? 85 : Math.min(Math.floor(width / 9.5), 180);
     const stars: Star[] = [];
 
-    // Initialize stars
-    for (let i = 0; i < starCount; i++) {
-      const palette = STAR_PALETTE[Math.floor(Math.random() * STAR_PALETTE.length)];
-      const isMajorStar = Math.random() < 0.22; // ~22% stars have prominent twinkle & spikes
+    // Initialize 3 realistic tiers of stars
+    for (let i = 0; i < totalStars; i++) {
+      const palette = CELESTIAL_PALETTE[Math.floor(Math.random() * CELESTIAL_PALETTE.length)];
+      const rand = Math.random();
 
-      stars.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.18,
-        vy: (Math.random() - 0.5) * 0.18,
-        radius: isMajorStar ? Math.random() * 1.4 + 1.2 : Math.random() * 0.9 + 0.6,
-        baseAlpha: Math.random() * 0.35 + 0.3,
-        color: palette.color,
-        glowColor: palette.glow,
-        twinkleSpeed: Math.random() * 1.5 + 0.8,
-        twinklePhase: Math.random() * Math.PI * 2,
-        hasSpikes: isMajorStar,
-        spikeLength: Math.random() * 4 + 4,
-      });
+      // Tier 3: Signature Prismatic Diamond Stars (~10%)
+      if (rand < 0.10) {
+        stars.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.06,
+          vy: (Math.random() - 0.5) * 0.06,
+          radius: Math.random() * 0.6 + 1.4, // 1.4 - 2.0px
+          baseAlpha: Math.random() * 0.3 + 0.5,
+          color: palette.color,
+          glowColor: palette.glow,
+          twinkleSpeed: Math.random() * 1.2 + 0.8,
+          twinklePhase: Math.random() * Math.PI * 2,
+          hasFlare: true,
+          flareSize: Math.random() * 6 + 10, // 10 - 16px soft flare
+        });
+      }
+      // Tier 2: Medium Luminous Celestial Stars (~25%)
+      else if (rand < 0.35) {
+        stars.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.09,
+          vy: (Math.random() - 0.5) * 0.09,
+          radius: Math.random() * 0.4 + 0.9, // 0.9 - 1.3px
+          baseAlpha: Math.random() * 0.3 + 0.35,
+          color: palette.color,
+          glowColor: palette.glow,
+          twinkleSpeed: Math.random() * 1.6 + 1.0,
+          twinklePhase: Math.random() * Math.PI * 2,
+          hasFlare: false,
+          flareSize: 0,
+        });
+      }
+      // Tier 1: Distant Micro-stardust (~65%)
+      else {
+        stars.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.03,
+          vy: (Math.random() - 0.5) * 0.03,
+          radius: Math.random() * 0.35 + 0.45, // 0.45 - 0.8px
+          baseAlpha: Math.random() * 0.35 + 0.2,
+          color: Math.random() > 0.4 ? "#FFFFFF" : palette.color,
+          glowColor: palette.glow,
+          twinkleSpeed: Math.random() * 2.0 + 0.6,
+          twinklePhase: Math.random() * Math.PI * 2,
+          hasFlare: false,
+          flareSize: 0,
+        });
+      }
     }
 
     // Shooting stars pool
     const shootingStars: ShootingStar[] = [];
-    let nextShootingStarTime = Date.now() + Math.random() * 4000 + 2000;
+    let nextShootingStarTime = Date.now() + Math.random() * 3500 + 2000;
 
     const spawnShootingStar = () => {
-      const colors = ["#00F0FF", "#38BDF8", "#FDE047", "#FFFFFF", "#C084FC"];
-      const angle = (Math.PI / 180) * (Math.random() * 20 + 25); // 25-45 degrees diagonal
-      const speed = Math.random() * 7 + 8;
+      const colors = [
+        { c: "#FFFFFF", g: "rgba(0, 240, 255, 0.6)" },
+        { c: "#38BDF8", g: "rgba(56, 189, 248, 0.5)" },
+        { c: "#FEF08A", g: "rgba(254, 240, 138, 0.5)" },
+        { c: "#C084FC", g: "rgba(192, 132, 252, 0.5)" },
+      ];
+      const pick = colors[Math.floor(Math.random() * colors.length)];
+      // Diagonal trajectory between 25 and 36 degrees
+      const angle = (Math.PI / 180) * (Math.random() * 12 + 25);
+      const speed = Math.random() * 6 + 9;
 
       shootingStars.push({
-        x: Math.random() * width * 0.8,
-        y: Math.random() * (height * 0.3),
+        x: Math.random() * (width * 0.85),
+        y: Math.random() * (height * 0.35),
         dx: Math.cos(angle) * speed,
         dy: Math.sin(angle) * speed,
-        length: Math.random() * 70 + 60,
+        length: Math.random() * 80 + 90, // 90 - 170px graceful trail
         speed,
         opacity: 1,
-        color: colors[Math.floor(Math.random() * colors.length)],
+        color: pick.c,
+        glowColor: pick.g,
         active: true,
       });
     };
 
-    // Mouse tracking for subtle star interaction
-    let mouseX = -1000;
-    let mouseY = -1000;
+    // Smooth cursor tracking with fluid inertia
+    let targetMouseX = -1000;
+    let targetMouseY = -1000;
+    let currentMouseX = -1000;
+    let currentMouseY = -1000;
 
     const handleMouseMove = (e: MouseEvent) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
+      targetMouseX = e.clientX;
+      targetMouseY = e.clientY;
+      if (currentMouseX === -1000) {
+        currentMouseX = e.clientX;
+        currentMouseY = e.clientY;
+      }
     };
 
     const handleResize = () => {
@@ -126,87 +180,126 @@ export function InteractiveBackground() {
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
     window.addEventListener("resize", handleResize, { passive: true });
 
-    // Grid animation offset
-    let gridOffset = 0;
-
+    // Render loop
     const render = (time: number) => {
       ctx.clearRect(0, 0, width, height);
 
-      // 1. Subtle Cyber Space Grid (Very faint high-tech atmosphere)
-      gridOffset = (gridOffset + 0.08) % 80;
-      ctx.save();
-      ctx.strokeStyle = "rgba(59, 130, 246, 0.025)";
-      ctx.lineWidth = 0.8;
-      for (let x = 0; x < width; x += 80) {
-        ctx.beginPath();
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x, height);
-        ctx.stroke();
-      }
-      for (let y = gridOffset; y < height; y += 80) {
-        ctx.beginPath();
-        ctx.moveTo(0, y);
-        ctx.lineTo(width, y);
-        ctx.stroke();
-      }
-      ctx.restore();
+      // Smooth mouse spotlight interpolation
+      if (targetMouseX !== -1000) {
+        currentMouseX += (targetMouseX - currentMouseX) * 0.08;
+        currentMouseY += (targetMouseY - currentMouseY) * 0.08;
 
-      // 2. Render & Twinkle Stars
-      const t = time * 0.0015;
+        // Draw subtle celestial spotlight around cursor
+        const spotRadius = 180;
+        const spotGrad = ctx.createRadialGradient(
+          currentMouseX,
+          currentMouseY,
+          0,
+          currentMouseX,
+          currentMouseY,
+          spotRadius
+        );
+        spotGrad.addColorStop(0, "rgba(56, 189, 248, 0.07)");
+        spotGrad.addColorStop(0.5, "rgba(139, 92, 246, 0.03)");
+        spotGrad.addColorStop(1, "rgba(0, 0, 0, 0)");
 
+        ctx.save();
+        ctx.fillStyle = spotGrad;
+        ctx.beginPath();
+        ctx.arc(currentMouseX, currentMouseY, spotRadius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+
+      const t = time * 0.0016;
+
+      // 1. Render & Animate Stars
       for (let i = 0; i < stars.length; i++) {
         const star = stars[i];
 
-        // Smooth slow celestial drift
+        // Cosmic slow drift
         star.x += star.vx;
         star.y += star.vy;
 
-        // Wrap boundaries seamlessly
+        // Smooth viewport wrap
         if (star.x < 0) star.x = width;
         else if (star.x > width) star.x = 0;
         if (star.y < 0) star.y = height;
         else if (star.y > height) star.y = 0;
 
-        // Mouse gentle repel
-        const dxM = mouseX - star.x;
-        const dyM = mouseY - star.y;
-        const distM = Math.sqrt(dxM * dxM + dyM * dyM);
-        if (distM < 100 && distM > 0) {
-          star.x -= (dxM / distM) * 0.35;
-          star.y -= (dyM / distM) * 0.35;
+        // Proximity to mouse
+        let proximityBoost = 0;
+        if (currentMouseX !== -1000) {
+          const dxM = currentMouseX - star.x;
+          const dyM = currentMouseY - star.y;
+          const distM = Math.sqrt(dxM * dxM + dyM * dyM);
+          if (distM < 140) {
+            proximityBoost = (1 - distM / 140) * 0.35;
+          }
         }
 
-        // Calculate organic breathing twinkle
-        const twinkleSine = Math.sin(t * star.twinkleSpeed + star.twinklePhase);
+        // Smooth sine-wave twinkling calculation
+        const twinkleOsc = Math.sin(t * star.twinkleSpeed + star.twinklePhase);
         const currentAlpha = Math.max(
-          0.12,
-          Math.min(1, star.baseAlpha + twinkleSine * 0.42)
+          0.14,
+          Math.min(1.0, star.baseAlpha + twinkleOsc * 0.38 + proximityBoost)
         );
 
-        // A. Draw soft radial glow for major stars
-        if (star.hasSpikes || star.radius > 1.1) {
-          const glowRadius = star.radius * 3.5;
-          const gradient = ctx.createRadialGradient(
+        // A. Draw Soft Photometric Radial Bloom Halo
+        if (star.hasFlare || star.radius > 0.85) {
+          const bloomRadius = star.radius * (star.hasFlare ? 4.5 : 2.8);
+          const bloom = ctx.createRadialGradient(
             star.x,
             star.y,
             0,
             star.x,
             star.y,
-            glowRadius
+            bloomRadius
           );
-          gradient.addColorStop(0, star.glowColor);
-          gradient.addColorStop(1, "rgba(0, 0, 0, 0)");
+          bloom.addColorStop(0, star.glowColor);
+          bloom.addColorStop(1, "rgba(0, 0, 0, 0)");
 
           ctx.save();
-          ctx.globalAlpha = currentAlpha * 0.7;
-          ctx.fillStyle = gradient;
+          ctx.globalAlpha = currentAlpha * 0.75;
+          ctx.fillStyle = bloom;
           ctx.beginPath();
-          ctx.arc(star.x, star.y, glowRadius, 0, Math.PI * 2);
+          ctx.arc(star.x, star.y, bloomRadius, 0, Math.PI * 2);
           ctx.fill();
           ctx.restore();
         }
 
-        // B. Draw Star Core
+        // B. Draw Diamond 4-Point Starlight Flare (Signature Jewels)
+        if (star.hasFlare && currentAlpha > 0.42) {
+          const flarePulse = Math.max(0.2, (currentAlpha - 0.35) / 0.65);
+          const flareLen = star.flareSize * flarePulse;
+          const flareWidth = star.radius * 0.65;
+
+          ctx.save();
+          ctx.globalAlpha = (currentAlpha - 0.25) * 0.75;
+          ctx.fillStyle = star.color;
+
+          // Horizontal diamond needle
+          ctx.beginPath();
+          ctx.moveTo(star.x - flareLen, star.y);
+          ctx.lineTo(star.x, star.y - flareWidth);
+          ctx.lineTo(star.x + flareLen, star.y);
+          ctx.lineTo(star.x, star.y + flareWidth);
+          ctx.closePath();
+          ctx.fill();
+
+          // Vertical diamond needle
+          ctx.beginPath();
+          ctx.moveTo(star.x, star.y - flareLen);
+          ctx.lineTo(star.x + flareWidth, star.y);
+          ctx.lineTo(star.x, star.y + flareLen);
+          ctx.lineTo(star.x - flareWidth, star.y);
+          ctx.closePath();
+          ctx.fill();
+
+          ctx.restore();
+        }
+
+        // C. Draw Star Glowing Body
         ctx.save();
         ctx.globalAlpha = currentAlpha;
         ctx.fillStyle = star.color;
@@ -214,50 +307,40 @@ export function InteractiveBackground() {
         ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
         ctx.fill();
 
-        // C. Draw 4-point cross diffraction spikes for major stars when bright
-        if (star.hasSpikes && currentAlpha > 0.55) {
-          const spikeLen = star.spikeLength * ((currentAlpha - 0.4) / 0.6);
-          ctx.strokeStyle = star.color;
-          ctx.lineWidth = 0.8;
-          ctx.globalAlpha = (currentAlpha - 0.5) * 0.85;
-
-          ctx.beginPath();
-          // Horizontal spike
-          ctx.moveTo(star.x - spikeLen, star.y);
-          ctx.lineTo(star.x + spikeLen, star.y);
-          // Vertical spike
-          ctx.moveTo(star.x, star.y - spikeLen);
-          ctx.lineTo(star.x, star.y + spikeLen);
-          ctx.stroke();
-        }
+        // D. Draw Pure White Core (High brilliance center)
+        ctx.globalAlpha = Math.min(1.0, currentAlpha * 1.35);
+        ctx.fillStyle = "#FFFFFF";
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, Math.max(0.4, star.radius * 0.6), 0, Math.PI * 2);
+        ctx.fill();
         ctx.restore();
 
-        // D. Constellation Links between close stars
+        // E. Delicate Constellation Filaments between close stars
         for (let j = i + 1; j < stars.length; j++) {
           const star2 = stars[j];
           const dx = star.x - star2.x;
           const dy = star.y - star2.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < 85) {
+          if (dist < 80) {
             ctx.save();
             ctx.beginPath();
             ctx.moveTo(star.x, star.y);
             ctx.lineTo(star2.x, star2.y);
             ctx.strokeStyle = star.color;
-            ctx.globalAlpha = (1 - dist / 85) * 0.09 * Math.min(currentAlpha, 0.8);
-            ctx.lineWidth = 0.65;
+            ctx.globalAlpha = (1 - dist / 80) * 0.08 * Math.min(currentAlpha, 0.85);
+            ctx.lineWidth = 0.6;
             ctx.stroke();
             ctx.restore();
           }
         }
       }
 
-      // 3. Handle Occasional Shooting Stars
+      // 2. Render & Animate Realistic Shooting Stars
       const now = Date.now();
       if (now > nextShootingStarTime) {
         spawnShootingStar();
-        nextShootingStarTime = now + Math.random() * 5000 + 3500; // Next in 3.5-8.5s
+        nextShootingStarTime = now + Math.random() * 4500 + 3500; // Next in 3.5 - 8s
       }
 
       for (let s = shootingStars.length - 1; s >= 0; s--) {
@@ -266,35 +349,48 @@ export function InteractiveBackground() {
 
         meteor.x += meteor.dx;
         meteor.y += meteor.dy;
-        meteor.opacity -= 0.016;
+        meteor.opacity -= 0.015; // Smooth exponential decay
 
-        if (meteor.opacity <= 0 || meteor.x > width || meteor.y > height) {
+        if (meteor.opacity <= 0 || meteor.x > width + 100 || meteor.y > height + 100) {
           meteor.active = false;
           shootingStars.splice(s, 1);
           continue;
         }
 
-        // Tail gradient
+        // Tapered luminous tail with gradient falloff
         const tailX = meteor.x - (meteor.dx / meteor.speed) * meteor.length;
         const tailY = meteor.y - (meteor.dy / meteor.speed) * meteor.length;
 
-        const meteorGrad = ctx.createLinearGradient(tailX, tailY, meteor.x, meteor.y);
-        meteorGrad.addColorStop(0, "rgba(255, 255, 255, 0)");
-        meteorGrad.addColorStop(1, meteor.color);
+        const grad = ctx.createLinearGradient(tailX, tailY, meteor.x, meteor.y);
+        grad.addColorStop(0, "rgba(255, 255, 255, 0)");
+        grad.addColorStop(0.6, meteor.glowColor);
+        grad.addColorStop(1, "#FFFFFF");
 
         ctx.save();
-        ctx.strokeStyle = meteorGrad;
-        ctx.lineWidth = 1.5;
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = 1.6;
         ctx.globalAlpha = meteor.opacity;
         ctx.beginPath();
         ctx.moveTo(tailX, tailY);
         ctx.lineTo(meteor.x, meteor.y);
         ctx.stroke();
 
-        // Meteor glowing head
-        ctx.fillStyle = "#FFFFFF";
+        // Meteor glowing nucleus
+        const headGlow = ctx.createRadialGradient(
+          meteor.x,
+          meteor.y,
+          0,
+          meteor.x,
+          meteor.y,
+          4.5
+        );
+        headGlow.addColorStop(0, "#FFFFFF");
+        headGlow.addColorStop(0.4, meteor.color);
+        headGlow.addColorStop(1, "rgba(0, 0, 0, 0)");
+
+        ctx.fillStyle = headGlow;
         ctx.beginPath();
-        ctx.arc(meteor.x, meteor.y, 1.8, 0, Math.PI * 2);
+        ctx.arc(meteor.x, meteor.y, 4.5, 0, Math.PI * 2);
         ctx.fill();
         ctx.restore();
       }
@@ -302,7 +398,7 @@ export function InteractiveBackground() {
       animationFrameId = requestAnimationFrame(render);
     };
 
-    // Reduced motion check
+    // Reduced motion compliance
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (!mediaQuery.matches) {
       animationFrameId = requestAnimationFrame(render);
@@ -318,7 +414,7 @@ export function InteractiveBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0 w-full h-full opacity-90 transition-opacity duration-700"
+      className="fixed inset-0 pointer-events-none z-0 w-full h-full opacity-95 transition-opacity duration-1000"
       aria-hidden="true"
     />
   );
