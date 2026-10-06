@@ -130,49 +130,45 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right Column: Professional Portrait (5 cols) (Section 5) */}
+          {/* Right Column: Professional Portrait (5 cols) */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
-            <div className="relative group max-w-sm sm:max-w-md w-full">
+            <div className="relative group max-w-[310px] sm:max-w-[335px] w-full">
               
-              {/* Subtle ambient glow behind photo */}
-              <div className="absolute -inset-1.5 bg-gradient-to-r from-electric-600/40 via-cyan/40 to-violet-subtle/30 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+              {/* Luminous ambient glow behind portrait */}
+              <div className="absolute -inset-1.5 bg-gradient-to-tr from-electric-600/35 via-cyan/35 to-violet-500/25 rounded-3xl blur-2xl opacity-75 group-hover:opacity-100 transition duration-700 pointer-events-none" />
 
-              {/* Portrait Container Frame */}
-              <div className="relative rounded-2xl overflow-hidden bg-slate-900 border border-electric-500/30 shadow-2xl">
+              {/* Elegant Floating Glass Frame */}
+              <div className="relative rounded-2xl overflow-hidden bg-slate-900/90 border border-cyan-500/30 group-hover:border-cyan-400/60 shadow-2xl transition-all duration-500">
                 
-                {/* Tech HUD header bezel */}
-                <div className="px-4 py-2.5 bg-slate-950/90 border-b border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-400">
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
-                    <span className="text-slate-300 font-medium">MAHMUD_ID // VERIFIED</span>
-                  </div>
-                  <span className="text-cyan/80">AI AUTOMATION</span>
-                </div>
-
-                {/* Portrait Image */}
-                <div className="relative aspect-[3/4] w-full bg-slate-950">
+                {/* Portrait Image (Golden Ratio 4:5 with top focus) */}
+                <div className="relative aspect-[4/5] w-full bg-slate-950 overflow-hidden">
                   <Image
                     src="/images/profile/mahmud-hasan.jpg"
                     alt="Mahmud Hasan - AI Automation Expert, App Developer & Web Developer"
                     fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 450px"
+                    sizes="(max-width: 768px) 100vw, 340px"
                     priority
-                    className="object-cover object-center group-hover:scale-[1.01] transition-transform duration-500"
+                    className="object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
-                  {/* Subtle lower gradient overlay for seamless badge integration */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent pointer-events-none" />
-                </div>
+                  
+                  {/* Subtle inner edge ring */}
+                  <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl pointer-events-none" />
+                  
+                  {/* Subtle bottom shadow vignette for badge contrast */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
 
-                {/* Bottom Spec Footer Pill */}
-                <div className="p-4 bg-slate-950/95 border-t border-slate-800/80">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-sm font-bold text-slate-100">{profileData.name}</p>
-                      <p className="text-xs text-cyan font-mono mt-0.5">Applied Systems &amp; Workflows</p>
+                  {/* Sleek Floating Glass Pill Badge at bottom */}
+                  <div className="absolute bottom-3 left-3 right-3 p-2.5 rounded-xl bg-slate-950/85 backdrop-blur-md border border-slate-700/70 flex items-center justify-between shadow-xl">
+                    <div className="flex items-center gap-2">
+                      <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan opacity-75" />
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan" />
+                      </span>
+                      <span className="text-xs font-semibold text-slate-100 font-sans">{profileData.name}</span>
                     </div>
-                    <div className="px-2.5 py-1 rounded bg-slate-900 border border-slate-700/80 text-[11px] font-mono text-slate-300">
-                      Dhaka, BD
-                    </div>
+                    <span className="text-[10px] font-mono font-medium text-cyan px-2 py-0.5 rounded bg-cyan/10 border border-cyan/30">
+                      AI Automator
+                    </span>
                   </div>
                 </div>
 
