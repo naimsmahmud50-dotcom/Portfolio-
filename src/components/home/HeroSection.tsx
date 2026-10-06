@@ -132,7 +132,7 @@ export function HeroSection() {
 
           {/* Right Column: Professional Portrait (5 cols) */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
-            <div className="relative group max-w-[310px] sm:max-w-[335px] w-full">
+            <div className="relative group max-w-[310px] sm:max-w-[335px] w-full cursor-pointer transition-transform duration-500 ease-out hover:translate-y-2.5">
               
               {/* Luminous ambient glow behind portrait */}
               <div className="absolute -inset-1.5 bg-gradient-to-tr from-electric-600/35 via-cyan/35 to-violet-500/25 rounded-3xl blur-2xl opacity-75 group-hover:opacity-100 transition duration-700 pointer-events-none" />
@@ -143,7 +143,7 @@ export function HeroSection() {
                 {/* Portrait Image (Golden Ratio 4:5 with top focus) */}
                 <div className="relative aspect-[4/5] w-full bg-slate-950 overflow-hidden">
                   <Image
-                    src="/images/profile/mahmud-hasan.jpg"
+                    src="/images/profile/mahmud-hasan-suit.jpg"
                     alt="Mahmud Hasan - AI Automation Expert, App Developer & Web Developer"
                     fill
                     sizes="(max-width: 768px) 100vw, 340px"
