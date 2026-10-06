@@ -1,0 +1,7 @@
+# User-agent rules for Mahmud Hasan Portfolio
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api/
+
+Sitemap: https://mahmudhasan.dev/sitemap.xml

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="mediaBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0A0B16"/>
+      <stop offset="100%" stop-color="#14172E"/>
+    </linearGradient>
+    <linearGradient id="blueGlowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1877F2"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#mediaBg)"/>
+  <!-- Broadcast / Podcasting waveform graphic -->
+  <g transform="translate(400, 240)">
+    <circle cx="0" cy="0" r="140" fill="none" stroke="#23294E" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="100" fill="none" stroke="#3B82F6" stroke-width="1" stroke-dasharray="4,4"/>
+    <!-- Central Media Badge -->
+    <rect x="-60" y="-60" width="120" height="120" rx="24" fill="#131938" stroke="url(#blueGlowGrad)" stroke-width="3"/>
+    <!-- Play / Spark icon -->
+    <path d="M-15 -25 L25 0 L-15 25 Z" fill="url(#blueGlowGrad)"/>
+    <!-- Frequency bars -->
+    <rect x="-180" y="-15" width="8" height="30" rx="4" fill="#3B82F6" opacity="0.6"/>
+    <rect x="-160" y="-35" width="8" height="70" rx="4" fill="#3B82F6" opacity="0.8"/>
+    <rect x="-140" y="-20" width="8" height="40" rx="4" fill="#3B82F6" opacity="0.5"/>
+    <rect x="-120" y="-50" width="8" height="100" rx="4" fill="#06B6D4" opacity="0.9"/>
+    <rect x="-100" y="-25" width="8" height="50" rx="4" fill="#06B6D4" opacity="0.7"/>
+
+    <rect x="92" y="-25" width="8" height="50" rx="4" fill="#06B6D4" opacity="0.7"/>
+    <rect x="112" y="-50" width="8" height="100" rx="4" fill="#06B6D4" opacity="0.9"/>
+    <rect x="132" y="-20" width="8" height="40" rx="4" fill="#3B82F6" opacity="0.5"/>
+    <rect x="152" y="-35" width="8" height="70" rx="4" fill="#3B82F6" opacity="0.8"/>
+    <rect x="172" y="-15" width="8" height="30" rx="4" fill="#3B82F6" opacity="0.6"/>
+  </g>
+  <text x="400" y="420" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="14" letter-spacing="2">NAIM KNOWS • TECH &amp; AI MEDIA INITIATIVE</text>
+</svg>

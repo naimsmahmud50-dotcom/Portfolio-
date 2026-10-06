@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="learnBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#061219"/>
+      <stop offset="100%" stop-color="#0E232F"/>
+    </linearGradient>
+    <linearGradient id="learnGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#learnBg)"/>
+  <!-- Stepper Roadmap Graphic -->
+  <g transform="translate(140, 240)">
+    <line x1="0" y1="0" x2="520" y2="0" stroke="#1E293B" stroke-width="4"/>
+    <line x1="0" y1="0" x2="360" y2="0" stroke="url(#learnGrad)" stroke-width="4"/>
+
+    <!-- Step 1 -->
+    <circle cx="0" cy="0" r="22" fill="#0C252F" stroke="#10B981" stroke-width="3"/>
+    <text x="0" y="5" text-anchor="middle" fill="#FFFFFF" font-family="monospace" font-size="12" font-weight="bold">01</text>
+    <text x="0" y="-35" text-anchor="middle" fill="#94A3B8" font-family="system-ui" font-size="12">Ethical Hacking</text>
+    <text x="0" y="45" text-anchor="middle" fill="#10B981" font-family="system-ui" font-size="11">Completed</text>
+
+    <!-- Step 2 -->
+    <circle cx="180" cy="0" r="22" fill="#0C252F" stroke="#10B981" stroke-width="3"/>
+    <text x="180" y="5" text-anchor="middle" fill="#FFFFFF" font-family="monospace" font-size="12" font-weight="bold">02</text>
+    <text x="180" y="-35" text-anchor="middle" fill="#94A3B8" font-family="system-ui" font-size="12">Internship</text>
+    <text x="180" y="45" text-anchor="middle" fill="#10B981" font-family="system-ui" font-size="11">Completed</text>
+
+    <!-- Step 3 (Current) -->
+    <circle cx="360" cy="0" r="28" fill="#0E3846" stroke="#06B6D4" stroke-width="4"/>
+    <circle cx="360" cy="0" r="38" fill="none" stroke="#06B6D4" stroke-width="1.5" stroke-dasharray="4,4"/>
+    <text x="360" y="6" text-anchor="middle" fill="#38BDF8" font-family="monospace" font-size="14" font-weight="bold">AI</text>
+    <text x="360" y="-45" text-anchor="middle" fill="#E2E8F0" font-family="system-ui" font-size="13" font-weight="bold">As-Sunnah SDI</text>
+    <text x="360" y="55" text-anchor="middle" fill="#38BDF8" font-family="system-ui" font-size="11" font-weight="bold">CURRENT FOCUS</text>
+
+    <!-- Step 4 (Future Target) -->
+    <circle cx="520" cy="0" r="20" fill="#0B1822" stroke="#475569" stroke-width="2"/>
+    <text x="520" y="5" text-anchor="middle" fill="#64748B" font-family="monospace" font-size="12">PROD</text>
+    <text x="520" y="-35" text-anchor="middle" fill="#64748B" font-family="system-ui" font-size="12">Autonomous Systems</text>
+    <text x="520" y="45" text-anchor="middle" fill="#64748B" font-family="system-ui" font-size="11">Active Target</text>
+  </g>
+  <text x="400" y="430" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="14" letter-spacing="2">AI AUTOMATION LEARNING JOURNEY • CONTINUOUS ADVANCEMENT</text>
+</svg>

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070D1E"/>
+      <stop offset="100%" stop-color="#0E1A38"/>
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="16" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <rect width="800" height="500" fill="url(#bgGrad)"/>
+  <circle cx="400" cy="250" r="180" fill="none" stroke="#1E293B" stroke-width="1.5" stroke-dasharray="6,6"/>
+  <circle cx="400" cy="250" r="140" fill="none" stroke="#2563EB" stroke-width="1" opacity="0.4"/>
+  <circle cx="400" cy="250" r="80" fill="#06B6D4" opacity="0.08" filter="url(#glow)"/>
+  <!-- Central Shield -->
+  <path d="M400 160 L470 195 V270 C470 320 400 355 400 355 C400 355 330 320 330 270 V195 Z" fill="#0C1428" stroke="url(#cyanGrad)" stroke-width="3.5" filter="url(#glow)"/>
+  <!-- Lock Core -->
+  <rect x="382" y="248" width="36" height="30" rx="6" fill="#3B82F6"/>
+  <path d="M388 248 V234 C388 227 393 222 400 222 C407 222 412 227 412 234 V248" fill="none" stroke="#60A5FA" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="400" cy="260" r="3.5" fill="#070D1E"/>
+  <path d="M400 263.5 V270" stroke="#070D1E" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Technical Nodes -->
+  <circle cx="210" cy="180" r="6" fill="#06B6D4"/>
+  <line x1="210" y1="180" x2="330" y2="230" stroke="#06B6D4" stroke-width="1.5" opacity="0.4" stroke-dasharray="4,4"/>
+  <circle cx="590" cy="180" r="6" fill="#3B82F6"/>
+  <line x1="590" y1="180" x2="470" y2="230" stroke="#3B82F6" stroke-width="1.5" opacity="0.4" stroke-dasharray="4,4"/>
+  <circle cx="240" cy="340" r="6" fill="#8B5CF6"/>
+  <line x1="240" y1="340" x2="350" y2="300" stroke="#8B5CF6" stroke-width="1.5" opacity="0.4" stroke-dasharray="4,4"/>
+  <circle cx="560" cy="340" r="6" fill="#10B981"/>
+  <line x1="560" y1="340" x2="450" y2="300" stroke="#10B981" stroke-width="1.5" opacity="0.4" stroke-dasharray="4,4"/>
+  <!-- Labels -->
+  <text x="400" y="420" text-anchor="middle" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="14" letter-spacing="2">PERSONAL PC SECURITY • HARDWARE TELEMETRY</text>
+</svg>
