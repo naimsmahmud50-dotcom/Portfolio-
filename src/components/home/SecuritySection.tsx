@@ -21,7 +21,7 @@ const getSecIcon = (icon: string) => {
 
 export function SecuritySection() {
   return (
-    <section id="security" className="py-20 md:py-28 bg-slate-950/60 relative">
+    <section id="security" className="py-20 md:py-28 bg-slate-950/40 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header (Section 25) */}

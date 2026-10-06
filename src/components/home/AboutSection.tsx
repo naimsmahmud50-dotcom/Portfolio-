@@ -13,7 +13,7 @@ export function AboutSection() {
   };
 
   return (
-    <section id="about" className="py-20 md:py-28 bg-slate-950/60 dark:bg-canvas-deep relative">
+    <section id="about" className="py-20 md:py-28 bg-slate-950/40 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
