@@ -3,8 +3,9 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Project } from "@/types";
-import { ArrowUpRight, ExternalLink, ShieldCheck, Cpu, Bot, Sparkles } from "lucide-react";
+import { ArrowUpRight, ExternalLink, Sparkles } from "lucide-react";
 import { GithubIcon } from "../ui/SocialIcons";
 
 interface ProjectCardProps {
@@ -13,9 +14,34 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project, featured = false }: ProjectCardProps) {
+  const router = useRouter();
+
+  // Navigate to project case study on click anywhere on the card
+  const handleCardClick = (e: React.MouseEvent) => {
+    const target = e.target as HTMLElement;
+    // Do not intercept external action buttons (like GitHub or Live Demo)
+    if (target.closest("[data-no-card-nav]")) {
+      return;
+    }
+    router.push(`/projects/${project.slug}`);
+  };
+
+  // Keyboard accessibility (Enter or Space navigates into the project)
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      router.push(`/projects/${project.slug}`);
+    }
+  };
+
   return (
     <article
-      className={`rounded-2xl tech-card overflow-hidden flex flex-col justify-between group transition-all duration-300 hover:scale-[1.01] hover:border-cyan/50 ${
+      onClick={handleCardClick}
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
+      role="link"
+      aria-label={`View case study for ${project.title}`}
+      className={`cursor-pointer rounded-2xl tech-card overflow-hidden flex flex-col justify-between group transition-all duration-300 hover:scale-[1.015] hover:border-cyan/60 hover:shadow-xl hover:shadow-cyan/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan select-none ${
         featured ? "lg:col-span-2 bg-gradient-to-br from-slate-900/90 via-slate-900/60 to-slate-950/90" : ""
       }`}
     >
@@ -27,12 +53,12 @@ export function ProjectCard({ project, featured = false }: ProjectCardProps) {
             alt={project.title}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-            className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
+            className="object-cover object-center group-hover:scale-105 transition-transform duration-700 pointer-events-none"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent pointer-events-none" />
           
           {/* Status Badge */}
-          <div className="absolute top-4 left-4 flex items-center gap-2">
+          <div className="absolute top-4 left-4 flex items-center gap-2 pointer-events-none">
             <span className="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold tracking-wide bg-slate-950/80 backdrop-blur-md border border-cyan/30 text-cyan">
               {project.category}
             </span>
@@ -42,7 +68,7 @@ export function ProjectCard({ project, featured = false }: ProjectCardProps) {
           </div>
 
           {featured && (
-            <div className="absolute top-4 right-4 px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-electric-950/80 backdrop-blur-md border border-electric-500/40 text-electric-300 flex items-center gap-1">
+            <div className="absolute top-4 right-4 px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-electric-950/80 backdrop-blur-md border border-electric-500/40 text-electric-300 flex items-center gap-1 pointer-events-none">
               <Sparkles className="w-3 h-3 text-cyan" />
               <span>FEATURED CASE STUDY</span>
             </div>
@@ -51,12 +77,16 @@ export function ProjectCard({ project, featured = false }: ProjectCardProps) {
 
         {/* Content Body */}
         <div className="p-6">
-          <Link href={`/projects/${project.slug}`} className="group-hover:text-cyan transition-colors">
+          <Link
+            href={`/projects/${project.slug}`}
+            className="block group-hover:text-cyan transition-colors"
+            onClick={(e) => e.stopPropagation()}
+          >
             <h3 className={`font-bold text-slate-100 flex items-center justify-between gap-2 ${
               featured ? "text-xl sm:text-2xl" : "text-lg"
             }`}>
-              <span>{project.title}</span>
-              <ArrowUpRight className="w-5 h-5 text-slate-400 group-hover:text-cyan group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0" />
+              <span className="group-hover:text-cyan transition-colors">{project.title}</span>
+              <ArrowUpRight className="w-5 h-5 text-slate-400 group-hover:text-cyan group-hover:translate-x-1 group-hover:-translate-y-1 transition-all shrink-0" />
             </h3>
           </Link>
 
@@ -79,14 +109,16 @@ export function ProjectCard({ project, featured = false }: ProjectCardProps) {
       </div>
 
       {/* Footer Actions & Case Study link */}
-      <div className="px-6 py-4 bg-slate-950/60 border-t border-slate-800/80 flex items-center justify-between">
-        <div className="flex items-center gap-3">
+      <div className="px-6 py-4 bg-slate-950/60 border-t border-slate-800/80 flex items-center justify-between relative z-20">
+        <div className="flex items-center gap-2">
           {project.links.github && (
             <a
               href={project.links.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-400 hover:text-slate-100 p-1 transition-colors"
+              data-no-card-nav="true"
+              onClick={(e) => e.stopPropagation()}
+              className="text-slate-400 hover:text-slate-100 p-1.5 rounded-lg hover:bg-slate-800/80 transition-all hover:scale-110"
               title="View GitHub Repository"
             >
               <GithubIcon className="w-4 h-4" />
@@ -97,7 +129,9 @@ export function ProjectCard({ project, featured = false }: ProjectCardProps) {
               href={project.links.live}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-400 hover:text-cyan p-1 transition-colors"
+              data-no-card-nav="true"
+              onClick={(e) => e.stopPropagation()}
+              className="text-slate-400 hover:text-cyan p-1.5 rounded-lg hover:bg-slate-800/80 transition-all hover:scale-110"
               title="Visit Live Page"
             >
               <ExternalLink className="w-4 h-4" />
@@ -107,10 +141,11 @@ export function ProjectCard({ project, featured = false }: ProjectCardProps) {
 
         <Link
           href={`/projects/${project.slug}`}
-          className="text-xs font-semibold text-cyan hover:text-electric-400 transition-colors flex items-center gap-1 font-mono"
+          onClick={(e) => e.stopPropagation()}
+          className="text-xs font-semibold text-cyan group-hover:text-electric-300 transition-colors flex items-center gap-1.5 font-mono"
         >
-          <span>Read Case Study</span>
-          <span>&rarr;</span>
+          <span>Explore Case Study</span>
+          <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
         </Link>
       </div>
     </article>
