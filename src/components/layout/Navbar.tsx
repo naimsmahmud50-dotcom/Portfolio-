@@ -433,12 +433,12 @@ export function Navbar() {
                 );
               }
             }}
-            className="relative group overflow-hidden px-4 py-2 rounded-xl bg-gradient-to-r from-cyan via-teal-400 to-blue-500 text-slate-950 font-bold text-xs sm:text-sm tracking-wide shadow-lg shadow-cyan/20 hover:shadow-cyan/40 hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center gap-2 cursor-pointer"
+            className="relative group overflow-hidden px-4 py-2 rounded-xl bg-gradient-to-r from-blue-600 via-cyan-600 to-teal-500 dark:from-cyan dark:via-teal-400 dark:to-blue-500 text-white dark:text-slate-950 font-bold text-xs sm:text-sm tracking-wide shadow-lg shadow-blue-500/20 dark:shadow-cyan/20 hover:shadow-blue-500/40 dark:hover:shadow-cyan/40 hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center gap-2 cursor-pointer"
           >
             <span className="absolute inset-0 w-full h-full bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-            <Sparkles className="w-3.5 h-3.5 fill-slate-950 shrink-0" />
-            <span className="font-semibold">Let's Talk</span>
-            <ArrowRight className="w-3.5 h-3.5 text-slate-950 shrink-0 group-hover:translate-x-0.5 transition-transform" />
+            <Sparkles className="w-3.5 h-3.5 fill-current text-white dark:text-slate-950 shrink-0" />
+            <span className="font-semibold text-white dark:text-slate-950">Let's Talk</span>
+            <ArrowRight className="w-3.5 h-3.5 text-white dark:text-slate-950 shrink-0 group-hover:translate-x-0.5 transition-transform" />
           </button>
 
           {/* Mobile hamburger menu button */}

@@ -332,7 +332,7 @@ export function HeroTerminal() {
   };
 
   return (
-    <div className="w-full rounded-2xl tech-card border-electric-500/30 overflow-hidden shadow-2xl backdrop-blur-xl bg-slate-950/90 text-left font-mono">
+    <div className="hero-terminal w-full rounded-2xl tech-card border-slate-800 dark:border-electric-500/30 overflow-hidden shadow-2xl backdrop-blur-xl bg-slate-950 text-left font-mono">
       {/* Terminal Titlebar */}
       <div className="px-4 py-3 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between">
         <div className="flex items-center gap-2">

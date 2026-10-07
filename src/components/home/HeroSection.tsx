@@ -125,26 +125,26 @@ export function HeroSection() {
             </div>
 
             {/* Name Heading with Luminous Living Gradient */}
-            <h1 className="text-4xl sm:text-5xl xl:text-6xl font-extrabold tracking-tight text-slate-100 leading-tight">
+            <h1 className="text-4xl sm:text-5xl xl:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100 leading-tight">
               Hi, I'm{" "}
               <span className="relative inline-block">
-                <span className="bg-gradient-to-r from-cyan via-teal-300 to-electric-400 bg-clip-text text-transparent animate-gradient-flow font-extrabold drop-shadow-[0_0_25px_rgba(6,182,212,0.35)]">
+                <span className="bg-gradient-to-r from-blue-700 via-indigo-600 to-cyan-600 dark:from-cyan dark:via-teal-300 dark:to-electric-400 bg-clip-text text-transparent animate-gradient-flow font-extrabold drop-shadow-sm dark:drop-shadow-[0_0_25px_rgba(6,182,212,0.35)]">
                   {profileData.name}
                 </span>
               </span>
             </h1>
 
             {/* Dynamic Rotating Sub-Role Ticker with Fluid Typewriter */}
-            <div className="mt-4 flex flex-wrap items-center gap-2 text-lg sm:text-2xl font-semibold text-slate-200 min-h-[48px]">
-              <span className="text-slate-300 font-normal">Specializing in</span>
-              <span className="inline-flex items-center px-3.5 py-1.5 rounded-xl bg-slate-900/90 border border-cyan-500/40 text-cyan font-mono text-base sm:text-xl transition-all shadow-lg shadow-cyan/10">
+            <div className="mt-4 flex flex-wrap items-center gap-2 text-lg sm:text-2xl font-semibold text-slate-900 dark:text-slate-200 min-h-[48px]">
+              <span className="text-slate-600 dark:text-slate-300 font-normal">Specializing in</span>
+              <span className="inline-flex items-center px-3.5 py-1.5 rounded-xl bg-white/90 dark:bg-slate-900/90 border border-cyan-500/40 text-cyan-700 dark:text-cyan font-mono text-base sm:text-xl transition-all shadow-md shadow-slate-200/50 dark:shadow-lg dark:shadow-cyan/10">
                 <span>{roleText}</span>
-                <span className="inline-block w-2 sm:w-2.5 h-4 sm:h-5 ml-1.5 bg-cyan animate-terminal-blink align-middle shadow-sm shadow-cyan" />
+                <span className="inline-block w-2 sm:w-2.5 h-4 sm:h-5 ml-1.5 bg-cyan-600 dark:bg-cyan animate-terminal-blink align-middle shadow-sm shadow-cyan" />
               </span>
             </div>
 
             {/* Supporting Headline */}
-            <p className="mt-6 text-base sm:text-lg text-slate-200 max-w-2xl leading-relaxed font-normal">
+            <p className="mt-6 text-base sm:text-lg text-slate-700 dark:text-slate-200 max-w-2xl leading-relaxed font-normal">
               {profileData.supportingHeadline}
             </p>
 
@@ -152,10 +152,10 @@ export function HeroSection() {
             <div className="mt-8 flex flex-wrap items-center gap-3.5 w-full sm:w-auto">
               <Link
                 href="#projects"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-electric-600 via-cyan to-teal-400 text-slate-950 font-bold text-sm shadow-xl shadow-cyan/25 hover:shadow-cyan/45 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 via-cyan-600 to-teal-500 dark:from-electric-600 dark:via-cyan dark:to-teal-400 text-white dark:text-slate-950 font-bold text-sm shadow-xl shadow-blue-500/20 dark:shadow-cyan/25 hover:shadow-blue-500/35 dark:hover:shadow-cyan/45 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
               >
                 <span>View Featured Work</span>
-                <ArrowRight className="w-4 h-4 text-slate-950" />
+                <ArrowRight className="w-4 h-4 text-white dark:text-slate-950" />
               </Link>
 
               <Link
@@ -280,21 +280,21 @@ export function HeroSection() {
               {/* =========================================================================
                   ELEGANT FROSTED GLASS NAME CARD UNDERNEATH THE IMAGE
                   ========================================================================= */}
-              <div className="mt-3.5 w-full rounded-2xl bg-slate-900/60 dark:bg-slate-950/70 backdrop-blur-xl border border-white/10 dark:border-cyan-500/30 p-4 sm:p-5 shadow-2xl shadow-cyan/15 flex flex-col items-center justify-center text-center group hover:border-cyan/50 hover:shadow-cyan/25 transition-all">
+              <div className="mt-3.5 w-full rounded-2xl bg-white/95 dark:bg-slate-950/70 backdrop-blur-xl border border-slate-200/90 dark:border-cyan-500/30 p-4 sm:p-5 shadow-xl shadow-slate-200/60 dark:shadow-2xl dark:shadow-cyan/15 flex flex-col items-center justify-center text-center group hover:border-cyan-500/50 hover:shadow-cyan/25 transition-all">
                 
                 {/* Luminous Animated Name */}
                 <div className="flex items-center justify-center min-h-[40px]">
                   <span className="text-2xl sm:text-3xl font-extrabold tracking-tight font-sans">
-                    <span className="bg-gradient-to-r from-white via-cyan to-teal-300 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(6,182,212,0.45)]">
+                    <span className="bg-gradient-to-r from-slate-900 via-blue-700 to-cyan-600 dark:from-white dark:via-cyan dark:to-teal-300 bg-clip-text text-transparent drop-shadow-sm dark:drop-shadow-[0_0_20px_rgba(6,182,212,0.45)]">
                       {nameTyped}
                     </span>
-                    <span className="inline-block w-2.5 h-6 sm:h-7 ml-1 bg-cyan animate-terminal-blink align-middle rounded-sm shadow-sm shadow-cyan" />
+                    <span className="inline-block w-2.5 h-6 sm:h-7 ml-1 bg-cyan-600 dark:bg-cyan animate-terminal-blink align-middle rounded-sm shadow-sm shadow-cyan" />
                   </span>
                 </div>
 
                 {/* Refined Executive Role Subtitle */}
-                <div className="mt-1.5 flex items-center justify-center gap-2 text-xs text-slate-300 font-medium">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <div className="mt-1.5 flex items-center justify-center gap-2 text-xs text-slate-600 dark:text-slate-300 font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse" />
                   <span>Full-Stack Web &amp; Android Apps Engineer</span>
                 </div>
 

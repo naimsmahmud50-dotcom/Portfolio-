@@ -16,13 +16,13 @@
 
   .light {
     --bg-canvas: #F8FAFC;
-    --bg-surface: #F1F5F9;
+    --bg-surface: #FFFFFF;
     --bg-card: #FFFFFF;
-    --text-primary: #0F172A;
+    --text-primary: #090D16;
     --text-secondary: #334155;
     --accent-electric: #2563EB;
     --accent-cyan: #0284C7;
-    --border-subtle: rgba(37, 99, 235, 0.18);
+    --border-subtle: rgba(226, 232, 240, 0.9);
   }
 
   html {
@@ -160,81 +160,273 @@
 }
 
 /* =========================================================================
-   LUXURY WHITE / LIGHT MODE (Silicon Valley Clean Aesthetic)
+   LUXURY WHITE / LIGHT MODE (Stripe, Linear & Apple Silicon Valley Standard)
    ========================================================================= */
 html.light,
 .light body {
   background-color: #F8FAFC !important;
-  color: #0F172A !important;
+  color: #090D16 !important;
 }
 
+/* Atmospheric Ambient Canvas Layer */
 .light .cosmic-nebula-mesh {
   background: 
-    radial-gradient(ellipse 90% 60% at 15% -5%, rgba(37, 99, 235, 0.08) 0%, transparent 60%),
-    radial-gradient(ellipse 80% 50% at 85% 15%, rgba(6, 182, 212, 0.07) 0%, transparent 55%),
-    radial-gradient(ellipse 70% 60% at 50% 50%, rgba(139, 92, 246, 0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 90% 60% at 15% -5%, rgba(37, 99, 235, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 50% at 85% 15%, rgba(2, 132, 199, 0.04) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 60% at 50% 50%, rgba(99, 102, 241, 0.03) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 60% at 15% 85%, rgba(14, 165, 233, 0.03) 0%, transparent 55%),
     #F8FAFC !important;
 }
 
 .light .tech-grid-bg {
-  background-image: radial-gradient(rgba(148, 163, 184, 0.25) 1px, transparent 1px),
-                    radial-gradient(rgba(99, 102, 241, 0.08) 1px, transparent 1px) !important;
+  background-image: radial-gradient(rgba(148, 163, 184, 0.22) 1px, transparent 1px),
+                    radial-gradient(rgba(37, 99, 235, 0.05) 1px, transparent 1px) !important;
+  background-size: 32px 32px, 64px 64px !important;
   background-color: #F8FAFC !important;
 }
 
-/* Light Cards */
-.light .tech-card {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(248, 250, 252, 0.95) 100%) !important;
-  border: 1px solid rgba(226, 232, 240, 0.95) !important;
-  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06) !important;
+/* Attenuate celestial canvas stars in light mode for crisp editorial airiness */
+.light canvas:not(.interactive-chart) {
+  opacity: 0.12 !important;
 }
 
-.light .tech-card:hover {
-  border-color: rgba(6, 182, 212, 0.5) !important;
-  box-shadow: 0 10px 30px -2px rgba(6, 182, 212, 0.14) !important;
+/* =========================================================================
+   SURFACE LAYER: Pure White Cards with Diffuse Multi-Tier Ambient Shadows
+   ========================================================================= */
+.light .tech-card:not(.hero-terminal) {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(226, 232, 240, 0.9) !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.02), 0 10px 28px -4px rgba(15, 23, 42, 0.05) !important;
+  backdrop-filter: blur(16px);
 }
 
-/* Light Section and Card Backgrounds */
-.light [class*="bg-slate-950"],
-.light [class*="bg-slate-900"] {
-  background-color: rgba(255, 255, 255, 0.96) !important;
+.light .tech-card:not(.hero-terminal):hover {
+  border-color: rgba(2, 132, 199, 0.40) !important;
+  box-shadow: 0 14px 34px -4px rgba(2, 132, 199, 0.12), 0 2px 6px rgba(0, 0, 0, 0.02) !important;
+}
+
+/* General Container & Card Overrides (Protecting Hero Terminal) */
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="bg-slate-950"],
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="bg-slate-900"],
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="bg-canvas-deep"],
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="bg-canvas"] {
+  background-color: #FFFFFF !important;
   border-color: rgba(226, 232, 240, 0.9) !important;
-  box-shadow: 0 2px 12px -1px rgba(15, 23, 42, 0.05);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.02), 0 8px 24px -4px rgba(15, 23, 42, 0.04);
 }
 
-/* Light Mode Text High-Contrast Colors */
-.light [class*="text-slate-100"],
-.light [class*="text-slate-200"] {
-  color: #0F172A !important;
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="bg-slate-800"] {
+  background-color: #F1F5F9 !important;
+  border-color: #E2E8F0 !important;
 }
 
-.light [class*="text-slate-300"] {
+/* =========================================================================
+   TYPOGRAPHY & CONTRAST HIERARCHY (WCAG AAA Precision)
+   ========================================================================= */
+/* Obsidian Headings & Titles */
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="text-slate-100"],
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="text-slate-200"] {
+  color: #090D16 !important;
+}
+
+/* Deep Slate Body Copy */
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="text-slate-300"] {
   color: #334155 !important;
 }
 
-.light [class*="text-slate-400"] {
+/* Crisp Subtitles & Metadata */
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="text-slate-400"] {
   color: #475569 !important;
 }
 
-/* Sticky Navbar in Light Mode */
-.light header {
-  background-color: rgba(255, 255, 255, 0.9) !important;
-  border-bottom-color: rgba(226, 232, 240, 0.95) !important;
-  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06) !important;
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="text-slate-500"] {
+  color: #64748B !important;
 }
 
-.light header nav,
-.light header [class*="rounded-2xl"] {
+/* Brand Accents Translated for White Backgrounds */
+.light div:not(.hero-terminal):not(.hero-terminal *) .text-cyan,
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="text-cyan"] {
+  color: #0284C7 !important;
+}
+
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="text-emerald-400"],
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="text-emerald-300"] {
+  color: #059669 !important;
+}
+
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="bg-emerald-950"] {
+  background-color: #ECFDF5 !important;
+  border-color: #A7F3D0 !important;
+}
+
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="bg-pink-950"] {
+  background-color: #FDF2F8 !important;
+  border-color: #FBCFE8 !important;
+}
+
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="bg-purple-950"] {
+  background-color: #FAF5FF !important;
+  border-color: #E9D5FF !important;
+}
+
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="bg-amber-950"] {
+  background-color: #FFFBEB !important;
+  border-color: #FDE68A !important;
+}
+
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="bg-blue-950"],
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="bg-electric-950"] {
+  background-color: #EFF6FF !important;
+  border-color: #BFDBFE !important;
+}
+
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="text-pink-400"] {
+  color: #DB2777 !important;
+}
+
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="text-purple-300"],
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="text-purple-400"] {
+  color: #7C3AED !important;
+}
+
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="text-amber-400"],
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="text-amber-300"] {
+  color: #D97706 !important;
+}
+
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="text-electric-400"],
+.light div:not(.hero-terminal):not(.hero-terminal *) [class*="text-electric-300"] {
+  color: #2563EB !important;
+}
+
+/* =========================================================================
+   HERO TERMINAL (Authentic Dark Titanium Sandbox Isolation)
+   Preserved with midnight IDE contrast in both Light and Dark themes
+   ========================================================================= */
+.light .hero-terminal {
+  background-color: #070B14 !important;
+  border: 1px solid rgba(51, 65, 85, 0.7) !important;
+  box-shadow: 0 16px 40px -8px rgba(15, 23, 42, 0.22), 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+.light .hero-terminal * {
+  border-color: inherit;
+}
+
+.light .hero-terminal [class*="bg-slate-950"] {
+  background-color: #070B14 !important;
+}
+
+.light .hero-terminal [class*="bg-slate-900"] {
+  background-color: #0D1527 !important;
+}
+
+.light .hero-terminal [class*="bg-slate-800"] {
+  background-color: #17233B !important;
+}
+
+.light .hero-terminal [class*="text-slate-100"] {
+  color: #F8FAFC !important;
+}
+
+.light .hero-terminal [class*="text-slate-200"] {
+  color: #E2E8F0 !important;
+}
+
+.light .hero-terminal [class*="text-slate-300"] {
+  color: #94A3B8 !important;
+}
+
+.light .hero-terminal [class*="text-slate-400"] {
+  color: #64748B !important;
+}
+
+.light .hero-terminal .text-cyan,
+.light .hero-terminal [class*="text-cyan"] {
+  color: #22D3EE !important;
+}
+
+.light .hero-terminal [class*="text-emerald"] {
+  color: #34D399 !important;
+}
+
+.light .hero-terminal [class*="text-purple"] {
+  color: #C084FC !important;
+}
+
+/* =========================================================================
+   EXECUTIVE NAVBAR & DOCK IN LIGHT MODE
+   ========================================================================= */
+.light header {
+  background-color: rgba(255, 255, 255, 0.88) !important;
+  border-bottom-color: rgba(226, 232, 240, 0.9) !important;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04) !important;
+  backdrop-filter: blur(20px) !important;
+}
+
+.light header nav {
   background-color: rgba(241, 245, 249, 0.9) !important;
   border-color: rgba(226, 232, 240, 0.95) !important;
 }
 
-/* Form inputs in Light Mode */
+.light header nav a:not([class*="bg-cyan"]) {
+  color: #475569 !important;
+}
+
+.light header nav a:not([class*="bg-cyan"]):hover {
+  color: #090D16 !important;
+  background-color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.light header nav a[class*="bg-cyan"] {
+  background-color: #FFFFFF !important;
+  color: #0284C7 !important;
+  border-color: rgba(2, 132, 199, 0.3) !important;
+  box-shadow: 0 2px 8px -1px rgba(2, 132, 199, 0.15) !important;
+}
+
+.light header [class*="bg-slate-900/80"] {
+  background-color: rgba(241, 245, 249, 0.9) !important;
+  border-color: rgba(226, 232, 240, 0.95) !important;
+}
+
+/* Logo emblem inner container in header */
+.light header [class*="bg-slate-950"] {
+  background-color: #070B14 !important;
+}
+
+.light header [class*="bg-slate-950"] span {
+  color: #22D3EE !important;
+}
+
+/* Slide-over systems drawer & Modals */
+.light [class*="bg-slate-950/95"],
+.light [class*="bg-slate-900/95"],
+.light [role="dialog"] {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  box-shadow: 0 20px 50px -10px rgba(15, 23, 42, 0.16) !important;
+}
+
+/* Form Inputs in Light Mode */
 .light input,
-.light textarea {
+.light textarea,
+.light select {
   background-color: #FFFFFF !important;
   border-color: #CBD5E1 !important;
-  color: #0F172A !important;
+  color: #090D16 !important;
+}
+
+.light select option {
+  background-color: #FFFFFF !important;
+  color: #090D16 !important;
+}
+
+.light input:focus,
+.light textarea:focus,
+.light select:focus {
+  border-color: #0284C7 !important;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15) !important;
 }
 
 .light input::placeholder,
@@ -242,21 +434,16 @@ html.light,
   color: #94A3B8 !important;
 }
 
-/* Rich Vibrant Text Colors for Light Mode */
-.light .text-cyan,
-.light [class*="text-cyan"] {
-  color: #0284C7 !important;
+/* Scrollbars in Light Mode */
+.light ::-webkit-scrollbar-track {
+  background: #F1F5F9 !important;
 }
 
-.light .text-emerald-400,
-.light [class*="text-emerald-300"] {
-  color: #059669 !important;
+.light ::-webkit-scrollbar-thumb {
+  background: #CBD5E1 !important;
+  border-radius: 4px;
 }
 
-/* Primary Gradient Buttons */
-.light [class*="from-electric"] * {
-  color: #FFFFFF !important;
-}
-.light [class*="from-cyan"] * {
-  color: #0F172A !important;
+.light ::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8 !important;
 }
