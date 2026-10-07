@@ -41,7 +41,7 @@ export function EngagementSection() {
             How We Can Work Together
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-400 leading-relaxed">
-            Transparent, outcome-driven sprint packages designed to eliminate guesswork. From 14-day AI prototypes to end-to-end full-stack architectures and fractional leadership.
+            Transparent, outcome-driven sprint packages designed to eliminate guesswork. From modern websites and Android mobile apps to urgent website problem solving and workflow automations.
           </p>
         </div>
 

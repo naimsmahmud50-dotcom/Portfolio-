@@ -88,7 +88,7 @@ export function DiscoveryModal({
   const whatsappMessage = encodeURIComponent(
     selectedSprint
       ? `Hi Mahmud, I reviewed your enterprise portfolio and would like to discuss commissioning: "${selectedSprint}".`
-      : `Hi Mahmud, I reviewed your enterprise portfolio and would like to book a 15-minute Strategy Discovery Call regarding an AI / Full-Stack project.`
+      : `Hi Mahmud, I reviewed your portfolio and would like to discuss a Web, Mobile, Bug Fix or Automation project with you.`
   );
 
   const whatsappUrl = `https://wa.me/${profileData.contacts.whatsappNumber}?text=${whatsappMessage}`;

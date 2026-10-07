@@ -116,22 +116,27 @@ export function HeroTerminal() {
         {
           id: `out-${Date.now()}-2`,
           type: "output",
-          text: "  • [Autonomous AI] LLM Tool Calling, Multi-Agent Loop, RAG Pipelines, Prompt Engineering",
+          text: "  • [Websites & Web Apps] Next.js 15, React 19, TypeScript, Tailwind CSS, PostgreSQL, REST APIs",
         },
         {
           id: `out-${Date.now()}-3`,
           type: "output",
-          text: "  • [Full-Stack] Next.js 15, React 19, TypeScript, NestJS 12, Tailwind CSS, PostgreSQL",
+          text: "  • [Mobile Engineering] Android Native, Flutter, Drift SQLite, Riverpod, Offline-First Sync",
         },
         {
           id: `out-${Date.now()}-4`,
           type: "output",
-          text: "  • [Mobile & Offline] Flutter, Drift SQLite, Riverpod State, Firebase Auth",
+          text: "  • [Problem Solving] Website Debugging, Critical Bug Fixes, Speed Optimization, Error Repair",
         },
         {
           id: `out-${Date.now()}-5`,
           type: "output",
-          text: "  • [Defensive Security] Threat Modeling, Secret Isolation, Zero Open Ports, DoS Throttling",
+          text: "  • [Workflow Automation] API Pipelines, Automated Webhooks, Python/Node, AI Tool Agents",
+        },
+        {
+          id: `out-${Date.now()}-6`,
+          type: "output",
+          text: "  • [Defensive Security] Input Sanitization, Zero Open Ports, Rate Limiting, Threat Mitigation",
         },
       ]);
       return;
@@ -184,6 +189,43 @@ export function HeroTerminal() {
       return;
     }
 
+    if (trimmed === "services") {
+      setLines((prev) => [
+        ...prev,
+        {
+          id: `out-${Date.now()}-1`,
+          type: "system",
+          text: "🛠️ CORE SERVICES & OFFERINGS:",
+        },
+        {
+          id: `out-${Date.now()}-2`,
+          type: "output",
+          text: "  1. Modern Website Development (Fast, SEO-ready, responsive Next.js/React)",
+        },
+        {
+          id: `out-${Date.now()}-3`,
+          type: "output",
+          text: "  2. Full-Stack Web Applications (Next.js 15, SaaS dashboards, auth & databases)",
+        },
+        {
+          id: `out-${Date.now()}-4`,
+          type: "output",
+          text: "  3. Android & Mobile App Development (Flutter, native Android, offline-first Drift)",
+        },
+        {
+          id: `out-${Date.now()}-5`,
+          type: "output",
+          text: "  4. Website Problem Solving & Bug Fixing (Emergency bug fixing & speed boost)",
+        },
+        {
+          id: `out-${Date.now()}-6`,
+          type: "output",
+          text: "  5. Workflow Automation & Smart Systems (Automated pipelines, APIs & agent loops)",
+        },
+      ]);
+      return;
+    }
+
     if (trimmed === "sprints") {
       setLines((prev) => [
         ...prev,
@@ -195,17 +237,17 @@ export function HeroTerminal() {
         {
           id: `out-${Date.now()}-2`,
           type: "output",
-          text: "  • [SPRINT 01] Rapid AI MVP & Prototype (2 Weeks Turnaround)",
+          text: "  • [SPRINT 01] Modern Website & Web App Development (1-2 Weeks Turnaround)",
         },
         {
           id: `out-${Date.now()}-3`,
           type: "output",
-          text: "  • [SPRINT 02] Full-Stack Enterprise Architecture (4-6 Weeks / Recommended)",
+          text: "  • [SPRINT 02] Android & Cross-Platform App Development (3-5 Weeks / Most Popular)",
         },
         {
           id: `out-${Date.now()}-4`,
           type: "output",
-          text: "  • [SPRINT 03] Fractional Systems Architect Retainer (Monthly Retainer)",
+          text: "  • [SPRINT 03] Website Problem Solving & Automation Systems (24-48h Emergency / Retainer)",
         },
       ]);
       return;
@@ -241,7 +283,7 @@ export function HeroTerminal() {
         {
           id: `out-${Date.now()}-1`,
           type: "output",
-          text: "AVAILABLE COMMANDS: status, run-agent, sprints, book, skills, resume, contact, clear, help",
+          text: "AVAILABLE COMMANDS: status, services, sprints, skills, run-agent, book, resume, contact, clear, help",
         },
       ]);
       return;

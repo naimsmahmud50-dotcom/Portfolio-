@@ -14,24 +14,27 @@ import {
   Gauge,
   ShieldCheck,
   ArrowUpRight,
+  Wrench,
 } from "lucide-react";
 
 const getIcon = (iconName: string) => {
   switch (iconName) {
-    case "Cpu":
-      return <Cpu className="w-5 h-5 text-electric-400" />;
-    case "Bot":
-      return <Bot className="w-5 h-5 text-cyan" />;
-    case "Workflow":
-      return <Workflow className="w-5 h-5 text-blue-400" />;
-    case "Sparkles":
-      return <Sparkles className="w-5 h-5 text-violet-400" />;
     case "Globe":
       return <Globe className="w-5 h-5 text-emerald-400" />;
+    case "Layers":
+      return <Layers className="w-5 h-5 text-cyan" />;
     case "Smartphone":
       return <Smartphone className="w-5 h-5 text-pink-400" />;
-    case "Layers":
-      return <Layers className="w-5 h-5 text-amber-400" />;
+    case "Wrench":
+      return <Wrench className="w-5 h-5 text-amber-400" />;
+    case "Workflow":
+      return <Workflow className="w-5 h-5 text-blue-400" />;
+    case "Bot":
+      return <Bot className="w-5 h-5 text-cyan" />;
+    case "Cpu":
+      return <Cpu className="w-5 h-5 text-electric-400" />;
+    case "Sparkles":
+      return <Sparkles className="w-5 h-5 text-violet-400" />;
     case "Database":
       return <Database className="w-5 h-5 text-teal-400" />;
     case "Gauge":
@@ -58,7 +61,7 @@ export function ServicesSection() {
             Engineered Services &amp; Solutions
           </h2>
           <p className="mt-3 text-sm sm:text-base text-slate-400">
-            Outcome-focused digital systems designed to automate workflows, eliminate operational lag, and build resilient products.
+            Outcome-focused digital services: From modern websites and Android mobile apps to emergency website bug fixes and intelligent workflow automations.
           </p>
         </div>
 

@@ -2,24 +2,24 @@ import { ProfileData } from "@/types";
 
 export const profileData: ProfileData = {
   name: "Mahmud Hasan",
-  primaryRole: "Autonomous AI Systems Architect | Full-Stack Systems Engineer",
+  primaryRole: "Full-Stack Web & Android Developer | Website Problem Solver & Automation Engineer",
   subRoles: [
-    "Autonomous AI Agents",
-    "Enterprise Workflow Automation",
-    "Full-Stack Next.js & NestJS",
-    "Cross-Platform Flutter Apps",
-    "Defensive Zero-Trust Security",
+    "Modern Websites & Web Apps",
+    "Android & Flutter Mobile Apps",
+    "Website Problem Solving & Bug Fixing",
+    "Workflow & AI Automation",
+    "Defensive Security & Optimization",
   ],
   supportingHeadline:
-    "I engineer autonomous AI agents, enterprise automation pipelines, and bulletproof full-stack systems designed to eliminate operational bottlenecks and protect mission-critical workflows.",
+    "I build high-performance websites, scalable web applications, Android & mobile apps, solve critical website bugs, and engineer smart automations to accelerate business growth.",
   availability: {
-    status: "Available for Enterprise Contracts & AI Architecture",
+    status: "Available for Web, Mobile, Bug Fix & Automation Projects",
     availableForHire: true,
   },
   aboutBio: [
-    "I'm Mahmud Hasan — an Autonomous AI Systems Architect and Full-Stack Engineer dedicated to transforming complex manual operations into resilient, self-operating digital workflows.",
-    "My engineering bridges cutting-edge LLM orchestration, cross-platform software development (Next.js, Flutter, NestJS), and defensive cybersecurity principles to deploy systems that take verified real-world actions with zero open attack surfaces.",
-    "From authorized hardware surveillance daemons (SecureMyPC) and offline-first educational ecosystems to multi-agent automation pipelines, I engineer production software that delivers speed, privacy, and tangible business ROI.",
+    "I'm Mahmud Hasan — a Full-Stack Web & Mobile Developer, Website Problem Solver, and Automation Engineer dedicated to building high-performance digital products and solving technical bottlenecks.",
+    "My expertise spans modern website building and responsive web applications (Next.js, React, Tailwind CSS), production Android and cross-platform mobile apps (Flutter, Dart, offline-first SQLite), deep website troubleshooting and bug fixing, and custom workflow automations.",
+    "Whether you need a new website launched from scratch, a full-stack web app, an Android mobile solution, emergency repair for a broken or slow site, or automated pipelines that eliminate manual work, I engineer clean, secure, and production-tested solutions.",
   ],
   contacts: {
     primaryEmail: "naimsmahmud50@gmail.com",

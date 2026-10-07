@@ -14,6 +14,10 @@ import {
   ShieldCheck,
   CheckCircle2,
   ArrowRight,
+  Globe,
+  Smartphone,
+  Wrench,
+  Workflow,
 } from "lucide-react";
 import { ResumeModal } from "../ui/ResumeModal";
 
@@ -31,7 +35,7 @@ export function AboutSection() {
             <span>01 // ABOUT ME</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-100">
-            Architecting Autonomous, Secure &amp; Resilient Systems
+            High-Performance Web, Mobile Apps, Problem Solving &amp; Automation
           </h2>
         </div>
 
@@ -67,35 +71,53 @@ export function AboutSection() {
           </div>
 
           {/* Right Column: Key Focus Pillars (5 cols) */}
-          <div className="lg:col-span-5 grid grid-cols-1 gap-4">
+          <div className="lg:col-span-5 grid grid-cols-1 gap-3.5">
             
-            <div className="p-5 rounded-2xl tech-card transition-all">
-              <div className="w-10 h-10 rounded-xl bg-electric-950 border border-electric-500/30 flex items-center justify-center mb-3">
-                <Cpu className="w-5 h-5 text-electric-400" />
+            <div className="p-4 sm:p-5 rounded-2xl tech-card transition-all">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-9 h-9 rounded-xl bg-emerald-950/80 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                  <Globe className="w-4 h-4" />
+                </div>
+                <h3 className="text-base font-bold text-slate-100">Modern Websites &amp; Web Apps</h3>
               </div>
-              <h3 className="text-base font-semibold text-slate-100">Autonomous Agent Loop</h3>
-              <p className="text-xs text-slate-400 mt-1.5 leading-normal">
-                Designing deterministic multi-step reasoning agents that plan, invoke tools, validate schemas, and execute real work without manual bottlenecks.
+              <p className="text-xs text-slate-400 leading-relaxed">
+                Responsive Next.js 15 &amp; React architectures, tailored UI/UX, database portals, and 95+ Core Web Vitals performance.
               </p>
             </div>
 
-            <div className="p-5 rounded-2xl tech-card transition-all">
-              <div className="w-10 h-10 rounded-xl bg-cyan/10 border border-cyan/30 flex items-center justify-center mb-3">
-                <Shield className="w-5 h-5 text-cyan" />
+            <div className="p-4 sm:p-5 rounded-2xl tech-card transition-all">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-9 h-9 rounded-xl bg-pink-950/80 border border-pink-500/30 flex items-center justify-center text-pink-400">
+                  <Smartphone className="w-4 h-4" />
+                </div>
+                <h3 className="text-base font-bold text-slate-100">Android &amp; Mobile Engineering</h3>
               </div>
-              <h3 className="text-base font-semibold text-slate-100">Defensive Zero-Trust Design</h3>
-              <p className="text-xs text-slate-400 mt-1.5 leading-normal">
-                Grounded in ethical security fundamentals: zero inbound open ports, outbound polling tunnels, serverless rate limits, and isolated runtime secrets.
+              <p className="text-xs text-slate-400 leading-relaxed">
+                Production-ready Android and Flutter mobile apps with offline-first Drift SQLite sync, zero memory leaks, and smooth UX.
               </p>
             </div>
 
-            <div className="p-5 rounded-2xl tech-card transition-all">
-              <div className="w-10 h-10 rounded-xl bg-violet-subtle/10 border border-violet-subtle/30 flex items-center justify-center mb-3">
-                <Code2 className="w-5 h-5 text-violet-400" />
+            <div className="p-4 sm:p-5 rounded-2xl tech-card transition-all">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-9 h-9 rounded-xl bg-amber-950/80 border border-amber-500/30 flex items-center justify-center text-amber-400">
+                  <Wrench className="w-4 h-4" />
+                </div>
+                <h3 className="text-base font-bold text-slate-100">Problem Solving &amp; Bug Fixing</h3>
               </div>
-              <h3 className="text-base font-semibold text-slate-100">Production Cross-Platform</h3>
-              <p className="text-xs text-slate-400 mt-1.5 leading-normal">
-                Delivering responsive Next.js 15 web applications alongside offline-first Flutter mobile apps powered by local SQLite persistence and NestJS APIs.
+              <p className="text-xs text-slate-400 leading-relaxed">
+                Rapid diagnosis and repair for broken sites, CSS/JS layout glitches, failing APIs, slow loading, and critical errors.
+              </p>
+            </div>
+
+            <div className="p-4 sm:p-5 rounded-2xl tech-card transition-all">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-9 h-9 rounded-xl bg-electric-950/80 border border-electric-500/30 flex items-center justify-center text-cyan">
+                  <Workflow className="w-4 h-4" />
+                </div>
+                <h3 className="text-base font-bold text-slate-100">Workflow &amp; AI Automation</h3>
+              </div>
+              <p className="text-xs text-slate-400 leading-relaxed">
+                Connecting APIs, automating repetitive manual operations, webhook pipelines, and reliable autonomous agent loops.
               </p>
             </div>
 

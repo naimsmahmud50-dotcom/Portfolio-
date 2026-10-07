@@ -57,10 +57,10 @@ export function RoiCalculator() {
 
             <div>
               <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-100 tracking-tight">
-                Calculate Your Automation ROI
+                Calculate Your Automation &amp; Engineering ROI
               </h3>
               <p className="mt-2 text-xs sm:text-sm text-slate-400 leading-relaxed">
-                Estimate how much operational capital and team bandwidth Mahmud's autonomous AI pipelines recover for your company every year.
+                Estimate how much operational capital and team bandwidth Mahmud's custom web systems and workflow automations recover for your company every year.
               </p>
             </div>
 

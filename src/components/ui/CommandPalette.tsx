@@ -144,7 +144,7 @@ export function CommandPalette() {
       id: "nav-engagement",
       category: "Navigation",
       title: "Corporate Engagement Models & Sprints",
-      subtitle: "2-Week MVP, Enterprise Build, Fractional Retainer",
+      subtitle: "Web Development, Android Apps, Bug Fixing & Automation",
       icon: <Layers className="w-4 h-4 text-cyan" />,
       action: () => navigateToHash("#engagement"),
     },
