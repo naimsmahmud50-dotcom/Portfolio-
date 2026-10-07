@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { servicesData } from "@/data/services";
 import {
   Layers,
@@ -15,6 +15,7 @@ import {
   ShieldCheck,
   ArrowUpRight,
   Wrench,
+  ChevronDown,
 } from "lucide-react";
 
 const getIcon = (iconName: string) => {
@@ -47,6 +48,11 @@ const getIcon = (iconName: string) => {
 };
 
 export function ServicesSection() {
+  const [showAllServices, setShowAllServices] = useState(false);
+
+  // Present the top 4 flagship offerings by default to prevent cognitive clutter
+  const displayedServices = showAllServices ? servicesData : servicesData.slice(0, 4);
+
   return (
     <section id="services" className="py-20 md:py-28 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -55,22 +61,22 @@ export function ServicesSection() {
         <div className="flex flex-col items-start max-w-2xl mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-electric-950/70 border border-electric-500/20 text-xs font-mono text-cyan mb-3">
             <Layers className="w-3.5 h-3.5" />
-            <span>04 // WHAT I BUILD &amp; DELIVER</span>
+            <span>03 // CORE CAPABILITIES</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-100">
             Engineered Services &amp; Solutions
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-slate-200 leading-relaxed">
+          <p className="mt-3 text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
             Outcome-focused digital services: From modern websites and Android mobile apps to emergency website bug fixes and intelligent workflow automations.
           </p>
         </div>
 
-        {/* 10 Services Grid (Section 9) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {servicesData.map((service) => (
+        {/* Dynamic Services Grid (4 Flagship Pillars or Full 10 Solutions) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+          {displayedServices.map((service) => (
             <div
               key={service.id}
-              className="p-6 rounded-2xl tech-card flex flex-col justify-between group hover:border-cyan/40 hover:scale-[1.01] transition-all"
+              className="p-6 sm:p-7 rounded-2xl tech-card flex flex-col justify-between group hover:border-cyan/40 hover:scale-[1.01] transition-all"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
@@ -82,15 +88,15 @@ export function ServicesSection() {
                   </span>
                 </div>
 
-                <h3 className="text-lg font-bold text-slate-100 group-hover:text-cyan transition-colors">
+                <h3 className="text-lg sm:text-xl font-bold text-slate-100 group-hover:text-cyan transition-colors">
                   {service.title}
                 </h3>
 
-                <p className="mt-2 text-xs sm:text-sm text-slate-200 leading-relaxed font-normal">
+                <p className="mt-2.5 text-xs sm:text-sm text-slate-200 leading-relaxed font-normal">
                   {service.description}
                 </p>
 
-                {/* Outcome Callout (Section 9: Clear outcome-oriented language) */}
+                {/* Outcome Callout */}
                 <div className="mt-4 p-3 rounded-xl bg-slate-900/80 border border-slate-800/80 text-xs">
                   <span className="font-mono text-cyan font-semibold block mb-0.5">Measurable Outcome:</span>
                   <span className="text-slate-100 font-medium">{service.outcome}</span>
@@ -111,14 +117,34 @@ export function ServicesSection() {
                 </div>
                 <a
                   href="#contact"
-                  className="p-1 text-slate-300 hover:text-cyan group-hover:translate-x-0.5 transition-all"
+                  className="p-1.5 rounded-lg text-slate-300 hover:text-cyan hover:bg-slate-800 transition-all flex items-center gap-1 text-xs font-mono"
                   aria-label={`Inquire about ${service.title}`}
                 >
+                  <span className="hidden sm:inline">Inquire</span>
                   <ArrowUpRight className="w-4 h-4" />
                 </a>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* View All / Collapse Button */}
+        <div className="mt-8 flex justify-center">
+          <button
+            onClick={() => setShowAllServices(!showAllServices)}
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700/80 hover:border-cyan text-slate-200 hover:text-cyan text-xs sm:text-sm font-mono transition-all cursor-pointer shadow-md"
+          >
+            <span>
+              {showAllServices
+                ? "Show Core 4 Flagship Pillars"
+                : "Explore All 10 Specialized Solutions (APIs, AI, Admin Consoles, Security)"}
+            </span>
+            <ChevronDown
+              className={`w-4 h-4 transition-transform duration-200 ${
+                showAllServices ? "rotate-180 text-cyan" : ""
+              }`}
+            />
+          </button>
         </div>
 
       </div>

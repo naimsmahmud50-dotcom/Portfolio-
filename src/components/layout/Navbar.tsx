@@ -25,11 +25,11 @@ import { GithubIcon, LinkedinIcon } from "../ui/SocialIcons";
 
 // Curated primary frontline links - directly visible in the front navbar
 const primaryNavLinks = [
-  { name: "Services", href: "#services" },
   { name: "Projects", href: "#projects" },
+  { name: "Services", href: "#services" },
   { name: "Skills", href: "#skills" },
-  { name: "Credentials", href: "#credentials" },
   { name: "About", href: "#about" },
+  { name: "Credentials", href: "#credentials" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -70,27 +70,28 @@ const deepDiveModules = [
 // Complete sitemap links for quick jump inside the systems drawer
 const sitemapLinks = [
   { name: "Home / Hero", href: "#hero" },
-  { name: "Services", href: "#services" },
-  { name: "Projects", href: "#projects" },
+  { name: "Featured Projects", href: "#projects" },
+  { name: "Core Services", href: "#services" },
   { name: "Skills Matrix", href: "#skills" },
+  { name: "About Mahmud", href: "#about" },
   { name: "Credentials & Research", href: "#credentials" },
+  { name: "Sprint Engagements", href: "#engagement" },
   { name: "8-Stage Pipeline", href: "#pipeline" },
   { name: "Defensive Security", href: "#security" },
-  { name: "Sprint Engagements", href: "#engagement" },
-  { name: "About Mahmud", href: "#about" },
   { name: "Contact Dialogue", href: "#contact" },
 ];
 
 const domSectionOrder = [
   "hero",
+  "projects",
+  "services",
+  "skills",
   "about",
   "credentials",
-  "skills",
-  "services",
   "engagement",
   "pipeline",
-  "projects",
   "security",
+  "roi-calculator",
   "contact",
 ];
 

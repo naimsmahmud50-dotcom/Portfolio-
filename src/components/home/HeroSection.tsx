@@ -173,54 +173,55 @@ export function HeroSection() {
               {profileData.supportingHeadline}
             </p>
 
-            {/* Primary Action Buttons */}
-            <div className="mt-8 flex flex-wrap items-center gap-4 w-full sm:w-auto">
+            {/* Primary Action Buttons: High-conversion streamlined layout */}
+            <div className="mt-8 flex flex-wrap items-center gap-3.5 w-full sm:w-auto">
               <Link
                 href="#projects"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-electric-600 to-cyan text-white font-semibold text-sm shadow-lg shadow-electric-600/25 hover:shadow-cyan/40 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-electric-600 via-cyan to-teal-400 text-slate-950 font-bold text-sm shadow-xl shadow-cyan/25 hover:shadow-cyan/45 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
               >
-                <span>View My Work</span>
-                <ArrowRight className="w-4 h-4" />
+                <span>View Featured Work</span>
+                <ArrowRight className="w-4 h-4 text-slate-950" />
               </Link>
-
-              <button
-                onClick={() => {
-                  if (typeof window !== "undefined") {
-                    window.dispatchEvent(new CustomEvent("open-resume-modal"));
-                  }
-                }}
-                className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-slate-900/90 border border-emerald-500/30 hover:border-emerald-400 text-slate-200 hover:text-emerald-300 font-medium text-sm hover:bg-slate-800/80 transition-all shadow-md shadow-emerald-950/30 cursor-pointer"
-              >
-                <FileText className="w-4 h-4 text-emerald-400" />
-                <span>Executive CV</span>
-                <span className="text-[10px] font-mono bg-emerald-500/20 text-emerald-300 px-1.5 py-0.5 rounded font-bold">
-                  PDF
-                </span>
-              </button>
-
-              <button
-                onClick={() => {
-                  if (typeof window !== "undefined") {
-                    window.dispatchEvent(
-                      new CustomEvent("open-discovery-modal", {
-                        detail: { sprint: "15-Min Strategy Discovery" },
-                      })
-                    );
-                  }
-                }}
-                className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-slate-900/90 border border-cyan-500/40 hover:border-cyan text-cyan hover:text-white font-medium text-sm hover:bg-slate-800/80 transition-all shadow-md shadow-cyan/20 cursor-pointer"
-              >
-                <Calendar className="w-4 h-4 text-cyan" />
-                <span>Book 15-Min Call</span>
-              </button>
 
               <Link
                 href="#contact"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-slate-900/90 border border-slate-700 hover:border-cyan text-slate-200 hover:text-white font-medium text-sm hover:bg-slate-800/80 transition-all cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-slate-900/90 border border-slate-700/80 hover:border-cyan text-slate-100 hover:text-cyan font-semibold text-sm hover:bg-slate-800 transition-all cursor-pointer"
               >
                 <span>Let's Work Together</span>
                 <Sparkles className="w-4 h-4 text-cyan" />
               </Link>
+
+              <div className="flex items-center gap-2 pt-1 sm:pt-0">
+                <button
+                  onClick={() => {
+                    if (typeof window !== "undefined") {
+                      window.dispatchEvent(new CustomEvent("open-resume-modal"));
+                    }
+                  }}
+                  className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-slate-900/70 border border-slate-700/70 hover:border-emerald-400/50 text-slate-300 hover:text-emerald-300 text-xs font-mono transition-all cursor-pointer"
+                  title="View Executive Resume PDF"
+                >
+                  <FileText className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>Resume CV</span>
+                </button>
+
+                <button
+                  onClick={() => {
+                    if (typeof window !== "undefined") {
+                      window.dispatchEvent(
+                        new CustomEvent("open-discovery-modal", {
+                          detail: { sprint: "15-Min Strategy Discovery" },
+                        })
+                      );
+                    }
+                  }}
+                  className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-slate-900/70 border border-slate-700/70 hover:border-cyan/50 text-slate-300 hover:text-cyan text-xs font-mono transition-all cursor-pointer"
+                  title="Book 15-Minute Strategy Call"
+                >
+                  <Calendar className="w-3.5 h-3.5 text-cyan" />
+                  <span>Book Call</span>
+                </button>
+              </div>
             </div>
 
             {/* Secondary Social & Quick Action Row */}
