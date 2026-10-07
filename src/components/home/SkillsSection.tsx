@@ -31,8 +31,12 @@ export function SkillsSection() {
       : skillCategoriesData.filter((c) => c.title === selectedCategory);
 
   return (
-    <section id="skills" className="py-20 md:py-28 bg-slate-950/40 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="skills" className="py-20 md:py-28 relative overflow-hidden">
+      {/* Ambient chromatic refraction orbs behind the frosted glass */}
+      <div className="absolute top-1/4 -left-10 w-[450px] h-[450px] bg-gradient-to-tr from-cyan-500/10 via-blue-500/8 to-transparent rounded-full blur-[110px] pointer-events-none" />
+      <div className="absolute bottom-10 -right-10 w-[450px] h-[450px] bg-gradient-to-bl from-electric-500/10 via-purple-500/8 to-transparent rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="flex flex-col items-start max-w-2xl mb-12">
@@ -70,7 +74,7 @@ export function SkillsSection() {
           {displayedCategories.map((cat) => (
             <div
               key={cat.title}
-              className="p-6 rounded-2xl tech-card flex flex-col justify-between group hover:border-cyan/40 transition-all"
+              className="p-6 sm:p-7 rounded-3xl tech-card flex flex-col justify-between group transition-all"
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-3">

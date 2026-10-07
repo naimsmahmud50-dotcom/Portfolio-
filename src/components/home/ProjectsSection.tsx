@@ -91,8 +91,12 @@ function ProjectsContent() {
   }, [activeCategory, searchQuery]);
 
   return (
-    <section id="projects" className="py-20 md:py-28 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="py-20 md:py-28 relative overflow-hidden">
+      {/* Ambient chromatic refraction orbs behind the frosted glass */}
+      <div className="absolute top-1/4 -right-10 w-[450px] h-[450px] bg-gradient-to-bl from-blue-500/12 via-cyan-500/10 to-transparent rounded-full blur-[110px] pointer-events-none" />
+      <div className="absolute bottom-10 -left-10 w-[480px] h-[480px] bg-gradient-to-tr from-purple-500/10 via-electric-500/10 to-transparent rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">

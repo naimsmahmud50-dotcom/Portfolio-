@@ -41,8 +41,8 @@ export function ProjectCard({ project, featured = false }: ProjectCardProps) {
       tabIndex={0}
       role="link"
       aria-label={`View case study for ${project.title}`}
-      className={`cursor-pointer rounded-2xl tech-card overflow-hidden flex flex-col justify-between group transition-all duration-300 hover:scale-[1.015] hover:border-cyan/60 hover:shadow-xl hover:shadow-cyan/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan select-none ${
-        featured ? "lg:col-span-2 bg-gradient-to-br from-slate-900/90 via-slate-900/60 to-slate-950/90" : ""
+      className={`cursor-pointer rounded-3xl tech-card overflow-hidden flex flex-col justify-between group transition-all duration-300 hover:border-cyan/60 hover:shadow-xl hover:shadow-cyan/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan select-none ${
+        featured ? "lg:col-span-2 ring-1 ring-cyan-500/20" : ""
       }`}
     >
       <div>
@@ -99,7 +99,7 @@ export function ProjectCard({ project, featured = false }: ProjectCardProps) {
             {project.tags.slice(0, 4).map((tag) => (
               <span
                 key={tag}
-                className="text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-slate-900/90 text-slate-200 border border-slate-700/80 font-medium"
+                className="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-white/70 dark:bg-slate-900/90 text-slate-700 dark:text-slate-200 border border-slate-200/80 dark:border-slate-700/80 font-medium backdrop-blur-sm"
               >
                 {tag}
               </span>
@@ -109,7 +109,7 @@ export function ProjectCard({ project, featured = false }: ProjectCardProps) {
       </div>
 
       {/* Footer Actions & Case Study link */}
-      <div className="px-6 py-4 bg-slate-950/60 border-t border-slate-800/80 flex items-center justify-between relative z-20">
+      <div className="px-6 py-4 bg-white/50 dark:bg-slate-950/60 border-t border-slate-200/80 dark:border-slate-800/80 backdrop-blur-md flex items-center justify-between relative z-20">
         <div className="flex items-center gap-2">
           {project.links.github && (
             <a
