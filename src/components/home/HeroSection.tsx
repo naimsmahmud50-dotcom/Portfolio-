@@ -11,9 +11,11 @@ import {
   ShieldCheck,
   CheckCircle,
   Copy,
+  FileText,
 } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "../ui/SocialIcons";
 import { useToast } from "../providers/ToastProvider";
+import { HeroTerminal } from "../ui/HeroTerminal";
 
 export function HeroSection() {
   const [roleIndex, setRoleIndex] = useState(0);
@@ -85,6 +87,21 @@ export function HeroSection() {
                 <span>View My Work</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
+
+              <button
+                onClick={() => {
+                  if (typeof window !== "undefined") {
+                    window.dispatchEvent(new CustomEvent("open-resume-modal"));
+                  }
+                }}
+                className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-slate-900/90 border border-emerald-500/30 hover:border-emerald-400 text-slate-200 hover:text-emerald-300 font-medium text-sm hover:bg-slate-800/80 transition-all shadow-md shadow-emerald-950/30"
+              >
+                <FileText className="w-4 h-4 text-emerald-400" />
+                <span>Executive CV</span>
+                <span className="text-[10px] font-mono bg-emerald-500/20 text-emerald-300 px-1.5 py-0.5 rounded font-bold">
+                  PDF
+                </span>
+              </button>
 
               <Link
                 href="#contact"
@@ -177,6 +194,11 @@ export function HeroSection() {
             </div>
           </div>
 
+        </div>
+
+        {/* Live Interactive System Terminal Sandbox */}
+        <div className="mt-14 max-w-4xl mx-auto w-full">
+          <HeroTerminal />
         </div>
       </div>
     </section>

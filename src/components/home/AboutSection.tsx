@@ -1,16 +1,24 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { profileData } from "@/data/profile";
-import { Terminal, Shield, Cpu, Code2, Sparkles, FileText, CheckCircle2 } from "lucide-react";
-import { useToast } from "../providers/ToastProvider";
+import {
+  Terminal,
+  Shield,
+  Cpu,
+  Code2,
+  FileText,
+  Lock,
+  Zap,
+  Database,
+  ShieldCheck,
+  CheckCircle2,
+  ArrowRight,
+} from "lucide-react";
+import { ResumeModal } from "../ui/ResumeModal";
 
 export function AboutSection() {
-  const { toast } = useToast();
-
-  const handleResumeClick = () => {
-    toast("Resume is currently being updated. Please contact Mahmud directly for early review!", "info");
-  };
+  const [resumeOpen, setResumeOpen] = useState(false);
 
   return (
     <section id="about" className="py-20 md:py-28 bg-slate-950/40 relative">
@@ -23,14 +31,14 @@ export function AboutSection() {
             <span>01 // ABOUT ME</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-100">
-            Building Intelligent, Secure &amp; Scalable Systems
+            Architecting Autonomous, Secure &amp; Resilient Systems
           </h2>
         </div>
 
         {/* Two-column layout: Story + Core Pillars */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
-          {/* Left Column: Authentic Storytelling (7 cols) */}
+          {/* Left Column: Authentic Executive Bio (7 cols) */}
           <div className="lg:col-span-7 space-y-6 text-slate-300 text-base sm:text-lg leading-relaxed">
             {profileData.aboutBio.map((paragraph, idx) => (
               <p key={idx} className="text-slate-300/90 font-normal">
@@ -38,35 +46,36 @@ export function AboutSection() {
               </p>
             ))}
 
-            {/* Resume Placeholder (Section 23: "Resume Coming Soon") */}
+            {/* Verified Executive CV Button (No more "coming soon") */}
             <div className="pt-4 flex flex-wrap items-center gap-4">
               <button
-                onClick={handleResumeClick}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 border border-slate-700/80 hover:border-cyan text-slate-200 text-sm font-medium hover:bg-slate-800 transition-all shadow-sm"
+                onClick={() => setResumeOpen(true)}
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-electric-600 to-cyan text-white text-sm font-semibold hover:shadow-lg hover:shadow-cyan/30 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-md shadow-electric-600/25"
               >
-                <FileText className="w-4 h-4 text-cyan" />
-                <span>Resume Coming Soon</span>
-                <span className="text-[10px] font-mono text-slate-400 bg-slate-800 px-1.5 py-0.5 rounded ml-1">
-                  PDF
+                <FileText className="w-4 h-4" />
+                <span>View Executive Resume</span>
+                <span className="text-[10px] font-mono bg-white/20 px-2 py-0.5 rounded font-bold">
+                  PDF / PRINT
                 </span>
               </button>
 
-              <span className="text-xs text-slate-400">
-                Official CV undergoing periodic updates
+              <span className="text-xs text-emerald-400 flex items-center gap-1.5 font-mono">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span>Verified Credentials • Updated 2026</span>
               </span>
             </div>
           </div>
 
           {/* Right Column: Key Focus Pillars (5 cols) */}
-          <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
+          <div className="lg:col-span-5 grid grid-cols-1 gap-4">
             
             <div className="p-5 rounded-2xl tech-card transition-all">
               <div className="w-10 h-10 rounded-xl bg-electric-950 border border-electric-500/30 flex items-center justify-center mb-3">
                 <Cpu className="w-5 h-5 text-electric-400" />
               </div>
-              <h3 className="text-base font-semibold text-slate-100">AI Automation Mindset</h3>
+              <h3 className="text-base font-semibold text-slate-100">Autonomous Agent Loop</h3>
               <p className="text-xs text-slate-400 mt-1.5 leading-normal">
-                Designing event-driven workflows and autonomous agents that take real digital action rather than merely chatting.
+                Designing deterministic multi-step reasoning agents that plan, invoke tools, validate schemas, and execute real work without manual bottlenecks.
               </p>
             </div>
 
@@ -74,9 +83,9 @@ export function AboutSection() {
               <div className="w-10 h-10 rounded-xl bg-cyan/10 border border-cyan/30 flex items-center justify-center mb-3">
                 <Shield className="w-5 h-5 text-cyan" />
               </div>
-              <h3 className="text-base font-semibold text-slate-100">Security-Conscious Building</h3>
+              <h3 className="text-base font-semibold text-slate-100">Defensive Zero-Trust Design</h3>
               <p className="text-xs text-slate-400 mt-1.5 leading-normal">
-                Grounded in ethical hacking fundamentals, input sanitization, least-privilege principles, and safe API designs.
+                Grounded in ethical security fundamentals: zero inbound open ports, outbound polling tunnels, serverless rate limits, and isolated runtime secrets.
               </p>
             </div>
 
@@ -84,9 +93,9 @@ export function AboutSection() {
               <div className="w-10 h-10 rounded-xl bg-violet-subtle/10 border border-violet-subtle/30 flex items-center justify-center mb-3">
                 <Code2 className="w-5 h-5 text-violet-400" />
               </div>
-              <h3 className="text-base font-semibold text-slate-100">Applied Engineering</h3>
+              <h3 className="text-base font-semibold text-slate-100">Production Cross-Platform</h3>
               <p className="text-xs text-slate-400 mt-1.5 leading-normal">
-                Continuously translating structured learning into working software, case studies, and practical production prototypes.
+                Delivering responsive Next.js 15 web applications alongside offline-first Flutter mobile apps powered by local SQLite persistence and NestJS APIs.
               </p>
             </div>
 
@@ -94,7 +103,102 @@ export function AboutSection() {
 
         </div>
 
+        {/* Quantified Executive Impact Bento Grid (Section 23 & KPI Proof) */}
+        <div className="mt-16 pt-12 border-t border-slate-800/80">
+          <div className="mb-6">
+            <span className="text-xs font-mono text-cyan tracking-wider uppercase font-semibold">
+              // QUANTIFIED ARCHITECTURAL BENCHMARKS
+            </span>
+            <h3 className="text-xl sm:text-2xl font-bold text-slate-100 mt-1">
+              Measurable Engineering Standards
+            </h3>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            {/* Bento Card 1 */}
+            <div className="p-6 rounded-2xl tech-card border-electric-500/30 flex flex-col justify-between group hover:border-cyan/50 transition-all">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-2xl sm:text-3xl font-extrabold font-mono text-cyan">
+                    0
+                  </span>
+                  <div className="w-9 h-9 rounded-xl bg-slate-900 border border-cyan/30 flex items-center justify-center text-cyan">
+                    <Lock className="w-4 h-4" />
+                  </div>
+                </div>
+                <h4 className="text-sm font-bold text-slate-100">Inbound Open Ports</h4>
+                <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+                  Workstation daemon communicates exclusively via outbound MTProto encrypted tunnels, leaving zero attack surface to external WAN port scanners.
+                </p>
+              </div>
+              <span className="text-[10px] font-mono text-slate-500 mt-4 block">SECUREMYPC ARCHITECTURE</span>
+            </div>
+
+            {/* Bento Card 2 */}
+            <div className="p-6 rounded-2xl tech-card border-electric-500/30 flex flex-col justify-between group hover:border-cyan/50 transition-all">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-2xl sm:text-3xl font-extrabold font-mono text-electric-400">
+                    &lt; 2.0s
+                  </span>
+                  <div className="w-9 h-9 rounded-xl bg-slate-900 border border-electric-500/30 flex items-center justify-center text-electric-400">
+                    <Zap className="w-4 h-4" />
+                  </div>
+                </div>
+                <h4 className="text-sm font-bold text-slate-100">Hardware Watchdog Trap</h4>
+                <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+                  Instant detection of physical USB flash drive insertion with immediate desktop lock and multi-camera snapshot dispatch to owner.
+                </p>
+              </div>
+              <span className="text-[10px] font-mono text-slate-500 mt-4 block">KERNEL TELEMETRY SPEED</span>
+            </div>
+
+            {/* Bento Card 3 */}
+            <div className="p-6 rounded-2xl tech-card border-electric-500/30 flex flex-col justify-between group hover:border-cyan/50 transition-all">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-2xl sm:text-3xl font-extrabold font-mono text-emerald-400">
+                    100%
+                  </span>
+                  <div className="w-9 h-9 rounded-xl bg-slate-900 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                    <Database className="w-4 h-4" />
+                  </div>
+                </div>
+                <h4 className="text-sm font-bold text-slate-100">Offline-First Drift SQLite</h4>
+                <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+                  Educational ERP operates flawlessly during regional rural internet blackouts, queuing mutations for bidirectional NestJS sync.
+                </p>
+              </div>
+              <span className="text-[10px] font-mono text-slate-500 mt-4 block">ZERO-NETWORK TOLERANCE</span>
+            </div>
+
+            {/* Bento Card 4 */}
+            <div className="p-6 rounded-2xl tech-card border-electric-500/30 flex flex-col justify-between group hover:border-cyan/50 transition-all">
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-2xl sm:text-3xl font-extrabold font-mono text-violet-400">
+                    Type-Safe
+                  </span>
+                  <div className="w-9 h-9 rounded-xl bg-slate-900 border border-violet-500/30 flex items-center justify-center text-violet-400">
+                    <ShieldCheck className="w-4 h-4" />
+                  </div>
+                </div>
+                <h4 className="text-sm font-bold text-slate-100">Zod &amp; Sliding-Window Guard</h4>
+                <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+                  Enterprise Route Handlers protected with sliding-window in-memory IP rate limiters, 10KB size guards, and strict runtime Zod schemas.
+                </p>
+              </div>
+              <span className="text-[10px] font-mono text-slate-500 mt-4 block">ZERO RUNTIME INJECTIONS</span>
+            </div>
+
+          </div>
+        </div>
+
       </div>
+
+      {/* Executive CV Modal */}
+      <ResumeModal isOpen={resumeOpen} onClose={() => setResumeOpen(false)} />
     </section>
   );
 }

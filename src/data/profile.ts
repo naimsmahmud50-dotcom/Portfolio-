@@ -2,24 +2,24 @@ import { ProfileData } from "@/types";
 
 export const profileData: ProfileData = {
   name: "Mahmud Hasan",
-  primaryRole: "AI Automation Expert | App Developer | Web Developer",
+  primaryRole: "Autonomous AI Systems Architect | Full-Stack Systems Engineer",
   subRoles: [
-    "AI Automation",
-    "AI-Powered Applications",
-    "Web Development",
-    "App Development",
-    "Intelligent Digital Solutions",
+    "Autonomous AI Agents",
+    "Enterprise Workflow Automation",
+    "Full-Stack Next.js & NestJS",
+    "Cross-Platform Flutter Apps",
+    "Defensive Zero-Trust Security",
   ],
   supportingHeadline:
-    "I build intelligent automation systems, AI-powered applications, modern websites, and practical digital solutions that turn complex workflows into simpler, smarter experiences.",
+    "I engineer autonomous AI agents, enterprise automation pipelines, and bulletproof full-stack systems designed to eliminate operational bottlenecks and protect mission-critical workflows.",
   availability: {
-    status: "Available for AI Automation & Development Projects",
+    status: "Available for Enterprise Contracts & AI Architecture",
     availableForHire: true,
   },
   aboutBio: [
-    "Hello, I'm Mahmud Hasan — an aspiring AI Automation Expert, App Developer, and Web Developer focused on building practical technology solutions that combine automation, artificial intelligence, software development, and security.",
-    "I enjoy turning real-world problems into useful digital systems, from intelligent automation workflows and AI-powered applications to modern web experiences and practical security-conscious tools.",
-    "I am continuously developing my skills through hands-on projects, structured learning, experimentation, and real product-building. My goal is to become a highly capable AI automation professional who can design, build, integrate, secure, and improve intelligent digital solutions.",
+    "I'm Mahmud Hasan — an Autonomous AI Systems Architect and Full-Stack Engineer dedicated to transforming complex manual operations into resilient, self-operating digital workflows.",
+    "My engineering bridges cutting-edge LLM orchestration, cross-platform software development (Next.js, Flutter, NestJS), and defensive cybersecurity principles to deploy systems that take verified real-world actions with zero open attack surfaces.",
+    "From authorized hardware surveillance daemons (SecureMyPC) and offline-first educational ecosystems to multi-agent automation pipelines, I engineer production software that delivers speed, privacy, and tangible business ROI.",
   ],
   contacts: {
     primaryEmail: "naimsmahmud50@gmail.com",

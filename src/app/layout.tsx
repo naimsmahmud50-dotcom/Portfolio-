@@ -5,45 +5,49 @@ import { ToastProvider } from "@/components/providers/ToastProvider";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { InteractiveBackground } from "@/components/ui/InteractiveBackground";
+import { CommandPalette } from "@/components/ui/CommandPalette";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://mahmudhasan.dev"),
-  title: "Mahmud Hasan | AI Automation Expert, App Developer & Web Developer",
+  title: "Mahmud Hasan | Autonomous AI Systems Architect & Full-Stack Systems Engineer",
   description:
-    "Portfolio of Mahmud Hasan. Architecting intelligent automation workflows, autonomous AI agents, practical web applications, and security-conscious digital solutions.",
+    "Enterprise portfolio of Mahmud Hasan. Architecting autonomous AI agents, enterprise workflow automation pipelines, zero-trust security systems, and high-performance full-stack applications.",
   authors: [{ name: "Mahmud Hasan" }],
   keywords: [
     "Mahmud Hasan",
-    "AI Automation Expert",
-    "App Developer",
-    "Web Developer",
+    "Autonomous AI Systems Architect",
+    "AI Automation Architect",
+    "Full-Stack Systems Engineer",
     "Autonomous Agents",
-    "Workflow Automation",
+    "Enterprise Workflow Automation",
+    "Zero-Trust Architecture",
     "Next.js",
-    "TypeScript",
+    "Flutter",
+    "NestJS",
+    "Python Security Daemon",
     "Dhaka Bangladesh",
   ],
   openGraph: {
-    title: "Mahmud Hasan | AI Automation Expert, App Developer & Web Developer",
+    title: "Mahmud Hasan | Autonomous AI Systems Architect & Full-Stack Systems Engineer",
     description:
-      "I build intelligent automation systems, AI-powered applications, modern websites, and practical digital solutions.",
+      "Architecting autonomous AI agents, enterprise workflow automation pipelines, zero-trust security systems, and high-performance full-stack applications.",
     type: "website",
     locale: "en_US",
     images: [
       {
-        url: "/images/profile/mahmud-hasan.jpg",
+        url: "/images/profile/mahmud-hasan-suit.jpg",
         width: 800,
         height: 1067,
-        alt: "Mahmud Hasan Portrait",
+        alt: "Mahmud Hasan Executive Portrait",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Mahmud Hasan | AI Automation Expert, App Developer & Web Developer",
+    title: "Mahmud Hasan | Autonomous AI Systems Architect & Full-Stack Systems Engineer",
     description:
-      "I build intelligent automation systems, AI-powered applications, modern websites, and practical digital solutions.",
-    images: ["/images/profile/mahmud-hasan.jpg"],
+      "Architecting autonomous AI agents, enterprise workflow automation pipelines, zero-trust security systems, and high-performance full-stack applications.",
+    images: ["/images/profile/mahmud-hasan-suit.jpg"],
   },
 };
 
@@ -80,6 +84,7 @@ export default function RootLayout({
             <div className="fixed inset-0 pointer-events-none z-0 cosmic-nebula-mesh" aria-hidden="true" />
             <InteractiveBackground />
             <Navbar />
+            <CommandPalette />
             <div className="flex-1 relative z-10">{children}</div>
             <Footer />
           </ToastProvider>

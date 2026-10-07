@@ -10,6 +10,7 @@ import {
   Sun,
   Moon,
   Terminal,
+  Search,
 } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "../ui/SocialIcons";
 
@@ -229,6 +230,19 @@ export function Navbar() {
           >
             <LinkedinIcon className="w-4 h-4" />
           </a>
+
+          {/* Command Palette Launcher (Ctrl+K / Cmd+K) */}
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent("open-command-palette"))}
+            aria-label="Open Command Palette (Ctrl+K)"
+            className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-900 border border-slate-700/80 hover:border-cyan text-slate-300 hover:text-cyan text-xs font-mono transition-all group"
+            title="Search & Quick Actions (Ctrl+K)"
+          >
+            <Search className="w-3.5 h-3.5 text-slate-400 group-hover:text-cyan" />
+            <kbd className="px-1.5 py-0.5 rounded bg-slate-800 text-[10px] text-slate-400 group-hover:text-cyan border border-slate-700">
+              ⌘K
+            </kbd>
+          </button>
 
           {/* Theme switcher */}
           <button
