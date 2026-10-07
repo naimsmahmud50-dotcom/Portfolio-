@@ -18,7 +18,7 @@
   - [x] 2.2 Reorganize mobile menu drawer with clean categorized grouping and 44px+ tap targets.
   - [x] 2.3 Optimize right utility bar: `⌘K` search shortcut, theme toggle, and "Let's Talk" VIP CTA button.
 
-- [ ] **Task 3: Verification & Convergence**
+- [x] **Task 3: Verification & Convergence**
   - [x] 3.1 Run `npx vitest run` and confirm 26/26 tests pass.
   - [x] 3.2 Run `npm run build` and ensure Next.js 15 builds in <3.5s with zero errors.
-  - [ ] 3.3 Commit and push to `origin/main` for live Vercel deployment.
+  - [x] 3.3 Commit and push to `origin/main` for live Vercel deployment.
