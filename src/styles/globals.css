@@ -109,3 +109,52 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #3B82F6;
 }
+
+/* Luminous animated gradient text shimmer */
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-flow {
+  background-size: 200% auto;
+  animation: gradient-flow 5s ease-in-out infinite;
+}
+
+/* Terminal cursor blink */
+@keyframes terminal-blink {
+  0%, 45% {
+    opacity: 1;
+  }
+  50%, 95% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-terminal-blink {
+  animation: terminal-blink 0.85s infinite;
+}
+
+/* Cybernetic horizontal scan beam */
+@keyframes scan-beam {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-scan-beam {
+  animation: scan-beam 3s ease-in-out infinite;
+}
