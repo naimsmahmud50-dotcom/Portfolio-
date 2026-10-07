@@ -60,7 +60,7 @@ export function ServicesSection() {
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-100">
             Engineered Services &amp; Solutions
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-slate-400">
+          <p className="mt-3 text-sm sm:text-base text-slate-200 leading-relaxed">
             Outcome-focused digital services: From modern websites and Android mobile apps to emergency website bug fixes and intelligent workflow automations.
           </p>
         </div>
@@ -77,7 +77,7 @@ export function ServicesSection() {
                   <div className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-700/80 flex items-center justify-center group-hover:border-cyan/50 group-hover:bg-slate-800 transition-colors">
                     {getIcon(service.icon)}
                   </div>
-                  <span className="font-mono text-xs text-slate-500 font-bold tracking-wider">
+                  <span className="font-mono text-xs text-slate-300 font-bold tracking-wider">
                     {service.number}
                   </span>
                 </div>
@@ -86,14 +86,14 @@ export function ServicesSection() {
                   {service.title}
                 </h3>
 
-                <p className="mt-2 text-xs sm:text-sm text-slate-400 leading-relaxed">
+                <p className="mt-2 text-xs sm:text-sm text-slate-200 leading-relaxed font-normal">
                   {service.description}
                 </p>
 
                 {/* Outcome Callout (Section 9: Clear outcome-oriented language) */}
                 <div className="mt-4 p-3 rounded-xl bg-slate-900/80 border border-slate-800/80 text-xs">
                   <span className="font-mono text-cyan font-semibold block mb-0.5">Measurable Outcome:</span>
-                  <span className="text-slate-300">{service.outcome}</span>
+                  <span className="text-slate-100 font-medium">{service.outcome}</span>
                 </div>
               </div>
 
@@ -103,7 +103,7 @@ export function ServicesSection() {
                   {service.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 text-slate-400 border border-slate-800"
+                      className="text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-slate-900/90 text-slate-200 border border-slate-700/80 font-medium"
                     >
                       {tag}
                     </span>
@@ -111,7 +111,7 @@ export function ServicesSection() {
                 </div>
                 <a
                   href="#contact"
-                  className="p-1 text-slate-400 hover:text-cyan group-hover:translate-x-0.5 transition-all"
+                  className="p-1 text-slate-300 hover:text-cyan group-hover:translate-x-0.5 transition-all"
                   aria-label={`Inquire about ${service.title}`}
                 >
                   <ArrowUpRight className="w-4 h-4" />

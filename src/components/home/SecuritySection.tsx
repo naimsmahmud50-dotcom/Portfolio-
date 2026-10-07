@@ -33,7 +33,7 @@ export function SecuritySection() {
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-100">
             Built With Security in Mind
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-slate-400">
+          <p className="mt-3 text-sm sm:text-base text-slate-200 leading-relaxed">
             Designed with security best practices in mind. Integrating defensive programming, bounded access, and server-side secret isolation into every layer.
           </p>
         </div>
@@ -55,13 +55,13 @@ export function SecuritySection() {
               </div>
 
               <h3 className="text-xl font-bold text-slate-100">{principle.title}</h3>
-              <p className="mt-2 text-xs sm:text-sm text-slate-400 leading-relaxed">
+              <p className="mt-2 text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
                 {principle.description}
               </p>
 
               <ul className="mt-6 space-y-2.5 pt-6 border-t border-slate-800/80">
                 {principle.points.map((pt, idx) => (
-                  <li key={idx} className="flex items-start gap-2.5 text-xs text-slate-300">
+                  <li key={idx} className="flex items-start gap-2.5 text-xs text-slate-200">
                     <CheckCircle className="w-4 h-4 text-cyan shrink-0 mt-0.5" />
                     <span>{pt}</span>
                   </li>
@@ -73,7 +73,7 @@ export function SecuritySection() {
 
         {/* Realistic Security Disclaimer Note */}
         <div className="mt-10 p-4 rounded-xl bg-slate-900/40 border border-slate-800 text-center">
-          <p className="text-xs text-slate-400 font-mono">
+          <p className="text-xs text-slate-300 font-mono">
             ENGINEERING PRINCIPLE: Defensive posture relies on continuous threat modeling, least privilege, and sanitization rather than absolute claims.
           </p>
         </div>

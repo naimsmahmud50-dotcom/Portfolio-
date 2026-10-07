@@ -67,15 +67,15 @@ export function HeroSection() {
             </h1>
 
             {/* Dynamic Rotating Sub-Role Ticker (Section 4) */}
-            <div className="mt-3 flex items-center gap-2 text-lg sm:text-2xl font-semibold text-slate-300">
-              <span className="text-slate-400 font-normal">Specializing in</span>
+            <div className="mt-3 flex items-center gap-2 text-lg sm:text-2xl font-semibold text-slate-200">
+              <span className="text-slate-300 font-normal">Specializing in</span>
               <span className="inline-block px-3 py-1 rounded-md bg-electric-950/80 border border-electric-500/30 text-cyan font-mono text-base sm:text-xl transition-all duration-300 shadow-inner">
                 {profileData.subRoles[roleIndex]}
               </span>
             </div>
 
             {/* Supporting Headline (Section 4) */}
-            <p className="mt-6 text-base sm:text-lg text-slate-300 dark:text-slate-300 max-w-2xl leading-relaxed">
+            <p className="mt-6 text-base sm:text-lg text-slate-200 dark:text-slate-200 max-w-2xl leading-relaxed font-normal">
               {profileData.supportingHeadline}
             </p>
 
@@ -130,14 +130,14 @@ export function HeroSection() {
             </div>
 
             {/* Secondary Social & Quick Action Row (Section 4 & 14, 15) */}
-            <div className="mt-10 flex flex-wrap items-center gap-5 pt-6 border-t border-slate-800/80 text-xs text-slate-400">
-              <span className="font-mono text-slate-500 uppercase tracking-wider">Connect:</span>
+            <div className="mt-10 flex flex-wrap items-center gap-5 pt-6 border-t border-slate-800/80 text-sm text-slate-300">
+              <span className="font-mono text-slate-300 font-semibold uppercase tracking-wider text-xs">Connect:</span>
               
               <a
                 href={profileData.socials.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 hover:text-slate-100 transition-colors"
+                className="inline-flex items-center gap-1.5 hover:text-white transition-colors"
               >
                 <GithubIcon className="w-4 h-4 text-slate-300" />
                 <span>GitHub</span>
@@ -155,7 +155,7 @@ export function HeroSection() {
 
               <button
                 onClick={handleCopyEmail}
-                className="inline-flex items-center gap-1.5 text-slate-400 hover:text-cyan transition-colors"
+                className="inline-flex items-center gap-1.5 text-slate-300 hover:text-cyan transition-colors"
                 title="Click to copy email address"
               >
                 <Copy className="w-3.5 h-3.5" />
@@ -201,7 +201,7 @@ export function HeroSection() {
                       <span className="text-xs font-semibold text-slate-100 font-sans">{profileData.name}</span>
                     </div>
                     <span className="text-[10px] font-mono font-medium text-cyan px-2 py-0.5 rounded bg-cyan/10 border border-cyan/30">
-                      AI Automator
+                      Web &amp; Apps Engineer
                     </span>
                   </div>
                 </div>

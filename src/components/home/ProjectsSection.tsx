@@ -104,7 +104,7 @@ function ProjectsContent() {
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-100">
               Featured Case Studies &amp; Projects
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-slate-400">
+            <p className="mt-3 text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
               Scalable, security-conscious systems designed to automate workflows and solve real operational problems.
             </p>
           </div>
@@ -117,7 +117,7 @@ function ProjectsContent() {
               value={searchQuery}
               onChange={(e) => handleSearchChange(e.target.value)}
               placeholder="Search by tech or keyword..."
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700/80 focus:border-cyan text-xs sm:text-sm text-slate-200 placeholder:text-slate-500 outline-none transition-all"
+              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700/80 focus:border-cyan text-xs sm:text-sm text-slate-100 placeholder:text-slate-400 outline-none transition-all"
             />
           </div>
         </div>
@@ -131,7 +131,7 @@ function ProjectsContent() {
               className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
                 activeCategory === cat
                   ? "bg-cyan text-slate-950 font-bold shadow-md shadow-cyan/25"
-                  : "bg-slate-900/70 text-slate-400 hover:text-slate-200 border border-slate-800"
+                  : "bg-slate-900/70 text-slate-300 hover:text-white border border-slate-800 hover:border-slate-700"
               }`}
             >
               {cat}
@@ -153,8 +153,8 @@ function ProjectsContent() {
         ) : (
           /* Empty State */
           <div className="py-16 text-center p-8 rounded-2xl bg-slate-900/40 border border-slate-800">
-            <p className="text-base text-slate-300 font-medium">No matching projects found</p>
-            <p className="text-xs text-slate-500 mt-1">Try refining your search keyword or selecting "All" categories.</p>
+            <p className="text-base text-slate-200 font-medium">No matching projects found</p>
+            <p className="text-xs text-slate-300 mt-1">Try refining your search keyword or selecting "All" categories.</p>
             <button
               onClick={handleResetFilters}
               className="mt-4 px-4 py-2 rounded-lg bg-electric-600 text-white text-xs font-medium hover:bg-electric-500 transition-colors"

@@ -4,14 +4,14 @@
 
 @layer base {
   :root {
-    --bg-canvas: #050814;
-    --bg-surface: #090F1F;
-    --bg-card: #0D162B;
+    --bg-canvas: #040711;
+    --bg-surface: #080E1E;
+    --bg-card: #0C152B;
     --text-primary: #F8FAFC;
-    --text-secondary: #94A3B8;
+    --text-secondary: #CBD5E1;
     --accent-electric: #3B82F6;
     --accent-cyan: #06B6D4;
-    --border-subtle: rgba(56, 189, 248, 0.14);
+    --border-subtle: rgba(56, 189, 248, 0.18);
   }
 
   .light {
@@ -19,7 +19,7 @@
     --bg-surface: #F1F5F9;
     --bg-card: #FFFFFF;
     --text-primary: #0F172A;
-    --text-secondary: #475569;
+    --text-secondary: #334155;
     --accent-electric: #2563EB;
     --accent-cyan: #0284C7;
     --border-subtle: rgba(37, 99, 235, 0.18);
@@ -36,11 +36,14 @@
     color: var(--text-primary);
     min-height: 100vh;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   /* Accessible Focus ring */
   *:focus-visible {
-    outline: 2px solid #3B82F6;
+    outline: 2px solid #06B6D4;
     outline-offset: 3px;
   }
 }

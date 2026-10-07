@@ -40,7 +40,7 @@ export function EngagementSection() {
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-100">
             How We Can Work Together
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-slate-400 leading-relaxed">
+          <p className="mt-3 text-sm sm:text-base text-slate-200 leading-relaxed">
             Transparent, outcome-driven sprint packages designed to eliminate guesswork. From modern websites and Android mobile apps to urgent website problem solving and workflow automations.
           </p>
         </div>
@@ -68,14 +68,14 @@ export function EngagementSection() {
                 <div>
                   {/* Top Badge & Sprint Number */}
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-[11px] font-mono font-bold text-slate-400">
+                    <span className="text-xs font-mono font-bold text-slate-300">
                       {model.sprintNumber}
                     </span>
                     <span
                       className={`text-[10px] font-mono px-2.5 py-0.5 rounded-full font-bold border ${
                         isFeatured
                           ? "bg-cyan/15 text-cyan border-cyan/40"
-                          : "bg-slate-900 text-slate-400 border-slate-700/80"
+                          : "bg-slate-900 text-slate-300 border-slate-700/80"
                       }`}
                     >
                       {model.badge}
@@ -92,23 +92,23 @@ export function EngagementSection() {
                     <span>{model.duration}</span>
                   </div>
 
-                  <p className="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  <p className="mt-3 text-xs sm:text-sm text-slate-200 leading-relaxed font-normal">
                     {model.tagline}
                   </p>
 
                   {/* Ideal For Context */}
-                  <div className="mt-4 p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-[11px] text-slate-400">
-                    <strong className="text-slate-200 block mb-0.5">Best For:</strong>
+                  <div className="mt-4 p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-xs text-slate-300">
+                    <strong className="text-slate-100 block mb-0.5">Best For:</strong>
                     {model.idealFor}
                   </div>
 
                   {/* Deliverables Checklist */}
                   <div className="mt-6 space-y-2.5">
-                    <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400 font-semibold block">
+                    <span className="text-xs font-mono uppercase tracking-wider text-slate-200 font-semibold block">
                       Core Deliverables:
                     </span>
                     {model.deliverables.map((item, idx) => (
-                      <div key={idx} className="flex items-start gap-2.5 text-xs text-slate-300">
+                      <div key={idx} className="flex items-start gap-2.5 text-xs text-slate-200">
                         <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                         <span className="leading-normal">{item}</span>
                       </div>
@@ -151,7 +151,7 @@ export function EngagementSection() {
               <p className="text-sm font-bold text-slate-100">
                 Enterprise Zero-Risk Delivery Framework
               </p>
-              <p className="text-xs text-slate-400 mt-0.5">
+              <p className="text-xs text-slate-300 mt-0.5">
                 Clear milestone milestones, NDA compliance, verified GitHub commits, and direct architect communication.
               </p>
             </div>

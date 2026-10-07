@@ -43,9 +43,9 @@ export function AboutSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
           {/* Left Column: Authentic Executive Bio (7 cols) */}
-          <div className="lg:col-span-7 space-y-6 text-slate-300 text-base sm:text-lg leading-relaxed">
+          <div className="lg:col-span-7 space-y-6 text-slate-200 text-base sm:text-lg leading-relaxed">
             {profileData.aboutBio.map((paragraph, idx) => (
-              <p key={idx} className="text-slate-300/90 font-normal">
+              <p key={idx} className="text-slate-200 font-normal leading-relaxed">
                 {paragraph}
               </p>
             ))}
@@ -80,7 +80,7 @@ export function AboutSection() {
                 </div>
                 <h3 className="text-base font-bold text-slate-100">Modern Websites &amp; Web Apps</h3>
               </div>
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
                 Responsive Next.js 15 &amp; React architectures, tailored UI/UX, database portals, and 95+ Core Web Vitals performance.
               </p>
             </div>
@@ -92,7 +92,7 @@ export function AboutSection() {
                 </div>
                 <h3 className="text-base font-bold text-slate-100">Android &amp; Mobile Engineering</h3>
               </div>
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
                 Production-ready Android and Flutter mobile apps with offline-first Drift SQLite sync, zero memory leaks, and smooth UX.
               </p>
             </div>
@@ -104,7 +104,7 @@ export function AboutSection() {
                 </div>
                 <h3 className="text-base font-bold text-slate-100">Problem Solving &amp; Bug Fixing</h3>
               </div>
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
                 Rapid diagnosis and repair for broken sites, CSS/JS layout glitches, failing APIs, slow loading, and critical errors.
               </p>
             </div>
@@ -116,7 +116,7 @@ export function AboutSection() {
                 </div>
                 <h3 className="text-base font-bold text-slate-100">Workflow &amp; AI Automation</h3>
               </div>
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
                 Connecting APIs, automating repetitive manual operations, webhook pipelines, and reliable autonomous agent loops.
               </p>
             </div>
@@ -150,11 +150,11 @@ export function AboutSection() {
                   </div>
                 </div>
                 <h4 className="text-sm font-bold text-slate-100">Inbound Open Ports</h4>
-                <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed font-normal">
                   Workstation daemon communicates exclusively via outbound MTProto encrypted tunnels, leaving zero attack surface to external WAN port scanners.
                 </p>
               </div>
-              <span className="text-[10px] font-mono text-slate-500 mt-4 block">SECUREMYPC ARCHITECTURE</span>
+              <span className="text-[11px] font-mono text-slate-400 mt-4 block font-semibold tracking-wider">SECUREMYPC ARCHITECTURE</span>
             </div>
 
             {/* Bento Card 2 */}
@@ -169,11 +169,11 @@ export function AboutSection() {
                   </div>
                 </div>
                 <h4 className="text-sm font-bold text-slate-100">Hardware Watchdog Trap</h4>
-                <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed font-normal">
                   Instant detection of physical USB flash drive insertion with immediate desktop lock and multi-camera snapshot dispatch to owner.
                 </p>
               </div>
-              <span className="text-[10px] font-mono text-slate-500 mt-4 block">KERNEL TELEMETRY SPEED</span>
+              <span className="text-[11px] font-mono text-slate-400 mt-4 block font-semibold tracking-wider">KERNEL TELEMETRY SPEED</span>
             </div>
 
             {/* Bento Card 3 */}
@@ -188,11 +188,11 @@ export function AboutSection() {
                   </div>
                 </div>
                 <h4 className="text-sm font-bold text-slate-100">Offline-First Drift SQLite</h4>
-                <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed font-normal">
                   Educational ERP operates flawlessly during regional rural internet blackouts, queuing mutations for bidirectional NestJS sync.
                 </p>
               </div>
-              <span className="text-[10px] font-mono text-slate-500 mt-4 block">ZERO-NETWORK TOLERANCE</span>
+              <span className="text-[11px] font-mono text-slate-400 mt-4 block font-semibold tracking-wider">ZERO-NETWORK TOLERANCE</span>
             </div>
 
             {/* Bento Card 4 */}
@@ -207,11 +207,11 @@ export function AboutSection() {
                   </div>
                 </div>
                 <h4 className="text-sm font-bold text-slate-100">Zod &amp; Sliding-Window Guard</h4>
-                <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed font-normal">
                   Enterprise Route Handlers protected with sliding-window in-memory IP rate limiters, 10KB size guards, and strict runtime Zod schemas.
                 </p>
               </div>
-              <span className="text-[10px] font-mono text-slate-500 mt-4 block">ZERO RUNTIME INJECTIONS</span>
+              <span className="text-[11px] font-mono text-slate-400 mt-4 block font-semibold tracking-wider">ZERO RUNTIME INJECTIONS</span>
             </div>
 
           </div>

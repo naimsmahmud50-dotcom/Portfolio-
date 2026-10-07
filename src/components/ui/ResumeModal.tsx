@@ -92,13 +92,13 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                 <p className="text-sm sm:text-base font-semibold text-cyan print:text-blue-700 mt-1">
                   Autonomous AI Systems Architect &amp; Full-Stack Systems Engineer
                 </p>
-                <p className="text-xs text-slate-400 print:text-slate-600 mt-1">
+                <p className="text-xs text-slate-300 print:text-slate-600 mt-1 font-medium">
                   Dhaka, Bangladesh • Open to Worldwide Remote Contracts &amp; Consulting
                 </p>
               </div>
 
               {/* Direct Coordinate Links */}
-              <div className="text-xs space-y-1 font-mono text-slate-300 print:text-slate-700">
+              <div className="text-xs space-y-1 font-mono text-slate-200 print:text-slate-700 font-medium">
                 <p className="flex items-center gap-1.5">
                   <Mail className="w-3.5 h-3.5 text-cyan print:text-blue-600 shrink-0" />
                   <a href={`mailto:${profileData.contacts.primaryEmail}`} className="hover:underline">
@@ -110,7 +110,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                   <span>+{profileData.contacts.whatsappNumber} (WhatsApp)</span>
                 </p>
                 <p className="flex items-center gap-1.5">
-                  <GithubIcon className="w-3.5 h-3.5 text-slate-400 print:text-slate-700 shrink-0" />
+                  <GithubIcon className="w-3.5 h-3.5 text-slate-300 print:text-slate-700 shrink-0" />
                   <a href={profileData.socials.github} target="_blank" rel="noopener noreferrer" className="hover:underline">
                     github.com/naimsmahmud50-dotcom
                   </a>
@@ -124,7 +124,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             <h2 className="text-xs font-mono uppercase tracking-wider text-cyan font-bold mb-2 print:text-blue-800">
               // EXECUTIVE SUMMARY
             </h2>
-            <p className="text-xs sm:text-sm text-slate-300 print:text-slate-700 leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-200 print:text-slate-700 leading-relaxed font-normal">
               Results-oriented Systems Architect specializing in autonomous AI agents, enterprise workflow automation, and defensive software engineering. Extensive expertise designing zero-inbound-port background surveillance daemons, offline-first mobile applications with local SQLite sync, and robust multi-agent tool loops. Focused on eliminating manual operational lag while upholding uncompromising data privacy and defensive security standards.
             </p>
           </div>
@@ -139,7 +139,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                 <span className="font-bold text-white print:text-slate-900 block mb-1">
                   🤖 Autonomous AI &amp; Agentic Systems
                 </span>
-                <p className="text-slate-400 print:text-slate-600">
+                <p className="text-slate-300 print:text-slate-600">
                   LLM Tool Calling, Multi-Agent Loops, Structured Outputs (Zod), RAG Architecture, Prompt Engineering.
                 </p>
               </div>
@@ -148,7 +148,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                 <span className="font-bold text-white print:text-slate-900 block mb-1">
                   ⚡ Full-Stack &amp; Scalable Architecture
                 </span>
-                <p className="text-slate-400 print:text-slate-600">
+                <p className="text-slate-300 print:text-slate-600">
                   Next.js 15 (App Router), React 19, TypeScript, NestJS 12, PostgreSQL, REST APIs, Tailwind CSS.
                 </p>
               </div>
@@ -157,7 +157,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                 <span className="font-bold text-white print:text-slate-900 block mb-1">
                   📱 Mobile &amp; Offline-First Systems
                 </span>
-                <p className="text-slate-400 print:text-slate-600">
+                <p className="text-slate-300 print:text-slate-600">
                   Flutter, Drift (SQLite local storage), Riverpod State Management, Firebase Authentication &amp; Firestore.
                 </p>
               </div>
@@ -166,7 +166,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                 <span className="font-bold text-white print:text-slate-900 block mb-1">
                   🛡️ Defensive Security &amp; Infrastructure
                 </span>
-                <p className="text-slate-400 print:text-slate-600">
+                <p className="text-slate-300 print:text-slate-600">
                   Zero Inbound Open Ports, Telegram MTProto Tunnels, Sliding-Window DoS Throttling, Hardware Watchdogs.
                 </p>
               </div>
@@ -187,10 +187,10 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                   </h3>
                   <span className="font-mono text-[10px] text-cyan print:text-blue-700">Production Concept</span>
                 </div>
-                <p className="text-slate-400 print:text-slate-600 mb-2">
+                <p className="text-slate-300 print:text-slate-600 mb-2 font-medium">
                   Windows Remote Administration &amp; Hardware Watchdog Daemon via Encrypted Telegram Bot.
                 </p>
-                <ul className="list-disc list-inside space-y-1 text-slate-300 print:text-slate-700">
+                <ul className="list-disc list-inside space-y-1 text-slate-200 print:text-slate-700">
                   <li>Engineered zero-inbound-port outbound polling daemon protecting workstations behind NAT firewalls.</li>
                   <li>Real-time USB watchdog detecting flash drive intrusions within 2 seconds with automatic webcam capture.</li>
                   <li>Single-owner whitelist authentication with Google Gemini AI conversational desktop automation.</li>
@@ -204,10 +204,10 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                   </h3>
                   <span className="font-mono text-[10px] text-cyan print:text-blue-700">Active Development</span>
                 </div>
-                <p className="text-slate-400 print:text-slate-600 mb-2">
+                <p className="text-slate-300 print:text-slate-600 mb-2 font-medium">
                   Multi-Platform Offline-First Educational ERP (Flutter + NestJS 12 + Drift SQLite).
                 </p>
-                <ul className="list-disc list-inside space-y-1 text-slate-300 print:text-slate-700">
+                <ul className="list-disc list-inside space-y-1 text-slate-200 print:text-slate-700">
                   <li>Architected offline-first mobile app for teachers with zero-latency Drift SQLite persistence.</li>
                   <li>Integrated automated multi-channel notification engine dispatching daily attendance alerts via SMS/WhatsApp.</li>
                   <li>NestJS 12 modular REST backend with PostgreSQL and role-based guardian portals.</li>
@@ -221,10 +221,10 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                   </h3>
                   <span className="font-mono text-[10px] text-cyan print:text-blue-700">Active Development</span>
                 </div>
-                <p className="text-slate-400 print:text-slate-600 mb-2">
+                <p className="text-slate-300 print:text-slate-600 mb-2 font-medium">
                   Goal-Directed Autonomous Workflow Runner with Deterministic Tool Execution.
                 </p>
-                <ul className="list-disc list-inside space-y-1 text-slate-300 print:text-slate-700">
+                <ul className="list-disc list-inside space-y-1 text-slate-200 print:text-slate-700">
                   <li>Multi-step Planner, Executor, and Verifier architecture preventing infinite execution loops.</li>
                   <li>Runtime Zod schema validation ensuring 100% structured type safety across tool boundaries.</li>
                 </ul>
@@ -244,7 +244,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                   AI Automation &amp; Intelligent Systems
                 </span>
                 <span className="text-cyan print:text-blue-700 block">As-Sunnah Skill Development Institute</span>
-                <span className="text-[11px] text-slate-400 print:text-slate-600">
+                <span className="text-[11px] text-slate-300 print:text-slate-600 font-medium">
                   Applied autonomous agent design, workflow orchestration &amp; enterprise production paradigms.
                 </span>
               </div>

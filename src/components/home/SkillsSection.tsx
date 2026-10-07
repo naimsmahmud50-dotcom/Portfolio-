@@ -43,7 +43,7 @@ export function SkillsSection() {
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-100">
             Skills &amp; Technology Stack
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-slate-400">
+          <p className="mt-3 text-sm sm:text-base text-slate-200 leading-relaxed">
             Transparent, balanced proficiencies across automation, development, cloud infrastructure, and security.
           </p>
         </div>
@@ -56,8 +56,8 @@ export function SkillsSection() {
               onClick={() => setSelectedCategory(cat)}
               className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
                 selectedCategory === cat
-                  ? "bg-electric-600 text-white shadow-md shadow-electric-600/30"
-                  : "bg-slate-900/80 text-slate-400 hover:text-slate-200 border border-slate-800"
+                  ? "bg-electric-600 text-white shadow-md shadow-electric-600/30 font-semibold"
+                  : "bg-slate-900/80 text-slate-300 hover:text-white border border-slate-800"
               }`}
             >
               {cat}
@@ -79,7 +79,7 @@ export function SkillsSection() {
                   </span>
                 </div>
                 <h3 className="text-lg font-bold text-slate-100">{cat.title}</h3>
-                <p className="text-xs text-slate-400 mt-1.5 line-clamp-2 leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-200 mt-1.5 line-clamp-2 leading-relaxed font-normal">
                   {cat.description}
                 </p>
 
@@ -102,19 +102,19 @@ export function SkillsSection() {
               </div>
 
               {/* Card Footer legend */}
-              <div className="mt-6 pt-4 border-t border-slate-800/60 flex items-center justify-between text-[11px] font-mono text-slate-500">
+              <div className="mt-6 pt-4 border-t border-slate-800/60 flex items-center justify-between text-[11px] font-mono text-slate-400 font-semibold">
                 <span>{cat.skills.length} verified technologies</span>
-                <span className="text-emerald-400/80">Active</span>
+                <span className="text-emerald-400">Active</span>
               </div>
             </div>
           ))}
         </div>
 
         {/* Honest Transparency Note (Section 5, 8 & 50) */}
-        <div className="mt-8 p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 flex items-center gap-3 text-xs text-slate-400">
+        <div className="mt-8 p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 flex items-center gap-3 text-xs sm:text-sm text-slate-300">
           <Shield className="w-4 h-4 text-cyan shrink-0" />
           <p>
-            <strong className="text-slate-300">Authenticity Commitment: </strong> 
+            <strong className="text-slate-100">Authenticity Commitment: </strong> 
             Skills reflect practical application and active study. Tools and concepts are labeled according to genuine hands-on experience without inflated claims.
           </p>
         </div>

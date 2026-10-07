@@ -162,7 +162,7 @@ export function PipelineSection() {
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-100">
               How I Build Intelligent Systems
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-slate-400">
+            <p className="mt-3 text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
               An end-to-end interactive architecture: from unstructured real-world bottlenecks to deterministic, automated outcomes.
             </p>
           </div>
@@ -202,7 +202,7 @@ export function PipelineSection() {
 
         {/* Progress Bar during simulation */}
         <div className="mb-4">
-          <div className="flex items-center justify-between text-xs font-mono text-slate-400 mb-1.5">
+          <div className="flex items-center justify-between text-xs font-mono text-slate-300 mb-1.5">
             <span className="flex items-center gap-1.5">
               <Activity className="w-3.5 h-3.5 text-cyan" />
               <span>
@@ -239,8 +239,8 @@ export function PipelineSection() {
                     isActive
                       ? "bg-gradient-to-b from-electric-600/40 to-cyan/20 border border-cyan/50 shadow-md shadow-cyan/20 scale-[1.02]"
                       : isPast
-                      ? "hover:bg-slate-800/60 text-slate-300"
-                      : "hover:bg-slate-800/60 text-slate-500 hover:text-slate-300"
+                      ? "hover:bg-slate-800/60 text-slate-200"
+                      : "hover:bg-slate-800/60 text-slate-400 hover:text-slate-200"
                   }`}
                 >
                   <div className="flex items-center gap-1.5 mb-1">
@@ -250,7 +250,7 @@ export function PipelineSection() {
                           ? "bg-cyan text-slate-950 ring-2 ring-cyan/40"
                           : isPast
                           ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/40"
-                          : "bg-slate-800 text-slate-400"
+                          : "bg-slate-800 text-slate-300"
                       }`}
                     >
                       {isPast ? <CheckCircle2 className="w-3 h-3 text-emerald-400" /> : step.step}
@@ -259,12 +259,12 @@ export function PipelineSection() {
                   </div>
                   <span
                     className={`text-[11px] font-bold line-clamp-1 ${
-                      isActive ? "text-slate-100" : isPast ? "text-slate-300" : "text-slate-400"
+                      isActive ? "text-slate-100" : isPast ? "text-slate-200" : "text-slate-300"
                     }`}
                   >
                     {step.title}
                   </span>
-                  <span className="text-[9px] font-mono text-slate-500 uppercase mt-0.5">
+                  <span className="text-[10px] font-mono text-slate-400 uppercase mt-0.5 font-semibold">
                     {step.phase}
                   </span>
                 </button>
@@ -283,7 +283,7 @@ export function PipelineSection() {
                 <span className="px-2.5 py-1 rounded bg-cyan/15 text-cyan border border-cyan/30 text-xs font-mono font-bold">
                   STAGE 0{current.step} // {current.phase}
                 </span>
-                <span className="text-xs text-slate-500 font-mono">EXECUTION_NODE</span>
+                <span className="text-xs text-slate-400 font-mono font-semibold">EXECUTION_NODE</span>
                 {isSimulating && (
                   <span className="text-[10px] font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-500/30 px-2 py-0.5 rounded-full animate-pulse flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
@@ -296,17 +296,17 @@ export function PipelineSection() {
                 {current.title}
               </h3>
 
-              <p className="mt-3 text-base sm:text-lg text-slate-300 font-medium">
+              <p className="mt-3 text-base sm:text-lg text-slate-200 font-medium">
                 {current.summary}
               </p>
 
-              <p className="mt-4 text-xs sm:text-sm text-slate-400 leading-relaxed">
+              <p className="mt-4 text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
                 {current.details}
               </p>
 
               {/* Tools & Handled Components */}
               <div className="mt-6 pt-6 border-t border-slate-800 flex flex-wrap items-center gap-2">
-                <span className="text-xs font-mono text-slate-500 mr-2">Components &amp; Protocols:</span>
+                <span className="text-xs font-mono text-slate-400 mr-2 font-semibold">Components &amp; Protocols:</span>
                 {current.tools.map((tool) => (
                   <span
                     key={tool}
@@ -331,7 +331,7 @@ export function PipelineSection() {
 
               <div className="text-center">
                 <p className="text-sm font-bold text-slate-200">Stage Hand-off</p>
-                <div className="mt-2 flex items-center justify-center gap-2 text-xs font-mono text-slate-400">
+                <div className="mt-2 flex items-center justify-center gap-2 text-xs font-mono text-slate-300">
                   <span>{current.step > 1 ? `Stage 0${current.step - 1}` : "Source"}</span>
                   <ArrowRight className="w-3.5 h-3.5 text-cyan" />
                   <span className="text-cyan font-bold">Stage 0{current.step}</span>
@@ -345,7 +345,7 @@ export function PipelineSection() {
                 <button
                   disabled={current.step === 1 || isSimulating}
                   onClick={() => setActiveStep(Math.max(1, current.step - 1))}
-                  className="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs text-slate-300 disabled:opacity-30 disabled:pointer-events-none hover:bg-slate-800 transition-colors"
+                  className="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs text-slate-200 disabled:opacity-30 disabled:pointer-events-none hover:bg-slate-800 transition-colors"
                 >
                   Previous Node
                 </button>
@@ -370,7 +370,7 @@ export function PipelineSection() {
                   <Terminal className="w-3.5 h-3.5" />
                   <span>// LIVE PIPELINE TELEMETRY FEED</span>
                 </span>
-                <span className="text-[10px] font-mono text-slate-500">
+                <span className="text-xs font-mono text-slate-400 font-semibold">
                   STREAMING LOGS ({simulationLogs.length}/8)
                 </span>
               </div>

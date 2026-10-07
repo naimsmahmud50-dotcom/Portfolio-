@@ -15,7 +15,7 @@ export function Footer() {
           <Link href="#hero" className="inline-block font-bold text-lg text-slate-100 hover:text-cyan transition-colors">
             {profileData.name}
           </Link>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-slate-300 mt-1 font-medium">
             {profileData.primaryRole}
           </p>
           <div className="mt-2 flex items-center justify-center md:justify-start gap-1.5 text-xs text-emerald-400">
@@ -25,7 +25,7 @@ export function Footer() {
         </div>
 
         {/* Center links */}
-        <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-slate-300">
+        <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-200 font-medium">
           <a
             href={profileData.socials.github}
             target="_blank"
@@ -72,13 +72,13 @@ export function Footer() {
         </div>
 
         {/* Right copyright & Admin link */}
-        <div className="text-center md:text-right text-xs text-slate-500">
+        <div className="text-center md:text-right text-xs text-slate-400">
           <p>&copy; {new Date().getFullYear()} Mahmud Hasan. All rights reserved.</p>
-          <p className="mt-1 flex items-center justify-center md:justify-end gap-1 text-[11px] text-slate-500">
+          <p className="mt-1 flex items-center justify-center md:justify-end gap-1 text-xs text-slate-400">
             <ShieldCheck className="w-3 h-3 text-cyan" />
             <span>Built with modern engineering &amp; security best practices</span>
             <span className="mx-1.5">•</span>
-            <Link href="/admin" className="hover:text-cyan transition-colors">
+            <Link href="/admin" className="hover:text-cyan text-slate-300 transition-colors">
               Console
             </Link>
           </p>

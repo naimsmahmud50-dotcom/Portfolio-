@@ -247,22 +247,24 @@ export function Navbar() {
           onClick={(e) => handleNavClick(e, "#hero")}
           className="flex items-center gap-3 text-slate-100 hover:text-cyan transition-colors group shrink-0"
         >
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-electric-600 via-cyan to-blue-400 flex items-center justify-center p-0.5 shadow-lg shadow-cyan/20 group-hover:scale-105 transition-transform">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-electric-500 via-cyan to-teal-400 flex items-center justify-center p-[1.5px] shadow-lg shadow-cyan/25 group-hover:scale-105 group-hover:shadow-cyan/40 transition-all">
             <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
-              <Terminal className="w-4 h-4 text-cyan" />
+              <span className="font-mono font-bold text-sm text-cyan group-hover:text-white transition-colors">
+                M/
+              </span>
             </div>
           </div>
           <div className="flex flex-col">
             <div className="flex items-center gap-2">
-              <span className="font-bold tracking-tight text-base sm:text-lg text-slate-100">
+              <span className="font-bold tracking-tight text-base sm:text-lg text-slate-100 group-hover:text-cyan transition-colors">
                 Mahmud Hasan
               </span>
-              <span className="hidden sm:inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-950/60 border border-emerald-500/30 text-[10px] font-mono font-medium text-emerald-400">
+              <span className="hidden sm:inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-950/80 border border-emerald-500/40 text-[10px] font-mono font-semibold text-emerald-400 shadow-sm">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                 <span>Available</span>
               </span>
             </div>
-            <span className="text-[11px] font-mono text-slate-400 hidden md:block">
+            <span className="text-[11px] font-mono text-slate-300 font-medium hidden md:block">
               Web • Apps • Problem Solving • Automation
             </span>
           </div>
@@ -337,7 +339,7 @@ export function Navbar() {
                 onMouseLeave={() => setDropdownOpen(false)}
                 className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 rounded-2xl bg-slate-950/95 border border-slate-800/90 shadow-2xl backdrop-blur-2xl p-2 z-50 animate-in fade-in zoom-in-95 duration-150"
               >
-                <div className="px-3 py-2 text-[10px] font-mono uppercase tracking-wider text-slate-500 font-semibold border-b border-slate-800/60">
+                <div className="px-3 py-2 text-[10px] font-mono uppercase tracking-wider text-slate-400 font-semibold border-b border-slate-800/60">
                   Engineering Systems &amp; Stack
                 </div>
                 <div className="mt-1 space-y-1">
@@ -353,7 +355,7 @@ export function Navbar() {
                         className={`flex items-start gap-3 p-2.5 rounded-xl transition-all ${
                           isItemActive
                             ? "bg-cyan/15 border border-cyan/40 text-cyan"
-                            : "hover:bg-slate-900 text-slate-300 hover:text-white"
+                            : "hover:bg-slate-900 text-slate-200 hover:text-white"
                         }`}
                       >
                         <div className="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center shrink-0 mt-0.5">
@@ -366,7 +368,7 @@ export function Navbar() {
                               <span className="w-1.5 h-1.5 rounded-full bg-cyan shadow-sm shadow-cyan" />
                             )}
                           </div>
-                          <p className="text-[11px] text-slate-400 mt-0.5 leading-normal">
+                          <p className="text-[11px] text-slate-300 mt-0.5 leading-normal">
                             {item.description}
                           </p>
                         </div>
@@ -405,50 +407,66 @@ export function Navbar() {
           </a>
         </nav>
 
-        {/* Right Action Icons & Controls */}
-        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-          <a
-            href={profileData.socials.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Mahmud Hasan's GitHub Profile"
-            className="p-2 text-slate-400 hover:text-slate-100 hover:bg-slate-800/50 rounded-lg transition-colors"
-          >
-            <GithubIcon className="w-4 h-4" />
-          </a>
-          <a
-            href={profileData.socials.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Mahmud Hasan's LinkedIn Profile"
-            className="p-2 text-slate-400 hover:text-blue-400 hover:bg-slate-800/50 rounded-lg transition-colors"
-          >
-            <LinkedinIcon className="w-4 h-4" />
-          </a>
+        {/* Right Action Bar: Unified Executive Control Dock & Primary CTA */}
+        <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
+          {/* Executive Utility Dock: Unified frosted capsule (Search + Socials + Theme) */}
+          <div className="flex items-center bg-slate-900/80 border border-slate-800/90 rounded-2xl p-1 backdrop-blur-xl shadow-inner shadow-black/20">
+            {/* Search trigger with ⌘K */}
+            <button
+              onClick={() => window.dispatchEvent(new CustomEvent("open-command-palette"))}
+              aria-label="Open Command Palette (Ctrl+K)"
+              className="flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-slate-300 hover:text-cyan hover:bg-slate-800/80 transition-all text-xs font-mono group"
+              title="Search portfolio & actions (Ctrl+K)"
+            >
+              <Search className="w-3.5 h-3.5 text-slate-400 group-hover:text-cyan transition-colors" />
+              <span className="hidden xl:inline text-xs font-sans text-slate-300 group-hover:text-slate-100">Search</span>
+              <kbd className="hidden sm:inline-flex items-center px-1.5 py-0.5 rounded bg-slate-800/90 text-[10px] text-slate-300 group-hover:text-cyan border border-slate-700/80 font-mono font-medium">
+                ⌘K
+              </kbd>
+            </button>
 
-          {/* Command Palette Launcher (Ctrl+K / Cmd+K) */}
-          <button
-            onClick={() => window.dispatchEvent(new CustomEvent("open-command-palette"))}
-            aria-label="Open Command Palette (Ctrl+K)"
-            className="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700/80 hover:border-cyan text-slate-300 hover:text-cyan text-xs font-mono transition-all group shadow-sm"
-            title="Search & Quick Actions (Ctrl+K)"
-          >
-            <Search className="w-3.5 h-3.5 text-slate-400 group-hover:text-cyan" />
-            <kbd className="px-1.5 py-0.5 rounded bg-slate-800 text-[10px] text-slate-400 group-hover:text-cyan border border-slate-700 font-semibold">
-              ⌘K
-            </kbd>
-          </button>
+            {/* Subtle vertical hairline divider */}
+            <div className="hidden sm:block w-px h-4 bg-slate-800 mx-1" />
 
-          {/* Theme switcher */}
-          <button
-            onClick={toggleTheme}
-            aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
-            className="p-2 text-slate-400 hover:text-cyan hover:bg-slate-800/50 rounded-lg transition-colors"
-          >
-            {isDark ? <Sun className="w-4 h-4 text-amber-300" /> : <Moon className="w-4 h-4 text-slate-700" />}
-          </button>
+            {/* Social links */}
+            <div className="hidden sm:flex items-center gap-0.5">
+              <a
+                href={profileData.socials.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Mahmud Hasan's GitHub Profile"
+                className="p-1.5 text-slate-400 hover:text-white hover:bg-slate-800/80 rounded-lg transition-colors"
+                title="GitHub Profile"
+              >
+                <GithubIcon className="w-4 h-4" />
+              </a>
+              <a
+                href={profileData.socials.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Mahmud Hasan's LinkedIn Profile"
+                className="p-1.5 text-slate-400 hover:text-[#0A66C2] hover:bg-slate-800/80 rounded-lg transition-colors"
+                title="LinkedIn Profile"
+              >
+                <LinkedinIcon className="w-4 h-4" />
+              </a>
+            </div>
 
-          {/* Executive Direct CTA Button */}
+            {/* Subtle vertical hairline divider */}
+            <div className="w-px h-4 bg-slate-800 mx-1" />
+
+            {/* Theme Toggle */}
+            <button
+              onClick={toggleTheme}
+              aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
+              className="p-1.5 text-slate-400 hover:text-amber-300 hover:bg-slate-800/80 rounded-lg transition-colors"
+              title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+            >
+              {isDark ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-slate-300" />}
+            </button>
+          </div>
+
+          {/* Standalone Executive Primary CTA Button */}
           <button
             onClick={() => {
               if (typeof window !== "undefined") {
@@ -459,17 +477,19 @@ export function Navbar() {
                 );
               }
             }}
-            className="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-xs sm:text-sm font-bold rounded-xl bg-gradient-to-r from-electric-600 via-cyan to-teal-400 hover:from-electric-500 hover:to-teal-300 text-slate-950 shadow-md shadow-cyan/25 hover:shadow-cyan/40 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
+            className="relative group overflow-hidden px-4 py-2 rounded-xl bg-gradient-to-r from-cyan via-teal-400 to-blue-500 text-slate-950 font-bold text-xs sm:text-sm tracking-wide shadow-lg shadow-cyan/20 hover:shadow-cyan/40 hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center gap-2 cursor-pointer"
           >
-            <Sparkles className="w-3.5 h-3.5 fill-slate-950" />
-            <span>Let's Talk</span>
+            <span className="absolute inset-0 w-full h-full bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+            <Sparkles className="w-3.5 h-3.5 fill-slate-950 shrink-0" />
+            <span className="font-semibold">Let's Talk</span>
+            <ArrowRight className="w-3.5 h-3.5 text-slate-950 shrink-0 group-hover:translate-x-0.5 transition-transform" />
           </button>
 
           {/* Mobile hamburger menu button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-            className="lg:hidden p-2 text-slate-400 hover:text-slate-100 hover:bg-slate-800/50 rounded-lg transition-colors"
+            className="lg:hidden p-2 text-slate-300 hover:text-slate-100 hover:bg-slate-800/50 rounded-lg transition-colors"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -483,7 +503,7 @@ export function Navbar() {
           <div className="space-y-6">
             {/* Group 1: Primary Services & Works */}
             <div>
-              <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 font-semibold block mb-2">
+              <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-semibold block mb-2">
                 Core Offerings
               </span>
               <div className="grid grid-cols-1 gap-1">
@@ -518,7 +538,7 @@ export function Navbar() {
 
             {/* Group 2: Architecture Deep Dives */}
             <div className="pt-4 border-t border-slate-800/80">
-              <span className="text-[10px] font-mono uppercase tracking-wider text-slate-500 font-semibold block mb-2">
+              <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-semibold block mb-2">
                 Technical Architecture
               </span>
               <div className="grid grid-cols-1 gap-1.5">

@@ -21,7 +21,7 @@ export function CredentialsSection() {
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-100">
             Education, Focus &amp; Practical Training
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-slate-400">
+          <p className="mt-3 text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
             Strict separation between active ongoing studies and previously certified milestones.
           </p>
         </div>
@@ -60,8 +60,8 @@ export function CredentialsSection() {
                 </div>
 
                 <div className="mt-4 pt-4 border-t border-slate-800/80">
-                  <p className="text-xs text-slate-300 font-mono">
-                    <span className="text-slate-500">Core Focus: </span>
+                  <p className="text-xs text-slate-200 font-mono">
+                    <span className="text-slate-400 font-semibold">Core Focus: </span>
                     {item.focusArea}
                   </p>
                   <div className="mt-3 flex items-center gap-1.5 text-xs text-emerald-400">
@@ -95,7 +95,7 @@ export function CredentialsSection() {
                         {item.badge}
                       </span>
                       <h4 className="text-lg font-bold text-slate-100">{item.title}</h4>
-                      <p className="text-sm font-medium text-slate-300 mt-1">{item.institution}</p>
+                      <p className="text-sm font-medium text-slate-200 mt-1">{item.institution}</p>
                     </div>
                     <div className="w-10 h-10 rounded-xl bg-slate-900 border border-electric-500/30 flex items-center justify-center shrink-0">
                       <ShieldCheck className="w-5 h-5 text-electric-400" />
@@ -103,7 +103,7 @@ export function CredentialsSection() {
                   </div>
 
                   <div className="mt-4 pt-4 border-t border-slate-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                    <p className="text-xs text-slate-400 font-mono">
+                    <p className="text-xs text-slate-300 font-mono">
                       {item.focusArea}
                     </p>
                     {item.credentialDoc && (

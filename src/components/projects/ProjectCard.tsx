@@ -90,7 +90,7 @@ export function ProjectCard({ project, featured = false }: ProjectCardProps) {
             </h3>
           </Link>
 
-          <p className="mt-2 text-xs sm:text-sm text-slate-300/90 leading-relaxed line-clamp-3">
+          <p className="mt-2 text-xs sm:text-sm text-slate-200 leading-relaxed font-normal line-clamp-3">
             {project.shortDescription}
           </p>
 
@@ -99,7 +99,7 @@ export function ProjectCard({ project, featured = false }: ProjectCardProps) {
             {project.tags.slice(0, 4).map((tag) => (
               <span
                 key={tag}
-                className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-900 text-slate-400 border border-slate-800"
+                className="text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-slate-900/90 text-slate-200 border border-slate-700/80 font-medium"
               >
                 {tag}
               </span>

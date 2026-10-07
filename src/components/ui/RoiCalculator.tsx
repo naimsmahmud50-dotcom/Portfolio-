@@ -59,7 +59,7 @@ export function RoiCalculator() {
               <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-100 tracking-tight">
                 Calculate Your Automation &amp; Engineering ROI
               </h3>
-              <p className="mt-2 text-xs sm:text-sm text-slate-400 leading-relaxed">
+              <p className="mt-2 text-xs sm:text-sm text-slate-200 leading-relaxed font-normal">
                 Estimate how much operational capital and team bandwidth Mahmud's custom web systems and workflow automations recover for your company every year.
               </p>
             </div>
@@ -67,7 +67,7 @@ export function RoiCalculator() {
             {/* Slider 1: Weekly Hours */}
             <div className="p-4 sm:p-5 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-3">
               <div className="flex items-center justify-between">
-                <label className="text-xs font-mono text-slate-300 flex items-center gap-2">
+                <label className="text-xs font-mono text-slate-200 flex items-center gap-2 font-medium">
                   <Clock className="w-3.5 h-3.5 text-cyan" />
                   <span>Weekly Manual Operational Hours</span>
                 </label>
@@ -84,7 +84,7 @@ export function RoiCalculator() {
                 onChange={(e) => setHoursPerWeek(Number(e.target.value))}
                 className="w-full accent-cyan h-2 bg-slate-800 rounded-lg cursor-pointer"
               />
-              <div className="flex justify-between text-[10px] font-mono text-slate-500">
+              <div className="flex justify-between text-[10px] font-mono text-slate-400 font-medium">
                 <span>5 hrs (Small Team)</span>
                 <span>40 hrs (Full-time)</span>
                 <span>80 hrs (Multi-dept)</span>
@@ -94,7 +94,7 @@ export function RoiCalculator() {
             {/* Slider 2: Hourly Rate */}
             <div className="p-4 sm:p-5 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-3">
               <div className="flex items-center justify-between">
-                <label className="text-xs font-mono text-slate-300 flex items-center gap-2">
+                <label className="text-xs font-mono text-slate-200 flex items-center gap-2 font-medium">
                   <DollarSign className="w-3.5 h-3.5 text-emerald-400" />
                   <span>Average Staff Cost per Hour</span>
                 </label>
@@ -111,7 +111,7 @@ export function RoiCalculator() {
                 onChange={(e) => setHourlyRate(Number(e.target.value))}
                 className="w-full accent-emerald-400 h-2 bg-slate-800 rounded-lg cursor-pointer"
               />
-              <div className="flex justify-between text-[10px] font-mono text-slate-500">
+              <div className="flex justify-between text-[10px] font-mono text-slate-400 font-medium">
                 <span>$20/hr (Junior)</span>
                 <span>$60/hr (Specialist)</span>
                 <span>$120/hr (Senior / Agency)</span>
@@ -124,16 +124,16 @@ export function RoiCalculator() {
           <div className="lg:col-span-6 flex flex-col justify-between p-6 sm:p-8 rounded-3xl bg-slate-900/95 border border-cyan-500/40 shadow-xl space-y-6">
             
             <div>
-              <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400 font-semibold block mb-1">
+              <span className="text-[11px] font-mono uppercase tracking-wider text-slate-300 font-semibold block mb-1">
                 Projected Annual Business Value
               </span>
               <div className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan via-emerald-300 to-teal-200 font-mono tracking-tight">
                 {formattedSavings}
               </div>
-              <p className="text-xs text-slate-400 mt-2 flex items-center gap-1.5">
+              <p className="text-xs text-slate-300 mt-2 flex items-center gap-1.5">
                 <TrendingUp className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                 <span>
-                  Recapturing approximately <strong className="text-slate-200 font-mono">{hoursRecoveredPerYear.toLocaleString()} hours</strong> of productive team bandwidth annually.
+                  Recapturing approximately <strong className="text-slate-100 font-mono">{hoursRecoveredPerYear.toLocaleString()} hours</strong> of productive team bandwidth annually.
                 </span>
               </p>
             </div>
@@ -145,7 +145,7 @@ export function RoiCalculator() {
                   <Zap className="w-3.5 h-3.5 text-cyan" />
                   <span>10x Speed</span>
                 </div>
-                <p className="text-[11px] text-slate-400 leading-normal">
+                <p className="text-xs text-slate-300 leading-normal">
                   Seconds-level agent turnaround vs manual multi-hour processing lag.
                 </p>
               </div>
@@ -155,7 +155,7 @@ export function RoiCalculator() {
                   <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
                   <span>99.8% Accuracy</span>
                 </div>
-                <p className="text-[11px] text-slate-400 leading-normal">
+                <p className="text-xs text-slate-300 leading-normal">
                   Eliminating manual entry errors via deterministic schema validations.
                 </p>
               </div>

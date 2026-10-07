@@ -160,7 +160,7 @@ export function DiscoveryModal({
                   FREE / ZERO-RISK
                 </span>
               </h3>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-slate-300 font-medium">
                 {selectedSprint ? `Discussing: ${selectedSprint}` : "Immediate direct access to Mahmud Hasan"}
               </p>
             </div>
@@ -168,7 +168,7 @@ export function DiscoveryModal({
 
           <button
             onClick={handleClose}
-            className="p-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition-colors"
+            className="p-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors"
             title="Close (Esc)"
           >
             <X className="w-5 h-5" />
@@ -182,7 +182,7 @@ export function DiscoveryModal({
             className={`flex items-center gap-2 px-4 py-2.5 rounded-t-xl text-xs font-semibold transition-all border-b-2 ${
               activeTab === "whatsapp"
                 ? "bg-slate-900 text-emerald-400 border-emerald-400 shadow-sm"
-                : "text-slate-400 hover:text-slate-200 border-transparent"
+                : "text-slate-300 hover:text-white border-transparent"
             }`}
           >
             <MessageSquare className="w-3.5 h-3.5" />
@@ -195,7 +195,7 @@ export function DiscoveryModal({
             className={`flex items-center gap-2 px-4 py-2.5 rounded-t-xl text-xs font-semibold transition-all border-b-2 ${
               activeTab === "calendar"
                 ? "bg-slate-900 text-cyan border-cyan shadow-sm"
-                : "text-slate-400 hover:text-slate-200 border-transparent"
+                : "text-slate-300 hover:text-white border-transparent"
             }`}
           >
             <Calendar className="w-3.5 h-3.5" />
@@ -207,7 +207,7 @@ export function DiscoveryModal({
             className={`flex items-center gap-2 px-4 py-2.5 rounded-t-xl text-xs font-semibold transition-all border-b-2 ${
               activeTab === "email"
                 ? "bg-slate-900 text-electric-400 border-electric-400 shadow-sm"
-                : "text-slate-400 hover:text-slate-200 border-transparent"
+                : "text-slate-300 hover:text-white border-transparent"
             }`}
           >
             <Mail className="w-3.5 h-3.5" />
@@ -225,14 +225,14 @@ export function DiscoveryModal({
                 <Clock className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
                 <div className="text-xs">
                   <p className="font-semibold text-emerald-300">Fastest Executive Route (&lt; 30 Min Response)</p>
-                  <p className="text-slate-300 mt-1 leading-relaxed">
+                  <p className="text-slate-200 mt-1 leading-relaxed">
                     Skip email queues and communicate directly with Mahmud on encrypted WhatsApp. A pre-drafted project message will automatically be queued for you.
                   </p>
                 </div>
               </div>
 
               <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800 text-xs font-mono text-slate-300">
-                <span className="text-slate-500 block mb-1 font-sans text-[11px]">Pre-Drafted Message Preview:</span>
+                <span className="text-slate-400 block mb-1 font-sans text-xs font-semibold">Pre-Drafted Message Preview:</span>
                 <span className="text-cyan">
                   "{decodeURIComponent(whatsappMessage)}"
                 </span>
@@ -255,42 +255,42 @@ export function DiscoveryModal({
           {/* Tab 2: Calendar / Quick Time Slot Request */}
           {activeTab === "calendar" && (
             <form onSubmit={handleQuickSubmit} className="space-y-4 animate-in fade-in duration-150">
-              <p className="text-xs text-slate-300 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-normal">
                 Leave your coordinates and Mahmud will coordinate a 15-minute video call slot (Google Meet / Zoom) matching your timezone.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-mono text-slate-400 mb-1">Your Name / Title</label>
+                  <label className="block text-xs font-mono text-slate-300 mb-1 font-semibold">Your Name / Title</label>
                   <input
                     type="text"
                     value={clientName}
                     onChange={(e) => setClientName(e.target.value)}
                     placeholder="e.g. Alex Morgan, CTO"
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-100 placeholder:text-slate-600 focus:outline-none focus:border-cyan"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700/80 text-xs text-slate-100 placeholder:text-slate-400 focus:outline-none focus:border-cyan"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-mono text-slate-400 mb-1">Work Email (Required)</label>
+                  <label className="block text-xs font-mono text-slate-300 mb-1 font-semibold">Work Email (Required)</label>
                   <input
                     type="email"
                     required
                     value={clientEmail}
                     onChange={(e) => setClientEmail(e.target.value)}
                     placeholder="alex@company.com"
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-100 placeholder:text-slate-600 focus:outline-none focus:border-cyan"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700/80 text-xs text-slate-100 placeholder:text-slate-400 focus:outline-none focus:border-cyan"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-mono text-slate-400 mb-1">Project Objective / Preferred Time</label>
+                <label className="block text-xs font-mono text-slate-300 mb-1 font-semibold">Project Objective / Preferred Time</label>
                 <textarea
                   rows={3}
                   value={clientNote}
                   onChange={(e) => setClientNote(e.target.value)}
                   placeholder={`Brief context (e.g. Need 2-week MVP for invoice automation / Free weekdays 2-4 PM EST)`}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-100 placeholder:text-slate-600 focus:outline-none focus:border-cyan resize-none"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700/80 text-xs text-slate-100 placeholder:text-slate-400 focus:outline-none focus:border-cyan resize-none"
                 />
               </div>
 
@@ -313,7 +313,7 @@ export function DiscoveryModal({
                 <Mail className="w-5 h-5 text-electric-400 shrink-0 mt-0.5" />
                 <div className="text-xs">
                   <p className="font-semibold text-electric-300">Executive Mailbox</p>
-                  <p className="text-slate-300 mt-1 leading-relaxed">
+                  <p className="text-slate-200 mt-1 leading-relaxed">
                     Direct dispatch to <span className="text-cyan font-mono">{profileData.contacts.primaryEmail}</span>. Monitored continuously with guaranteed response within 4 hours.
                   </p>
                 </div>
@@ -331,12 +331,12 @@ export function DiscoveryModal({
           )}
 
           {/* Reassurance Footer */}
-          <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono text-slate-500">
+          <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono text-slate-400">
             <span className="flex items-center gap-1.5 text-emerald-400">
               <ShieldCheck className="w-3.5 h-3.5" />
               <span>Zero Spam • Direct Architect Communication</span>
             </span>
-            <span className="text-slate-400">SLA: &lt; 4h Reply</span>
+            <span className="text-slate-300 font-semibold">SLA: &lt; 4h Reply</span>
           </div>
 
         </div>

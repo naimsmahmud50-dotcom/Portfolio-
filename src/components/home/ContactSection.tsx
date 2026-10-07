@@ -101,7 +101,7 @@ export function ContactSection() {
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-100">
             Let's Build Something Intelligent
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-slate-400">
+          <p className="mt-3 text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
             Have a project, workflow automation requirement, or collaboration in mind? Reach out directly.
           </p>
         </div>
@@ -118,12 +118,12 @@ export function ContactSection() {
                   <div className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-700 flex items-center justify-center text-cyan">
                     <Mail className="w-5 h-5" />
                   </div>
-                  <span className="text-[10px] font-mono text-cyan bg-cyan/10 border border-cyan/30 px-2 py-0.5 rounded">
+                  <span className="text-[10px] font-mono text-cyan bg-cyan/10 border border-cyan/30 px-2 py-0.5 rounded font-bold">
                     PRIMARY EMAIL
                   </span>
                 </div>
-                <h4 className="text-sm font-semibold text-slate-200">Personal &amp; Business Inquiries</h4>
-                <p className="text-xs sm:text-sm font-mono text-slate-300 mt-1 select-all">
+                <h4 className="text-sm font-semibold text-slate-100">Personal &amp; Business Inquiries</h4>
+                <p className="text-xs sm:text-sm font-mono text-slate-200 mt-1 select-all">
                   {profileData.contacts.primaryEmail}
                 </p>
               </div>
@@ -137,7 +137,7 @@ export function ContactSection() {
                 </a>
                 <button
                   onClick={() => handleCopyEmail(profileData.contacts.primaryEmail)}
-                  className="p-1.5 text-slate-400 hover:text-slate-100 rounded-lg hover:bg-slate-800 transition-colors"
+                  className="p-1.5 text-slate-300 hover:text-white rounded-lg hover:bg-slate-800 transition-colors"
                   title="Copy email"
                 >
                   <Copy className="w-4 h-4" />
@@ -152,12 +152,12 @@ export function ContactSection() {
                   <div className="w-10 h-10 rounded-xl bg-slate-900 border border-slate-700 flex items-center justify-center text-electric-400">
                     <Mail className="w-5 h-5" />
                   </div>
-                  <span className="text-[10px] font-mono text-slate-400 bg-slate-800 px-2 py-0.5 rounded">
+                  <span className="text-[10px] font-mono text-slate-300 bg-slate-850 px-2 py-0.5 rounded font-semibold border border-slate-700">
                     SECONDARY EMAIL
                   </span>
                 </div>
-                <h4 className="text-sm font-semibold text-slate-200">Developer &amp; Tech Communications</h4>
-                <p className="text-xs sm:text-sm font-mono text-slate-300 mt-1 select-all">
+                <h4 className="text-sm font-semibold text-slate-100">Developer &amp; Tech Communications</h4>
+                <p className="text-xs sm:text-sm font-mono text-slate-200 mt-1 select-all">
                   {profileData.contacts.secondaryEmail}
                 </p>
               </div>
@@ -273,7 +273,7 @@ export function ContactSection() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-mono text-slate-400 mb-1.5">
+                      <label className="block text-xs font-mono text-slate-300 mb-1.5 font-semibold">
                         YOUR NAME *
                       </label>
                       <input
@@ -282,12 +282,12 @@ export function ContactSection() {
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder="e.g. Tariq Ahmed"
-                        className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 focus:border-cyan text-sm text-slate-200 placeholder:text-slate-600 outline-none transition-all"
+                        className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 focus:border-cyan text-sm text-slate-100 placeholder:text-slate-400 outline-none transition-all"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-mono text-slate-400 mb-1.5">
+                      <label className="block text-xs font-mono text-slate-300 mb-1.5 font-semibold">
                         EMAIL ADDRESS *
                       </label>
                       <input
@@ -296,14 +296,14 @@ export function ContactSection() {
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="e.g. tariq@example.com"
-                        className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 focus:border-cyan text-sm text-slate-200 placeholder:text-slate-600 outline-none transition-all"
+                        className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 focus:border-cyan text-sm text-slate-100 placeholder:text-slate-400 outline-none transition-all"
                       />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-mono text-slate-400 mb-1.5">
+                      <label className="block text-xs font-mono text-slate-300 mb-1.5 font-semibold">
                         SUBJECT *
                       </label>
                       <input
@@ -312,18 +312,18 @@ export function ContactSection() {
                         value={formData.subject}
                         onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                         placeholder="e.g. AI Workflow Integration"
-                        className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 focus:border-cyan text-sm text-slate-200 placeholder:text-slate-600 outline-none transition-all"
+                        className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 focus:border-cyan text-sm text-slate-100 placeholder:text-slate-400 outline-none transition-all"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-mono text-slate-400 mb-1.5">
+                      <label className="block text-xs font-mono text-slate-300 mb-1.5 font-semibold">
                         PROJECT / SERVICE TYPE
                       </label>
                       <select
                         value={formData.serviceType}
                         onChange={(e) => setFormData({ ...formData, serviceType: e.target.value })}
-                        className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 focus:border-cyan text-sm text-slate-200 outline-none transition-all"
+                        className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 focus:border-cyan text-sm text-slate-100 outline-none transition-all"
                       >
                         <option value="AI Automation">AI Automation</option>
                         <option value="AI Agent Development">AI Agent Development</option>
@@ -338,7 +338,7 @@ export function ContactSection() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono text-slate-400 mb-1.5">
+                    <label className="block text-xs font-mono text-slate-300 mb-1.5 font-semibold">
                       MESSAGE *
                     </label>
                     <textarea
@@ -347,7 +347,7 @@ export function ContactSection() {
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder="Describe your project goals, technical expectations, or timelines..."
-                      className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 focus:border-cyan text-sm text-slate-200 placeholder:text-slate-600 outline-none transition-all resize-none"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 focus:border-cyan text-sm text-slate-100 placeholder:text-slate-400 outline-none transition-all resize-none"
                     />
                   </div>
 

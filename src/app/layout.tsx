@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "@/styles/globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { ToastProvider } from "@/components/providers/ToastProvider";
@@ -7,6 +8,20 @@ import { Footer } from "@/components/layout/Footer";
 import { InteractiveBackground } from "@/components/ui/InteractiveBackground";
 import { CommandPalette } from "@/components/ui/CommandPalette";
 import { DiscoveryModal } from "@/components/ui/DiscoveryModal";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700", "800"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://mahmudhasan.dev"),
@@ -58,7 +73,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang="en" className={`dark ${inter.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
