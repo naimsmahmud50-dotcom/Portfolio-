@@ -81,16 +81,16 @@ const sitemapLinks = [
   { name: "Contact Dialogue", href: "#contact" },
 ];
 
-const allSectionIds = [
+const domSectionOrder = [
   "hero",
-  "services",
-  "projects",
-  "skills",
-  "credentials",
-  "pipeline",
-  "security",
-  "engagement",
   "about",
+  "credentials",
+  "skills",
+  "services",
+  "engagement",
+  "pipeline",
+  "projects",
+  "security",
   "contact",
 ];
 
@@ -134,7 +134,7 @@ export function Navbar() {
   useEffect(() => {
     if (typeof window !== "undefined" && window.location.hash) {
       const initialHash = window.location.hash.replace("#", "");
-      if (allSectionIds.includes(initialHash)) {
+      if (domSectionOrder.includes(initialHash)) {
         setActiveSection(initialHash);
         activeSectionRef.current = initialHash;
       }
@@ -149,32 +149,51 @@ export function Navbar() {
       const clientHeight = window.innerHeight;
       const currentScrollY = window.scrollY;
 
-      // Bottom of page detection -> activate contact
+      // 1. Bottom of page detection -> activate contact
       if (currentScrollY + clientHeight >= scrollHeight - 70) {
         syncActiveSection("contact");
         return;
       }
 
-      // Top of page detection -> activate hero
+      // 2. Top of page detection -> activate hero
       if (currentScrollY < 120) {
         syncActiveSection("hero");
         return;
       }
 
-      // Reverse scan sections based on viewport position
-      const navThreshold = 180;
+      // 3. Dual-boundary detection in true DOM sequence:
+      // The active section is the one currently crossing the 140px header clearance
+      const navThreshold = 140;
       let detectedSection = "hero";
+      let matched = false;
 
-      for (let i = allSectionIds.length - 1; i >= 0; i--) {
-        const id = allSectionIds[i];
+      for (const id of domSectionOrder) {
         const element = document.getElementById(id);
         if (element) {
           const rect = element.getBoundingClientRect();
-          if (rect.top <= navThreshold) {
+          if (rect.top <= navThreshold && rect.bottom > navThreshold) {
             detectedSection = id;
+            matched = true;
             break;
           }
         }
+      }
+
+      // Fallback: If in small gaps between sections, find the closest section above threshold
+      if (!matched && currentScrollY >= 120) {
+        let bestId = "hero";
+        let bestTop = -Infinity;
+        for (const id of domSectionOrder) {
+          const element = document.getElementById(id);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            if (rect.top <= navThreshold && rect.top > bestTop) {
+              bestTop = rect.top;
+              bestId = id;
+            }
+          }
+        }
+        detectedSection = bestId;
       }
 
       syncActiveSection(detectedSection);
@@ -197,11 +216,20 @@ export function Navbar() {
       }
     }
 
+    // Immediately unblock manual scroll calculation when user scrolls via wheel or touch
+    const handleUserScrollIntent = () => {
+      isManualScrollRef.current = false;
+    };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("wheel", handleUserScrollIntent, { passive: true });
+    window.addEventListener("touchmove", handleUserScrollIntent, { passive: true });
     handleScroll();
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("wheel", handleUserScrollIntent);
+      window.removeEventListener("touchmove", handleUserScrollIntent);
       if (scrollTimeoutRef.current) {
         clearTimeout(scrollTimeoutRef.current);
       }
