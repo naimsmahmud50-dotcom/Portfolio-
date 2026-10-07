@@ -14,6 +14,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { useToast } from "../providers/ToastProvider";
+import { contactSchema } from "@/utils/contact-schema";
 
 export function ContactSection() {
   const { toast } = useToast();
@@ -48,14 +49,11 @@ export function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Honeypot check for bots
-    if (formData.honeypot) {
-      toast("Spam bot detected. Submission ignored.", "error");
-      return;
-    }
-
-    if (!formData.name || !formData.email || !formData.message) {
-      toast("Please fill in all required fields.", "error");
+    // Client-side schema validation using Zod
+    const validation = contactSchema.safeParse(formData);
+    if (!validation.success) {
+      const firstIssue = validation.error.issues[0];
+      toast(firstIssue ? firstIssue.message : "Please check your form entries.", "error");
       return;
     }
 
@@ -68,8 +66,15 @@ export function ContactSection() {
         body: JSON.stringify(formData),
       });
 
+      const responseData = await res.json().catch(() => ({}));
+
+      if (res.status === 429) {
+        toast("Rate limit reached. Please wait a few minutes before submitting another message.", "error");
+        return;
+      }
+
       if (!res.ok) {
-        throw new Error("Failed to send message");
+        throw new Error(responseData.error || "Failed to send message");
       }
 
       setSubmitted(true);
