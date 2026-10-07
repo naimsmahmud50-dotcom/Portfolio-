@@ -11,107 +11,127 @@ import {
   Moon,
   Terminal,
   Search,
-  ChevronDown,
-  Layers,
   Workflow,
   ShieldCheck,
   GraduationCap,
   Sparkles,
   ArrowRight,
+  LayoutGrid,
+  Zap,
+  FileText,
+  Layers,
 } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "../ui/SocialIcons";
 
-// Curated primary corporate links (No more 10-link horizontal sprawl)
+// Curated primary frontline links - directly visible in the front navbar
 const primaryNavLinks = [
   { name: "Services", href: "#services" },
   { name: "Projects", href: "#projects" },
-  { name: "Sprints", href: "#engagement" },
+  { name: "Skills", href: "#skills" },
+  { name: "Credentials", href: "#credentials" },
+  { name: "About", href: "#about" },
+  { name: "Contact", href: "#contact" },
 ];
 
-const architectureDropdownLinks = [
-  {
-    name: "Technical Skills",
-    href: "#skills",
-    description: "AI, Full-Stack, Flutter & Security stack",
-    icon: Layers,
-    color: "text-purple-400",
-  },
+// Specialized deep-dive engineering modules housed inside the executive right drawer
+const deepDiveModules = [
   {
     name: "8-Stage Pipeline",
     href: "#pipeline",
-    description: "End-to-end autonomous engineering loop",
+    badge: "Autonomous Loop",
+    description: "Spec-driven autonomous engineering workflow from spec to deployment",
     icon: Workflow,
     color: "text-cyan",
+    border: "group-hover:border-cyan/40",
+    bg: "bg-cyan/10 border-cyan/30",
   },
   {
     name: "Defensive Security",
     href: "#security",
-    description: "Zero-trust hardening & threat isolation",
+    badge: "Zero-Trust",
+    description: "Zero-trust hardening, DDoS mitigation & threat isolation protocols",
     icon: ShieldCheck,
     color: "text-emerald-400",
+    border: "group-hover:border-emerald-500/40",
+    bg: "bg-emerald-500/10 border-emerald-500/30",
   },
   {
-    name: "Credentials & Research",
-    href: "#credentials",
-    description: "Applied learning & certified training",
-    icon: GraduationCap,
+    name: "Sprint Engagements",
+    href: "#engagement",
+    badge: "High Velocity",
+    description: "Fixed-scope 2-3 week high-velocity delivery sprints with strict SLAs",
+    icon: Zap,
     color: "text-amber-400",
+    border: "group-hover:border-amber-500/40",
+    bg: "bg-amber-500/10 border-amber-500/30",
   },
+];
+
+// Complete sitemap links for quick jump inside the systems drawer
+const sitemapLinks = [
+  { name: "Home / Hero", href: "#hero" },
+  { name: "Services", href: "#services" },
+  { name: "Projects", href: "#projects" },
+  { name: "Skills Matrix", href: "#skills" },
+  { name: "Credentials & Research", href: "#credentials" },
+  { name: "8-Stage Pipeline", href: "#pipeline" },
+  { name: "Defensive Security", href: "#security" },
+  { name: "Sprint Engagements", href: "#engagement" },
+  { name: "About Mahmud", href: "#about" },
+  { name: "Contact Dialogue", href: "#contact" },
 ];
 
 const allSectionIds = [
   "hero",
   "services",
   "projects",
-  "engagement",
   "skills",
+  "credentials",
   "pipeline",
   "security",
-  "credentials",
+  "engagement",
   "about",
   "contact",
 ];
-
-const architectureIds = ["skills", "pipeline", "security", "credentials"];
 
 export function Navbar() {
   const { theme, setTheme, isDark } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [systemsDrawerOpen, setSystemsDrawerOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("hero");
-  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const activeSectionRef = useRef<string>("hero");
   const isManualScrollRef = useRef<boolean>(false);
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const dropdownRef = useRef<HTMLDivElement | null>(null);
 
-  // Close dropdown on click outside or escape
+  // Close drawers on Escape key
   useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setDropdownOpen(false);
-      }
-    };
-
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        setDropdownOpen(false);
+        setSystemsDrawerOpen(false);
         setMobileMenuOpen(false);
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
     window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      window.removeEventListener("keydown", handleKeyDown);
-    };
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
+  // Lock body scroll when any drawer is active
   useEffect(() => {
-    // If page was loaded with an existing anchor hash, sync initial active state
+    if (systemsDrawerOpen || mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [systemsDrawerOpen, mobileMenuOpen]);
+
+  // Sync scroll position with active section and URL hash
+  useEffect(() => {
     if (typeof window !== "undefined" && window.location.hash) {
       const initialHash = window.location.hash.replace("#", "");
       if (allSectionIds.includes(initialHash)) {
@@ -123,7 +143,6 @@ export function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
-      // If user recently clicked a nav item, pause automatic scrollspy until animation settles
       if (isManualScrollRef.current) return;
 
       const scrollHeight = document.documentElement.scrollHeight;
@@ -142,7 +161,7 @@ export function Navbar() {
         return;
       }
 
-      // Reverse scan sections from bottom to top based on viewport position
+      // Reverse scan sections based on viewport position
       const navThreshold = 180;
       let detectedSection = "hero";
 
@@ -166,7 +185,6 @@ export function Navbar() {
         activeSectionRef.current = sectionId;
         setActiveSection(sectionId);
 
-        // Auto-update browser URL hash dynamically without polluting history stack
         const newHash = sectionId === "hero" ? "" : `#${sectionId}`;
         const currentHash = window.location.hash;
 
@@ -192,7 +210,7 @@ export function Navbar() {
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    setDropdownOpen(false);
+    setSystemsDrawerOpen(false);
     setMobileMenuOpen(false);
 
     const targetId = href.replace("#", "");
@@ -228,8 +246,6 @@ export function Navbar() {
   const toggleTheme = () => {
     setTheme(isDark ? "light" : "dark");
   };
-
-  const isArchitectureActive = architectureIds.includes(activeSection);
 
   return (
     <header
@@ -270,146 +286,36 @@ export function Navbar() {
           </div>
         </a>
 
-        {/* Desktop Navigation: Curated 5 Core Pillars + Architecture Dropdown (14px Legibility) */}
+        {/* Desktop Navigation: 6 Frontline Pillars directly visible in the front bar */}
         <nav
-          className="hidden lg:flex items-center gap-1 xl:gap-2 px-3 py-1.5 rounded-2xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-md shadow-inner"
+          className="hidden lg:flex items-center gap-1 xl:gap-1.5 px-3 py-1.5 rounded-2xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-md shadow-inner"
           aria-label="Main Navigation"
         >
-          {/* Services */}
-          <a
-            href="#services"
-            onClick={(e) => handleNavClick(e, "#services")}
-            className={`text-sm font-medium px-3.5 py-1.5 rounded-xl transition-all duration-200 ${
-              activeSection === "services"
-                ? "text-cyan bg-cyan/15 border border-cyan/40 shadow-sm shadow-cyan/20 font-semibold"
-                : "text-slate-300 hover:text-white hover:bg-slate-800/60"
-            }`}
-          >
-            Services
-          </a>
+          {primaryNavLinks.map((item) => {
+            const sectionId = item.href.replace("#", "");
+            const isActive = activeSection === sectionId;
 
-          {/* Projects */}
-          <a
-            href="#projects"
-            onClick={(e) => handleNavClick(e, "#projects")}
-            className={`text-sm font-medium px-3.5 py-1.5 rounded-xl transition-all duration-200 ${
-              activeSection === "projects"
-                ? "text-cyan bg-cyan/15 border border-cyan/40 shadow-sm shadow-cyan/20 font-semibold"
-                : "text-slate-300 hover:text-white hover:bg-slate-800/60"
-            }`}
-          >
-            Projects
-          </a>
-
-          {/* Sprints */}
-          <a
-            href="#engagement"
-            onClick={(e) => handleNavClick(e, "#engagement")}
-            className={`text-sm font-medium px-3.5 py-1.5 rounded-xl transition-all duration-200 ${
-              activeSection === "engagement"
-                ? "text-cyan bg-cyan/15 border border-cyan/40 shadow-sm shadow-cyan/20 font-semibold"
-                : "text-slate-300 hover:text-white hover:bg-slate-800/60"
-            }`}
-          >
-            Sprints
-          </a>
-
-          {/* Architecture Dropdown Popover (Deep Dive Modules) */}
-          <div className="relative" ref={dropdownRef}>
-            <button
-              onClick={() => setDropdownOpen(!dropdownOpen)}
-              onMouseEnter={() => setDropdownOpen(true)}
-              className={`inline-flex items-center gap-1.5 text-sm font-medium px-3.5 py-1.5 rounded-xl transition-all duration-200 ${
-                isArchitectureActive || dropdownOpen
-                  ? "text-cyan bg-cyan/15 border border-cyan/40 shadow-sm shadow-cyan/20 font-semibold"
-                  : "text-slate-300 hover:text-white hover:bg-slate-800/60"
-              }`}
-              aria-expanded={dropdownOpen}
-            >
-              <span>Architecture</span>
-              <ChevronDown
-                className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                  dropdownOpen ? "rotate-180 text-cyan" : "text-slate-400"
+            return (
+              <a
+                key={item.name}
+                href={item.href}
+                onClick={(e) => handleNavClick(e, item.href)}
+                className={`text-sm font-medium px-3.5 py-1.5 rounded-xl transition-all duration-200 ${
+                  isActive
+                    ? "text-cyan bg-cyan/15 border border-cyan/40 shadow-sm shadow-cyan/20 font-semibold"
+                    : "text-slate-300 hover:text-white hover:bg-slate-800/60"
                 }`}
-              />
-            </button>
-
-            {dropdownOpen && (
-              <div
-                onMouseLeave={() => setDropdownOpen(false)}
-                className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 rounded-2xl bg-slate-950/95 border border-slate-800/90 shadow-2xl backdrop-blur-2xl p-2 z-50 animate-in fade-in zoom-in-95 duration-150"
               >
-                <div className="px-3 py-2 text-[10px] font-mono uppercase tracking-wider text-slate-400 font-semibold border-b border-slate-800/60">
-                  Engineering Systems &amp; Stack
-                </div>
-                <div className="mt-1 space-y-1">
-                  {architectureDropdownLinks.map((item) => {
-                    const Icon = item.icon;
-                    const isItemActive = activeSection === item.href.replace("#", "");
-
-                    return (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        onClick={(e) => handleNavClick(e, item.href)}
-                        className={`flex items-start gap-3 p-2.5 rounded-xl transition-all ${
-                          isItemActive
-                            ? "bg-cyan/15 border border-cyan/40 text-cyan"
-                            : "hover:bg-slate-900 text-slate-200 hover:text-white"
-                        }`}
-                      >
-                        <div className="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center shrink-0 mt-0.5">
-                          <Icon className={`w-4 h-4 ${item.color}`} />
-                        </div>
-                        <div>
-                          <div className="text-xs font-semibold leading-tight flex items-center gap-1.5">
-                            <span>{item.name}</span>
-                            {isItemActive && (
-                              <span className="w-1.5 h-1.5 rounded-full bg-cyan shadow-sm shadow-cyan" />
-                            )}
-                          </div>
-                          <p className="text-[11px] text-slate-300 mt-0.5 leading-normal">
-                            {item.description}
-                          </p>
-                        </div>
-                      </a>
-                    );
-                  })}
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* About */}
-          <a
-            href="#about"
-            onClick={(e) => handleNavClick(e, "#about")}
-            className={`text-sm font-medium px-3.5 py-1.5 rounded-xl transition-all duration-200 ${
-              activeSection === "about"
-                ? "text-cyan bg-cyan/15 border border-cyan/40 shadow-sm shadow-cyan/20 font-semibold"
-                : "text-slate-300 hover:text-white hover:bg-slate-800/60"
-            }`}
-          >
-            About
-          </a>
-
-          {/* Contact */}
-          <a
-            href="#contact"
-            onClick={(e) => handleNavClick(e, "#contact")}
-            className={`text-sm font-medium px-3.5 py-1.5 rounded-xl transition-all duration-200 ${
-              activeSection === "contact"
-                ? "text-cyan bg-cyan/15 border border-cyan/40 shadow-sm shadow-cyan/20 font-semibold"
-                : "text-slate-300 hover:text-white hover:bg-slate-800/60"
-            }`}
-          >
-            Contact
-          </a>
+                {item.name}
+              </a>
+            );
+          })}
         </nav>
 
         {/* Right Action Bar: Unified Executive Control Dock & Primary CTA */}
-        <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
-          {/* Executive Utility Dock: Unified frosted capsule (Search + Socials + Theme) */}
+        <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
+          
+          {/* Executive Utility Dock: Unified frosted capsule */}
           <div className="flex items-center bg-slate-900/80 border border-slate-800/90 rounded-2xl p-1 backdrop-blur-xl shadow-inner shadow-black/20">
             {/* Search trigger with ⌘K */}
             <button
@@ -419,7 +325,7 @@ export function Navbar() {
               title="Search portfolio & actions (Ctrl+K)"
             >
               <Search className="w-3.5 h-3.5 text-slate-400 group-hover:text-cyan transition-colors" />
-              <span className="hidden xl:inline text-xs font-sans text-slate-300 group-hover:text-slate-100">Search</span>
+              <span className="hidden 2xl:inline text-xs font-sans text-slate-300 group-hover:text-slate-100">Search</span>
               <kbd className="hidden sm:inline-flex items-center px-1.5 py-0.5 rounded bg-slate-800/90 text-[10px] text-slate-300 group-hover:text-cyan border border-slate-700/80 font-mono font-medium">
                 ⌘K
               </kbd>
@@ -464,6 +370,27 @@ export function Navbar() {
             >
               {isDark ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-slate-300" />}
             </button>
+
+            {/* Subtle vertical hairline divider */}
+            <div className="w-px h-4 bg-slate-800 mx-1" />
+
+            {/* Systems / Deep-Dive Modules Drawer Trigger Icon (Far Right Icon) */}
+            <button
+              onClick={() => setSystemsDrawerOpen(true)}
+              aria-label="Open systems and deep-dive modules drawer"
+              aria-expanded={systemsDrawerOpen}
+              title="All Modules: Pipeline, Security, Sprints & Sitemap"
+              className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl transition-all text-xs font-mono group cursor-pointer ${
+                systemsDrawerOpen
+                  ? "bg-cyan/20 text-cyan border border-cyan/40"
+                  : "text-slate-300 hover:text-cyan hover:bg-slate-800/80"
+              }`}
+            >
+              <LayoutGrid className="w-4 h-4 text-cyan group-hover:scale-110 transition-transform" />
+              <span className="hidden xl:inline text-xs font-sans text-slate-300 group-hover:text-slate-100 font-medium">
+                Modules
+              </span>
+            </button>
           </div>
 
           {/* Standalone Executive Primary CTA Button */}
@@ -489,31 +416,259 @@ export function Navbar() {
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-            className="lg:hidden p-2 text-slate-300 hover:text-slate-100 hover:bg-slate-800/50 rounded-lg transition-colors"
+            className="lg:hidden p-2 text-slate-300 hover:text-slate-100 hover:bg-slate-800/50 rounded-lg transition-colors cursor-pointer"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Drawer with Categorized Executive Groups */}
+      {/* =========================================================================
+          EXECUTIVE SYSTEMS SLIDE-OVER DRAWER (Desktop & Tablet Deep-Dive Navigator)
+          ========================================================================= */}
+      {systemsDrawerOpen && (
+        <div className="fixed inset-0 z-50">
+          {/* Backdrop blur overlay */}
+          <div
+            onClick={() => setSystemsDrawerOpen(false)}
+            className="fixed inset-0 bg-black/75 backdrop-blur-sm transition-opacity animate-in fade-in duration-200 cursor-pointer"
+            aria-hidden="true"
+          />
+
+          {/* Slide-over panel pinned to the right edge */}
+          <div className="fixed inset-y-0 right-0 max-w-full flex pl-8 sm:pl-10">
+            <div className="w-screen max-w-md bg-slate-950/95 border-l border-slate-800/90 shadow-2xl backdrop-blur-2xl p-6 flex flex-col justify-between overflow-y-auto animate-in slide-in-from-right duration-300">
+              
+              <div>
+                {/* Drawer Header */}
+                <div className="flex items-center justify-between pb-4 border-b border-slate-800/80">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-9 h-9 rounded-xl bg-cyan/15 border border-cyan/40 flex items-center justify-center text-cyan shadow-sm shadow-cyan/20">
+                      <LayoutGrid className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <h2 className="text-base font-bold text-slate-100">Executive Systems</h2>
+                      <p className="text-xs text-slate-300 font-mono">Specialized Architectures &amp; Modules</p>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => setSystemsDrawerOpen(false)}
+                    className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
+                    aria-label="Close systems drawer"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+
+                {/* Section 1: Deep-Dive Specialized Architecture Systems */}
+                <div className="mt-5">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-[11px] font-mono uppercase tracking-wider text-slate-300 font-semibold">
+                      Specialized Architecture Systems
+                    </span>
+                    <span className="text-[10px] font-mono text-cyan bg-cyan/10 px-2 py-0.5 rounded-full border border-cyan/30 font-medium">
+                      Deep Dive
+                    </span>
+                  </div>
+
+                  <div className="space-y-2.5">
+                    {deepDiveModules.map((item) => {
+                      const Icon = item.icon;
+                      const sectionId = item.href.replace("#", "");
+                      const isActive = activeSection === sectionId;
+
+                      return (
+                        <a
+                          key={item.name}
+                          href={item.href}
+                          onClick={(e) => handleNavClick(e, item.href)}
+                          className={`group block p-3.5 rounded-2xl border transition-all ${
+                            isActive
+                              ? "bg-slate-900 border-cyan/50 shadow-md shadow-cyan/10"
+                              : "bg-slate-900/60 border-slate-800/80 hover:bg-slate-900 hover:border-slate-700"
+                          }`}
+                        >
+                          <div className="flex items-start justify-between gap-3">
+                            <div className="flex items-start gap-3">
+                              <div className={`w-9 h-9 rounded-xl ${item.bg} border flex items-center justify-center shrink-0 mt-0.5`}>
+                                <Icon className={`w-4 h-4 ${item.color}`} />
+                              </div>
+                              <div>
+                                <div className="flex items-center gap-2">
+                                  <span className="text-sm font-semibold text-slate-100 group-hover:text-cyan transition-colors">
+                                    {item.name}
+                                  </span>
+                                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700 font-medium">
+                                    {item.badge}
+                                  </span>
+                                </div>
+                                <p className="text-xs text-slate-300 mt-1 leading-relaxed font-normal">
+                                  {item.description}
+                                </p>
+                              </div>
+                            </div>
+                            <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-cyan group-hover:translate-x-1 transition-all shrink-0 mt-1" />
+                          </div>
+                        </a>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Section 2: Executive Tools & Shortcuts */}
+                <div className="mt-6 pt-5 border-t border-slate-800/80">
+                  <span className="text-[11px] font-mono uppercase tracking-wider text-slate-300 font-semibold block mb-3">
+                    Executive Tools &amp; Actions
+                  </span>
+
+                  <div className="grid grid-cols-2 gap-2">
+                    <button
+                      onClick={() => {
+                        setSystemsDrawerOpen(false);
+                        window.dispatchEvent(new CustomEvent("open-resume-modal"));
+                      }}
+                      className="flex items-center gap-2.5 p-2.5 rounded-xl bg-slate-900/70 border border-slate-800 text-left hover:border-cyan/40 hover:bg-slate-900 transition-all group cursor-pointer"
+                    >
+                      <FileText className="w-4 h-4 text-amber-400 shrink-0" />
+                      <div>
+                        <div className="text-xs font-semibold text-slate-200 group-hover:text-cyan">
+                          Executive CV
+                        </div>
+                        <div className="text-[10px] text-slate-400">View &amp; PDF</div>
+                      </div>
+                    </button>
+
+                    <button
+                      onClick={() => {
+                        setSystemsDrawerOpen(false);
+                        window.dispatchEvent(
+                          new CustomEvent("open-discovery-modal", {
+                            detail: { sprint: "Executive Systems Call" },
+                          })
+                        );
+                      }}
+                      className="flex items-center gap-2.5 p-2.5 rounded-xl bg-slate-900/70 border border-slate-800 text-left hover:border-cyan/40 hover:bg-slate-900 transition-all group cursor-pointer"
+                    >
+                      <Sparkles className="w-4 h-4 text-cyan shrink-0" />
+                      <div>
+                        <div className="text-xs font-semibold text-slate-200 group-hover:text-cyan">
+                          Book Call
+                        </div>
+                        <div className="text-[10px] text-slate-400">15-min sprint</div>
+                      </div>
+                    </button>
+
+                    <button
+                      onClick={() => {
+                        setSystemsDrawerOpen(false);
+                        window.dispatchEvent(new CustomEvent("open-command-palette"));
+                      }}
+                      className="flex items-center gap-2.5 p-2.5 rounded-xl bg-slate-900/70 border border-slate-800 text-left hover:border-cyan/40 hover:bg-slate-900 transition-all group cursor-pointer"
+                    >
+                      <Search className="w-4 h-4 text-purple-400 shrink-0" />
+                      <div>
+                        <div className="text-xs font-semibold text-slate-200 group-hover:text-cyan">
+                          Command Bar
+                        </div>
+                        <div className="text-[10px] text-slate-400">Ctrl + K</div>
+                      </div>
+                    </button>
+
+                    <a
+                      href="#hero"
+                      onClick={(e) => handleNavClick(e, "#hero")}
+                      className="flex items-center gap-2.5 p-2.5 rounded-xl bg-slate-900/70 border border-slate-800 text-left hover:border-cyan/40 hover:bg-slate-900 transition-all group cursor-pointer"
+                    >
+                      <Terminal className="w-4 h-4 text-emerald-400 shrink-0" />
+                      <div>
+                        <div className="text-xs font-semibold text-slate-200 group-hover:text-cyan">
+                          Dev Terminal
+                        </div>
+                        <div className="text-[10px] text-slate-400">Interactive CLI</div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+
+                {/* Section 3: Full Portfolio Directory Sitemap */}
+                <div className="mt-6 pt-5 border-t border-slate-800/80">
+                  <span className="text-[11px] font-mono uppercase tracking-wider text-slate-300 font-semibold block mb-3">
+                    Full Portfolio Directory
+                  </span>
+
+                  <div className="grid grid-cols-2 gap-1.5">
+                    {sitemapLinks.map((item) => {
+                      const sectionId = item.href.replace("#", "");
+                      const isActive = activeSection === sectionId;
+
+                      return (
+                        <a
+                          key={item.name}
+                          href={item.href}
+                          onClick={(e) => handleNavClick(e, item.href)}
+                          className={`text-xs px-2.5 py-2 rounded-lg transition-colors flex items-center justify-between ${
+                            isActive
+                              ? "bg-cyan/15 text-cyan font-semibold border border-cyan/30"
+                              : "text-slate-300 hover:text-white hover:bg-slate-900 font-medium"
+                          }`}
+                        >
+                          <span>{item.name}</span>
+                          {isActive && (
+                            <span className="w-1.5 h-1.5 rounded-full bg-cyan shadow-sm shadow-cyan" />
+                          )}
+                        </a>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+
+              {/* Drawer Bottom Bar */}
+              <div className="pt-6 mt-6 border-t border-slate-800/80">
+                <div className="flex items-center justify-between text-xs text-slate-400">
+                  <span className="font-mono text-slate-300">{profileData.contacts.primaryEmail}</span>
+                  <div className="flex items-center gap-2">
+                    <a
+                      href={profileData.socials.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-1.5 text-slate-400 hover:text-white hover:bg-slate-800/60 rounded-lg transition-colors"
+                      title="GitHub Profile"
+                    >
+                      <GithubIcon className="w-4 h-4" />
+                    </a>
+                    <a
+                      href={profileData.socials.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-1.5 text-slate-400 hover:text-[#0A66C2] hover:bg-slate-800/60 rounded-lg transition-colors"
+                      title="LinkedIn Profile"
+                    >
+                      <LinkedinIcon className="w-4 h-4" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* =========================================================================
+          MOBILE COMPREHENSIVE DRAWER
+          ========================================================================= */}
       {mobileMenuOpen && (
         <div className="lg:hidden bg-slate-950/98 border-b border-slate-800 backdrop-blur-2xl px-6 py-6 animate-in slide-in-from-top-2 max-h-[85vh] overflow-y-auto">
-          
           <div className="space-y-6">
-            {/* Group 1: Primary Services & Works */}
+            
+            {/* Group 1: Frontline Core Offerings */}
             <div>
               <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-semibold block mb-2">
                 Core Offerings
               </span>
               <div className="grid grid-cols-1 gap-1">
-                {[
-                  { name: "Services", href: "#services" },
-                  { name: "Projects & Case Studies", href: "#projects" },
-                  { name: "Sprint Packages", href: "#engagement" },
-                  { name: "About Mahmud", href: "#about" },
-                  { name: "Contact Dialogue", href: "#contact" },
-                ].map((item) => {
+                {primaryNavLinks.map((item) => {
                   const sectionId = item.href.replace("#", "");
                   const isActive = activeSection === sectionId;
 
@@ -536,13 +691,13 @@ export function Navbar() {
               </div>
             </div>
 
-            {/* Group 2: Architecture Deep Dives */}
+            {/* Group 2: Specialized Engineering Architecture */}
             <div className="pt-4 border-t border-slate-800/80">
               <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 font-semibold block mb-2">
-                Technical Architecture
+                Specialized Systems &amp; Architecture
               </span>
               <div className="grid grid-cols-1 gap-1.5">
-                {architectureDropdownLinks.map((item) => {
+                {deepDiveModules.map((item) => {
                   const Icon = item.icon;
                   const sectionId = item.href.replace("#", "");
                   const isActive = activeSection === sectionId;
@@ -561,8 +716,8 @@ export function Navbar() {
                       <div className="flex items-center gap-3">
                         <Icon className={`w-4 h-4 ${item.color}`} />
                         <div>
-                          <div className="text-sm font-semibold">{item.name}</div>
-                          <div className="text-xs text-slate-400">{item.description}</div>
+                          <div className="text-sm font-semibold text-slate-100">{item.name}</div>
+                          <div className="text-xs text-slate-300 font-normal">{item.description}</div>
                         </div>
                       </div>
                       {isActive && <span className="w-1.5 h-1.5 rounded-full bg-cyan shadow-sm shadow-cyan" />}
@@ -572,7 +727,7 @@ export function Navbar() {
               </div>
             </div>
 
-            {/* Mobile Drawer Bottom Action */}
+            {/* Mobile Actions */}
             <div className="pt-4 border-t border-slate-800 flex flex-col gap-3">
               <button
                 onClick={() => {
@@ -585,7 +740,7 @@ export function Navbar() {
                     );
                   }
                 }}
-                className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-electric-600 via-cyan to-teal-400 text-slate-950 font-bold text-sm text-center shadow-lg shadow-cyan/20 flex items-center justify-center gap-2"
+                className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-electric-600 via-cyan to-teal-400 text-slate-950 font-bold text-sm text-center shadow-lg shadow-cyan/20 flex items-center justify-center gap-2 cursor-pointer"
               >
                 <Sparkles className="w-4 h-4 fill-slate-950" />
                 <span>Book 15-Min Discovery Call</span>
@@ -599,4 +754,3 @@ export function Navbar() {
     </header>
   );
 }
-
