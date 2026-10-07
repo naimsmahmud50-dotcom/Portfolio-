@@ -16,6 +16,8 @@ import {
   Workflow,
   X,
   Sparkles,
+  Calendar,
+  Calculator,
 } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./SocialIcons";
 import { profileData } from "@/data/profile";
@@ -139,6 +141,14 @@ export function CommandPalette() {
       action: () => navigateToHash("#services"),
     },
     {
+      id: "nav-engagement",
+      category: "Navigation",
+      title: "Corporate Engagement Models & Sprints",
+      subtitle: "2-Week MVP, Enterprise Build, Fractional Retainer",
+      icon: <Layers className="w-4 h-4 text-cyan" />,
+      action: () => navigateToHash("#engagement"),
+    },
+    {
       id: "nav-pipeline",
       category: "Navigation",
       title: "Intelligent Systems Pipeline",
@@ -185,6 +195,23 @@ export function CommandPalette() {
     })),
 
     // Quick Actions
+    {
+      id: "act-discovery",
+      category: "Actions",
+      title: "Book 15-Minute Strategy Discovery Call",
+      subtitle: "Instant WhatsApp VIP connection or calendar slot with Mahmud",
+      icon: <Calendar className="w-4 h-4 text-cyan" />,
+      action: () => {
+        setIsOpen(false);
+        if (typeof window !== "undefined") {
+          window.dispatchEvent(
+            new CustomEvent("open-discovery-modal", {
+              detail: { sprint: "15-Min Strategy Discovery" },
+            })
+          );
+        }
+      },
+    },
     {
       id: "act-resume",
       category: "Actions",

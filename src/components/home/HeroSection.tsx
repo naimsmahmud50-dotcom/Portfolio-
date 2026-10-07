@@ -12,6 +12,7 @@ import {
   CheckCircle,
   Copy,
   FileText,
+  Calendar,
 } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "../ui/SocialIcons";
 import { useToast } from "../providers/ToastProvider";
@@ -101,6 +102,22 @@ export function HeroSection() {
                 <span className="text-[10px] font-mono bg-emerald-500/20 text-emerald-300 px-1.5 py-0.5 rounded font-bold">
                   PDF
                 </span>
+              </button>
+
+              <button
+                onClick={() => {
+                  if (typeof window !== "undefined") {
+                    window.dispatchEvent(
+                      new CustomEvent("open-discovery-modal", {
+                        detail: { sprint: "15-Min Strategy Discovery" },
+                      })
+                    );
+                  }
+                }}
+                className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-slate-900/90 border border-cyan-500/40 hover:border-cyan text-cyan hover:text-white font-medium text-sm hover:bg-slate-800/80 transition-all shadow-md shadow-cyan/20"
+              >
+                <Calendar className="w-4 h-4 text-cyan" />
+                <span>Book 15-Min Call</span>
               </button>
 
               <Link

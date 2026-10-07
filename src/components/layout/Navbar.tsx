@@ -20,6 +20,7 @@ const navLinks = [
   { name: "Credentials", href: "#credentials" },
   { name: "Skills", href: "#skills" },
   { name: "Services", href: "#services" },
+  { name: "Sprints", href: "#engagement" },
   { name: "Pipeline", href: "#pipeline" },
   { name: "Projects", href: "#projects" },
   { name: "Security", href: "#security" },
@@ -254,13 +255,20 @@ export function Navbar() {
           </button>
 
           {/* Direct CTA */}
-          <a
-            href="#contact"
-            onClick={(e) => handleNavClick(e, "#contact")}
-            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-gradient-to-r from-electric-600 to-cyan text-white shadow-md shadow-electric-600/20 hover:opacity-95 hover:shadow-cyan/30 transition-all"
+          <button
+            onClick={() => {
+              if (typeof window !== "undefined") {
+                window.dispatchEvent(
+                  new CustomEvent("open-discovery-modal", {
+                    detail: { sprint: "Strategy Discovery Session" },
+                  })
+                );
+              }
+            }}
+            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-gradient-to-r from-electric-600 to-cyan text-white shadow-md shadow-electric-600/20 hover:opacity-95 hover:shadow-cyan/30 transition-all cursor-pointer"
           >
             <span>Let's Talk</span>
-          </a>
+          </button>
 
           {/* Mobile hamburger menu button */}
           <button

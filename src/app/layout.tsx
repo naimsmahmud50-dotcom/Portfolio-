@@ -6,6 +6,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { InteractiveBackground } from "@/components/ui/InteractiveBackground";
 import { CommandPalette } from "@/components/ui/CommandPalette";
+import { DiscoveryModal } from "@/components/ui/DiscoveryModal";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://mahmudhasan.dev"),
@@ -85,6 +86,7 @@ export default function RootLayout({
             <InteractiveBackground />
             <Navbar />
             <CommandPalette />
+            <DiscoveryModal />
             <div className="flex-1 relative z-10">{children}</div>
             <Footer />
           </ToastProvider>

@@ -11,7 +11,7 @@ interface TerminalLine {
   timestamp?: string;
 }
 
-const PRESET_COMMANDS = ["status", "run-agent", "skills", "resume", "contact", "clear"];
+const PRESET_COMMANDS = ["status", "run-agent", "sprints", "book", "resume", "clear"];
 
 export function HeroTerminal() {
   const [inputVal, setInputVal] = useState("");
@@ -184,13 +184,64 @@ export function HeroTerminal() {
       return;
     }
 
+    if (trimmed === "sprints") {
+      setLines((prev) => [
+        ...prev,
+        {
+          id: `out-${Date.now()}-1`,
+          type: "system",
+          text: "📦 CORPORATE ENGAGEMENT SPRINTS & SCOPES:",
+        },
+        {
+          id: `out-${Date.now()}-2`,
+          type: "output",
+          text: "  • [SPRINT 01] Rapid AI MVP & Prototype (2 Weeks Turnaround)",
+        },
+        {
+          id: `out-${Date.now()}-3`,
+          type: "output",
+          text: "  • [SPRINT 02] Full-Stack Enterprise Architecture (4-6 Weeks / Recommended)",
+        },
+        {
+          id: `out-${Date.now()}-4`,
+          type: "output",
+          text: "  • [SPRINT 03] Fractional Systems Architect Retainer (Monthly Retainer)",
+        },
+      ]);
+      return;
+    }
+
+    if (trimmed === "book" || trimmed === "hire" || trimmed === "discovery") {
+      if (typeof window !== "undefined") {
+        window.dispatchEvent(
+          new CustomEvent("open-discovery-modal", {
+            detail: { sprint: "Terminal VIP Discovery" },
+          })
+        );
+      }
+      setLines((prev) => [
+        ...prev,
+        {
+          id: `out-${Date.now()}-1`,
+          type: "system",
+          text: "📅 LAUNCHING 15-MINUTE STRATEGY DISCOVERY MODAL...",
+        },
+        {
+          id: `out-${Date.now()}-2`,
+          type: "output",
+          text: "  - Instant WhatsApp VIP dialogue and direct calendar booking loaded.",
+        },
+      ]);
+      return;
+    }
+
     if (trimmed === "help") {
       setLines((prev) => [
         ...prev,
         {
           id: `out-${Date.now()}-1`,
           type: "output",
-          text: "AVAILABLE COMMANDS: status, run-agent, skills, resume, contact, clear, help",
+          text: "AVAILABLE COMMANDS: status, run-agent, sprints, book, skills, resume, contact, clear, help",
         },
       ]);
       return;
