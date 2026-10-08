@@ -86,9 +86,15 @@ export function DiscoveryModal({
   if (!isOpen) return null;
 
   const whatsappMessage = encodeURIComponent(
-    selectedSprint
-      ? `Hi Mahmud, I reviewed your enterprise portfolio and would like to discuss commissioning: "${selectedSprint}".`
-      : `Hi Mahmud, I reviewed your portfolio and would like to discuss a Web, Mobile, Bug Fix or Automation project with you.`
+    [
+      selectedSprint
+        ? `Hi Mahmud, I reviewed your enterprise portfolio and would like to discuss commissioning: "${selectedSprint}".`
+        : `Hi Mahmud, I reviewed your portfolio and would like to discuss a Web, Mobile, Bug Fix or Automation project with you.`,
+      clientName.trim() ? `From: ${clientName.trim()}` : "",
+      clientNote.trim() ? `Project Context: ${clientNote.trim()}` : "",
+    ]
+      .filter(Boolean)
+      .join("\n\n")
   );
 
   const whatsappUrl = `https://wa.me/${profileData.contacts.whatsappNumber}?text=${whatsappMessage}`;

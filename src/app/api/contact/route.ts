@@ -67,7 +67,86 @@ export async function POST(req: NextRequest) {
 
     const sanitizedData = validation.data;
 
-    // 5. WhatsApp Business Cloud API Integration (Optional Webhook Notification)
+    // 5. Automated Multi-Tier Email & Notification Dispatch Engine
+    const targetEmail = process.env.NOTIFICATION_EMAIL || "naimsmahmud50@gmail.com";
+    let emailDispatched = false;
+
+    // Route A: Resend API (if RESEND_API_KEY is configured in Vercel or environment)
+    const resendApiKey = process.env.RESEND_API_KEY;
+    if (resendApiKey) {
+      try {
+        const resendRes = await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${resendApiKey}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            from: "Portfolio Contact <onboarding@resend.dev>",
+            to: [targetEmail],
+            reply_to: sanitizedData.email,
+            subject: `[Portfolio Inquiry] ${sanitizedData.subject} - from ${sanitizedData.name}`,
+            html: `
+              <div style="font-family: sans-serif; max-width: 600px; padding: 20px; border: 1px solid #e2e8f0; border-radius: 12px; color: #0f172a;">
+                <h2 style="color: #0284c7; margin-top: 0;">📬 New Portfolio Client Inquiry</h2>
+                <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 16px 0;" />
+                <p><strong>Client Name:</strong> ${sanitizedData.name}</p>
+                <p><strong>Email Address:</strong> <a href="mailto:${sanitizedData.email}">${sanitizedData.email}</a></p>
+                <p><strong>Service Type:</strong> ${sanitizedData.serviceType}</p>
+                <p><strong>Subject:</strong> ${sanitizedData.subject}</p>
+                <div style="background-color: #f8fafc; padding: 16px; border-radius: 8px; margin-top: 16px; border: 1px solid #e2e8f0;">
+                  <strong style="display: block; margin-bottom: 8px; color: #334155;">Message Content:</strong>
+                  <p style="white-space: pre-wrap; margin: 0; color: #0f172a; line-height: 1.6;">${sanitizedData.message}</p>
+                </div>
+                <p style="font-size: 12px; color: #64748b; margin-top: 24px;">Dispatched from Mahmud Hasan's Portfolio Sentinel.</p>
+              </div>
+            `,
+          }),
+        });
+
+        if (resendRes.ok) {
+          emailDispatched = true;
+        } else {
+          console.warn("Resend API dispatch failed with status:", resendRes.status);
+        }
+      } catch (resendErr) {
+        console.error("Resend API dispatch error:", resendErr);
+      }
+    }
+
+    // Route B: Autonomous Zero-Config Direct HTTP Forwarding (FormSubmit AJAX Transport)
+    // Ensures leads reach naimsmahmud50@gmail.com even without any third-party API keys configured!
+    if (!emailDispatched) {
+      try {
+        const formSubmitRes = await fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            name: sanitizedData.name,
+            email: sanitizedData.email,
+            _replyto: sanitizedData.email,
+            serviceType: sanitizedData.serviceType,
+            _subject: `[Portfolio Lead] ${sanitizedData.subject} (from ${sanitizedData.name})`,
+            message: sanitizedData.message,
+            _template: "table",
+            _captcha: "false",
+          }),
+        });
+
+        if (formSubmitRes.ok) {
+          emailDispatched = true;
+        } else {
+          console.warn("FormSubmit dispatch warning:", await formSubmitRes.text());
+        }
+      } catch (fsErr) {
+        console.error("FormSubmit transport error:", fsErr);
+      }
+    }
+
+    // Route C: WhatsApp Business Cloud API Integration (Optional Webhook Notification)
     const whatsappToken = process.env.WHATSAPP_CLOUD_API_TOKEN;
     const whatsappPhoneId = process.env.WHATSAPP_PHONE_NUMBER_ID;
     const whatsappRecipient = process.env.WHATSAPP_RECIPIENT_PHONE || "8801767850859";
