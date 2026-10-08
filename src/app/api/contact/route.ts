@@ -93,6 +93,8 @@ export async function POST(req: NextRequest) {
                 <p><strong>Client Name:</strong> ${sanitizedData.name}</p>
                 <p><strong>Email Address:</strong> <a href="mailto:${sanitizedData.email}">${sanitizedData.email}</a></p>
                 <p><strong>Service Type:</strong> ${sanitizedData.serviceType}</p>
+                <p><strong>Budget Tier:</strong> ${sanitizedData.budget || "Flexible"}</p>
+                <p><strong>Target Timeline:</strong> ${sanitizedData.timeline || "Flexible"}</p>
                 <p><strong>Subject:</strong> ${sanitizedData.subject}</p>
                 <div style="background-color: #f8fafc; padding: 16px; border-radius: 8px; margin-top: 16px; border: 1px solid #e2e8f0;">
                   <strong style="display: block; margin-bottom: 8px; color: #334155;">Message Content:</strong>
@@ -115,7 +117,13 @@ export async function POST(req: NextRequest) {
     }
 
     // Route B: Autonomous Zero-Config Direct HTTP Forwarding (FormSubmit AJAX Transport)
-    // Ensures leads reach naimsmahmud50@gmail.com even without any third-party API keys configured!
+    // Supplies origin/referer headers to satisfy bot protection and deliver to naimsmahmud50@gmail.com
+    const appOrigin =
+      req.nextUrl?.origin ||
+      req.headers.get("origin") ||
+      req.headers.get("referer") ||
+      "https://mahmud-portfolio.vercel.app";
+
     if (!emailDispatched) {
       try {
         const formSubmitRes = await fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
@@ -123,23 +131,28 @@ export async function POST(req: NextRequest) {
           headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
+            Referer: appOrigin,
+            Origin: appOrigin,
           },
           body: JSON.stringify({
             name: sanitizedData.name,
             email: sanitizedData.email,
             _replyto: sanitizedData.email,
             serviceType: sanitizedData.serviceType,
-            _subject: `[Portfolio Lead] ${sanitizedData.subject} (from ${sanitizedData.name})`,
+            budgetTier: sanitizedData.budget || "Flexible",
+            targetTimeline: sanitizedData.timeline || "Flexible",
+            _subject: `[Portfolio Lead] ${sanitizedData.subject} (${sanitizedData.budget || "Flexible"}) - ${sanitizedData.name}`,
             message: sanitizedData.message,
             _template: "table",
             _captcha: "false",
           }),
         });
 
-        if (formSubmitRes.ok) {
+        const fsData = await formSubmitRes.json().catch(() => ({}));
+        if (formSubmitRes.ok && (fsData.success === true || fsData.success === "true")) {
           emailDispatched = true;
         } else {
-          console.warn("FormSubmit dispatch warning:", await formSubmitRes.text());
+          console.warn("FormSubmit dispatch warning or pending activation:", fsData);
         }
       } catch (fsErr) {
         console.error("FormSubmit transport error:", fsErr);
@@ -164,7 +177,7 @@ export async function POST(req: NextRequest) {
             to: whatsappRecipient,
             type: "text",
             text: {
-              body: `📬 Portfolio Lead from ${sanitizedData.name} (${sanitizedData.email})\nTopic: ${sanitizedData.subject}\nType: ${sanitizedData.serviceType}\nMessage: ${sanitizedData.message}`,
+              body: `📬 Portfolio Lead from ${sanitizedData.name} (${sanitizedData.email})\nTopic: ${sanitizedData.subject}\nType: ${sanitizedData.serviceType}\nBudget: ${sanitizedData.budget || "Flexible"}\nTimeline: ${sanitizedData.timeline || "Flexible"}\nMessage: ${sanitizedData.message}`,
             },
           }),
         });

@@ -82,4 +82,30 @@ describe("Contact Schema - Runtime Zod Validation", () => {
     expect(parsed.subject).toBe("Neural Agents");
     expect(parsed.message).toBe("Looking for enterprise autonomous agent implementations.");
   });
+
+  it("validates and defaults budget and timeline fields for worldwide clients", () => {
+    // 1. With explicit budget and timeline
+    const fullPayload = {
+      name: "Marcus Aurelius",
+      email: "marcus@rome-holdings.com",
+      message: "Need 2-week sprint for payment and workflow automation.",
+      budget: "$3,000 – $5,000 (Full-Stack / Mobile)",
+      timeline: "1 – 2 Weeks",
+    };
+    const parsedFull = parseContactSubmission(fullPayload);
+    expect(parsedFull.success).toBe(true);
+    expect(parsedFull.data?.budget).toBe("$3,000 – $5,000 (Full-Stack / Mobile)");
+    expect(parsedFull.data?.timeline).toBe("1 – 2 Weeks");
+
+    // 2. When omitted, provides intelligent sensible defaults
+    const minimalPayload = {
+      name: "Sarah Connor",
+      email: "sarah@cyberdyne.org",
+      message: "Inquiring about defensive security hardening for our portal.",
+    };
+    const parsedMinimal = parseContactSubmission(minimalPayload);
+    expect(parsedMinimal.success).toBe(true);
+    expect(parsedMinimal.data?.budget).toBe("Flexible / To Discuss");
+    expect(parsedMinimal.data?.timeline).toBe("Flexible");
+  });
 });

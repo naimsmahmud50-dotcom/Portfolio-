@@ -12,6 +12,11 @@ import {
   ExternalLink,
   ShieldAlert,
   Sparkles,
+  Calendar,
+  Globe,
+  Clock,
+  ShieldCheck,
+  ArrowRight,
 } from "lucide-react";
 import { useToast } from "../providers/ToastProvider";
 import { contactSchema } from "@/utils/contact-schema";
@@ -23,6 +28,8 @@ export function ContactSection() {
     email: "",
     subject: "",
     serviceType: "AI Automation",
+    budget: "$1,000 – $3,000 (Sprint)",
+    timeline: "1 – 2 Weeks",
     message: "",
     honeypot: "", // Spam prevention honeypot
   });
@@ -33,6 +40,8 @@ export function ContactSection() {
     email: "",
     subject: "",
     serviceType: "AI Automation",
+    budget: "$1,000 – $3,000 (Sprint)",
+    timeline: "1 – 2 Weeks",
     message: "",
   });
 
@@ -47,13 +56,23 @@ export function ContactSection() {
   };
 
   // Generate comprehensive, beautifully-formatted WhatsApp message containing full lead details
-  const getWhatsAppUrl = (data: { name?: string; email?: string; serviceType?: string; subject?: string; message?: string } = formData) => {
+  const getWhatsAppUrl = (data: {
+    name?: string;
+    email?: string;
+    serviceType?: string;
+    budget?: string;
+    timeline?: string;
+    subject?: string;
+    message?: string;
+  } = formData) => {
     const parts = [
       `👋 *New Inquiry for Mahmud Hasan*`,
       ``,
       `*Client:* ${data.name?.trim() || "Visitor"}`,
       `*Email:* ${data.email?.trim() || "Not provided"}`,
       `*Service:* ${data.serviceType || "Web & Mobile Engineering"}`,
+      `*Budget:* ${data.budget || "Flexible"}`,
+      `*Timeline:* ${data.timeline || "Flexible"}`,
       `*Subject:* ${data.subject?.trim() || "Project Consultation"}`,
       ``,
       `*Message:*`,
@@ -63,17 +82,35 @@ export function ContactSection() {
   };
 
   // Generate direct native email client dispatch URL (mailto) as instant backup
-  const getMailtoUrl = (data: { name?: string; email?: string; serviceType?: string; subject?: string; message?: string } = formData) => {
+  const getMailtoUrl = (data: {
+    name?: string;
+    email?: string;
+    serviceType?: string;
+    budget?: string;
+    timeline?: string;
+    subject?: string;
+    message?: string;
+  } = formData) => {
     const name = data.name?.trim() || "Client";
     const email = data.email?.trim() || "Not provided";
-    const subject = encodeURIComponent(`[Portfolio Lead] ${data.subject?.trim() || "Project Inquiry"} - ${name}`);
+    const subject = encodeURIComponent(
+      `[Portfolio Lead] ${data.subject?.trim() || "Project Inquiry"} (${data.budget || "Flexible"}) - ${name}`
+    );
     const body = encodeURIComponent(
-      `Hello Mahmud,\n\n${data.message?.trim() || ""}\n\n---\nClient Name: ${name}\nReply-To Email: ${email}\nService Required: ${data.serviceType || "Engineering Consultation"}\nSent via Portfolio Contact Dialogue`
+      `Hello Mahmud,\n\n${data.message?.trim() || ""}\n\n---\nClient Name: ${name}\nReply-To Email: ${email}\nService Required: ${data.serviceType || "Engineering Consultation"}\nBudget Tier: ${data.budget || "Flexible"}\nTarget Timeline: ${data.timeline || "Flexible"}\nSent via Portfolio Contact Dialogue`
     );
     return `mailto:${profileData.contacts.primaryEmail}?subject=${subject}&body=${body}`;
   };
 
-  const handleWhatsAppDirect = (data: { name?: string; email?: string; serviceType?: string; subject?: string; message?: string } = formData) => {
+  const handleWhatsAppDirect = (data: {
+    name?: string;
+    email?: string;
+    serviceType?: string;
+    budget?: string;
+    timeline?: string;
+    subject?: string;
+    message?: string;
+  } = formData) => {
     const url = getWhatsAppUrl(data);
     window.open(url, "_blank", "noopener,noreferrer");
   };
@@ -226,7 +263,7 @@ export function ContactSection() {
                 </div>
                 <h4 className="text-sm font-semibold text-slate-100">Direct Messaging Channel</h4>
                 <p className="text-xs sm:text-sm font-mono text-emerald-300 mt-1">
-                  {profileData.contacts.whatsappDisplay}
+                  +880 1767-850859 <span className="text-[11px] text-slate-400 font-sans">({profileData.contacts.whatsappDisplay})</span>
                 </p>
               </div>
 
@@ -241,12 +278,69 @@ export function ContactSection() {
                   <ExternalLink className="w-3.5 h-3.5" />
                 </a>
                 <button
+                  type="button"
                   onClick={handleCopyWhatsApp}
                   className="p-1.5 text-slate-400 hover:text-slate-100 rounded-lg hover:bg-slate-800 transition-colors"
                   title="Copy WhatsApp number"
                 >
                   <Copy className="w-4 h-4" />
                 </button>
+              </div>
+            </div>
+
+            {/* 15-Minute Strategy Discovery Session Card */}
+            <div className="p-6 rounded-2xl bg-gradient-to-br from-cyan-950/40 via-slate-900 to-slate-950 border border-cyan-500/30 flex flex-col justify-between group">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-cyan-950 border border-cyan-500/40 flex items-center justify-center text-cyan">
+                    <Calendar className="w-5 h-5" />
+                  </div>
+                  <span className="text-[10px] font-mono text-cyan bg-cyan-950 border border-cyan-500/30 px-2 py-0.5 rounded font-bold">
+                    VIDEO CALL
+                  </span>
+                </div>
+                <h4 className="text-sm font-semibold text-slate-100">15-Min Strategy Discovery Call</h4>
+                <p className="text-xs text-slate-300 mt-1 leading-relaxed">
+                  Book a direct video consultation (Google Meet / Zoom) to discuss sprint requirements, technical architecture, or emergency bug fixes.
+                </p>
+              </div>
+
+              <div className="mt-4 pt-4 border-t border-slate-800/80">
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (typeof window !== "undefined") {
+                      window.dispatchEvent(
+                        new CustomEvent("open-discovery-modal", {
+                          detail: { sprint: "15-Min Strategy Discovery Session" },
+                        })
+                      );
+                    }
+                  }}
+                  className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-gradient-to-r from-electric-600 to-cyan hover:from-electric-500 hover:to-cyan/90 text-white font-semibold text-xs transition-all shadow-md shadow-cyan/20 cursor-pointer"
+                >
+                  <Calendar className="w-3.5 h-3.5" />
+                  <span>Reserve 15-Min Time Slot</span>
+                  <ArrowRight className="w-3.5 h-3.5 ml-0.5" />
+                </button>
+              </div>
+            </div>
+
+            {/* Worldwide Enterprise Remote SLA & Availability Card */}
+            <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800/90 space-y-3">
+              <div className="flex items-center gap-2 text-xs font-mono font-bold text-cyan">
+                <Globe className="w-4 h-4 text-cyan" />
+                <span>GLOBAL REMOTE ENGAGEMENT</span>
+              </div>
+              <div className="space-y-2 text-xs text-slate-300 leading-relaxed">
+                <div className="flex items-start gap-2">
+                  <Clock className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                  <span><strong>Timezone Overlap:</strong> Active coverage for US EST (8 AM – 1 PM EST) &amp; Europe CET (2 PM – 7 PM CET).</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <ShieldCheck className="w-3.5 h-3.5 text-cyan shrink-0 mt-0.5" />
+                  <span><strong>Response Guarantee:</strong> Inquiries acknowledged within &lt; 4 hours. NDA &amp; fixed-scope sprints ready.</span>
+                </div>
               </div>
             </div>
 
@@ -279,6 +373,8 @@ export function ContactSection() {
                       <p className="text-slate-200"><span className="text-slate-400">Client:</span> {lastSubmittedData.name}</p>
                       <p className="text-slate-200"><span className="text-slate-400">Email:</span> {lastSubmittedData.email}</p>
                       <p className="text-slate-200"><span className="text-slate-400">Service:</span> {lastSubmittedData.serviceType}</p>
+                      <p className="text-slate-200"><span className="text-slate-400">Budget:</span> {lastSubmittedData.budget}</p>
+                      <p className="text-slate-200"><span className="text-slate-400">Timeline:</span> {lastSubmittedData.timeline}</p>
                       <p className="text-slate-200 truncate"><span className="text-slate-400">Subject:</span> {lastSubmittedData.subject}</p>
                     </div>
                   )}
@@ -310,6 +406,8 @@ export function ContactSection() {
                           email: "",
                           subject: "",
                           serviceType: "AI Automation",
+                          budget: "$1,000 – $3,000 (Sprint)",
+                          timeline: "1 – 2 Weeks",
                           message: "",
                           honeypot: "",
                         });
@@ -397,6 +495,42 @@ export function ContactSection() {
                         <option value="App Development">App Development</option>
                         <option value="Security Consultation">Security Consultation</option>
                         <option value="Other Inquiries">Other Inquiries</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Worldwide Client Scoping: Budget Tier & Target Timeline */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-mono text-slate-300 mb-1.5 font-semibold">
+                        ESTIMATED BUDGET / INVESTMENT
+                      </label>
+                      <select
+                        value={formData.budget}
+                        onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
+                        className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 focus:border-cyan text-sm text-slate-100 outline-none transition-all"
+                      >
+                        <option value="$1,000 – $3,000 (Sprint)">$1,000 – $3,000 (Rapid Sprint)</option>
+                        <option value="$3,000 – $5,000 (Full-Stack / Mobile)">$3,000 – $5,000 (Full-Stack / Mobile App)</option>
+                        <option value="$5,000+ (Enterprise Architecture)">$5,000+ (Enterprise Architecture)</option>
+                        <option value="< $1,000 (Advisory / Quick Fix)">&lt; $1,000 (Advisory / Quick Fix)</option>
+                        <option value="Flexible / Scope First">Flexible / Scope First</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-mono text-slate-300 mb-1.5 font-semibold">
+                        TARGET LAUNCH TIMELINE
+                      </label>
+                      <select
+                        value={formData.timeline}
+                        onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
+                        className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 focus:border-cyan text-sm text-slate-100 outline-none transition-all"
+                      >
+                        <option value="Immediate (< 1 week)">Immediate (&lt; 1 week)</option>
+                        <option value="1 – 2 Weeks">1 – 2 Weeks (High Velocity)</option>
+                        <option value="1 Month">Within 1 Month</option>
+                        <option value="Flexible / Exploratory">Flexible / Exploratory</option>
                       </select>
                     </div>
                   </div>

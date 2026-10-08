@@ -31,6 +31,20 @@ export const contactSchema = z.object({
     .optional()
     .transform((val) => (val && val.length > 0 ? val : "AI Automation")),
 
+  budget: z
+    .string()
+    .trim()
+    .max(80, "Budget cannot exceed 80 characters")
+    .optional()
+    .transform((val) => (val && val.length > 0 ? val : "Flexible / To Discuss")),
+
+  timeline: z
+    .string()
+    .trim()
+    .max(80, "Timeline cannot exceed 80 characters")
+    .optional()
+    .transform((val) => (val && val.length > 0 ? val : "Flexible")),
+
   message: z
     .string({ message: "Message is required" })
     .trim()
