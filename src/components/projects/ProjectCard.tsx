@@ -118,10 +118,11 @@ export function ProjectCard({ project, featured = false }: ProjectCardProps) {
               rel="noopener noreferrer"
               data-no-card-nav="true"
               onClick={(e) => e.stopPropagation()}
-              className="text-slate-400 hover:text-slate-100 p-1.5 rounded-lg hover:bg-slate-800/80 transition-all hover:scale-110"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900/90 hover:bg-slate-850 border border-slate-700/80 hover:border-cyan text-xs font-mono font-medium text-slate-200 hover:text-white transition-all shadow-sm group/btn"
               title="View GitHub Repository"
             >
-              <GithubIcon className="w-4 h-4" />
+              <GithubIcon className="w-3.5 h-3.5 text-cyan group-hover/btn:scale-110 transition-transform" />
+              <span>Source Code</span>
             </a>
           )}
           {project.links.live && (
@@ -131,10 +132,11 @@ export function ProjectCard({ project, featured = false }: ProjectCardProps) {
               rel="noopener noreferrer"
               data-no-card-nav="true"
               onClick={(e) => e.stopPropagation()}
-              className="text-slate-400 hover:text-cyan p-1.5 rounded-lg hover:bg-slate-800/80 transition-all hover:scale-110"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-electric-950/80 hover:bg-electric-900/90 border border-electric-500/40 hover:border-cyan text-xs font-mono font-medium text-cyan hover:text-white transition-all shadow-sm group/btn"
               title="Visit Live Page"
             >
-              <ExternalLink className="w-4 h-4" />
+              <ExternalLink className="w-3.5 h-3.5 group-hover/btn:scale-110 transition-transform" />
+              <span>Live Demo</span>
             </a>
           )}
         </div>

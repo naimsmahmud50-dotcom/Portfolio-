@@ -72,7 +72,7 @@ export const projectsData: Project[] = [
       tools: ["Drift (Offline SQLite Cache)", "Firebase Auth & Firestore", "PostgreSQL Database", "Docker Compose"],
     },
     links: {
-      github: "https://github.com/naimsmahmud50-dotcom",
+      github: "https://github.com/naimsmahmud50-dotcom/Madrasha-Managemant-Softaware",
     },
     status: "In Active Development",
     caseStudy: {

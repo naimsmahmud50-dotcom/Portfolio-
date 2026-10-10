@@ -84,10 +84,11 @@ export default async function CaseStudyPage({
                 href={project.links.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-slate-500 text-slate-200 text-xs font-medium transition-all"
+                className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-gradient-to-r from-slate-900 to-slate-950 border border-cyan-500/40 hover:border-cyan text-white text-xs sm:text-sm font-semibold shadow-lg shadow-cyan/15 hover:shadow-cyan/30 hover:scale-[1.02] active:scale-[0.98] transition-all group"
               >
-                <GithubIcon className="w-4 h-4 text-slate-300" />
-                <span>View on GitHub</span>
+                <GithubIcon className="w-4 h-4 text-cyan group-hover:scale-110 transition-transform" />
+                <span>View Full Source Code on GitHub</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse ml-0.5" />
               </a>
             )}
             {project.links.live && (
@@ -95,7 +96,7 @@ export default async function CaseStudyPage({
                 href={project.links.live}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-electric-600 hover:bg-electric-500 text-white text-xs font-semibold shadow-md shadow-electric-600/30 transition-all"
+                className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-gradient-to-r from-electric-600 to-cyan hover:from-electric-500 hover:to-cyan text-white text-xs sm:text-sm font-semibold shadow-lg shadow-electric-600/30 hover:scale-[1.02] active:scale-[0.98] transition-all"
               >
                 <ExternalLink className="w-4 h-4" />
                 <span>Visit Live Platform</span>
@@ -225,6 +226,33 @@ export default async function CaseStudyPage({
             )}
           </div>
         </section>
+
+        {/* Repository & Source Code Callout Banner */}
+        {project.links.github && (
+          <section className="mb-14 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900/90 to-slate-950 border border-cyan-500/35 shadow-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+            <div className="space-y-1.5">
+              <div className="flex items-center gap-2 text-xs font-mono text-cyan font-bold">
+                <GithubIcon className="w-4 h-4" />
+                <span>OFFICIAL GITHUB REPOSITORY</span>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-slate-100">
+                Inspect The Production Codebase
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-300 max-w-xl leading-relaxed">
+                Review the clean architecture, modular Flutter/NestJS controllers, database schemas, and state management implementation directly on GitHub.
+              </p>
+            </div>
+            <a
+              href={project.links.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shrink-0 inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-electric-600 to-cyan hover:from-electric-500 hover:to-cyan text-white font-semibold text-xs sm:text-sm shadow-lg shadow-cyan/25 hover:scale-[1.02] active:scale-[0.98] transition-all"
+            >
+              <GithubIcon className="w-4 h-4" />
+              <span>Explore GitHub Repository &rarr;</span>
+            </a>
+          </section>
+        )}
 
         {/* Next / Previous Project Pagination (Section 38) */}
         <footer className="pt-10 border-t border-slate-800 flex items-center justify-between gap-4">
