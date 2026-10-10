@@ -14,6 +14,8 @@ import {
   Sparkles,
   Terminal,
   AlertTriangle,
+  Lock,
+  ShieldAlert,
 } from "lucide-react";
 import { GithubIcon } from "@/components/ui/SocialIcons";
 
@@ -77,7 +79,7 @@ export default async function CaseStudyPage({
             {caseStudy.overview}
           </p>
 
-          {/* External Links */}
+          {/* External Links & Access Badges */}
           <div className="mt-6 flex flex-wrap items-center gap-4">
             {project.links.github && (
               <a
@@ -90,6 +92,12 @@ export default async function CaseStudyPage({
                 <span>View Full Source Code on GitHub</span>
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse ml-0.5" />
               </a>
+            )}
+            {project.isPrivateRepo && (
+              <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-xl bg-amber-950/40 border border-amber-500/35 text-xs sm:text-sm font-mono text-amber-300 shadow-md shadow-amber-950/20">
+                <Lock className="w-4 h-4 text-amber-400" />
+                <span>Proprietary Security Architecture • Protected Under NDA</span>
+              </div>
             )}
             {project.links.live && (
               <a
@@ -251,6 +259,31 @@ export default async function CaseStudyPage({
               <GithubIcon className="w-4 h-4" />
               <span>Explore GitHub Repository &rarr;</span>
             </a>
+          </section>
+        )}
+
+        {/* Proprietary / NDA Protected Architecture Banner */}
+        {project.isPrivateRepo && (
+          <section className="mb-14 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-slate-900 via-amber-950/20 to-slate-950 border border-amber-500/35 shadow-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+            <div className="space-y-1.5">
+              <div className="flex items-center gap-2 text-xs font-mono text-amber-400 font-bold">
+                <Lock className="w-4 h-4" />
+                <span>ENTERPRISE PROPRIETARY ARCHITECTURE</span>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-slate-100">
+                Workstation Security Core (Protected Under NDA)
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-300 max-w-xl leading-relaxed">
+                Source code and internal intrusion detection algorithms are proprietary. A live architecture walkthrough and technical deep-dive are available for enterprise clients upon request.
+              </p>
+            </div>
+            <Link
+              href="/#contact"
+              className="shrink-0 inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-slate-950 font-bold text-xs sm:text-sm shadow-lg shadow-amber-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all"
+            >
+              <ShieldAlert className="w-4 h-4 text-slate-950" />
+              <span>Request NDA Walkthrough &rarr;</span>
+            </Link>
           </section>
         )}
 

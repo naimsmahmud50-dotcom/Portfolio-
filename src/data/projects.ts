@@ -17,9 +17,9 @@ export const projectsData: Project[] = [
       automation: ["Real-Time USB Daemon Watchdog (<2s)", "Silent Background Runner (VBScript/Batch)", "Windows Startup Autostart Daemon"],
       tools: ["OpenCV / Webcam Fallback Engine", "pyttsx3 Text-to-Speech (/say)", "Windows Hardware APIs (psutil)"],
     },
-    links: {
-      github: "https://github.com/naimsmahmud50-dotcom/Securemypc.git",
-    },
+    links: {},
+    isPrivateRepo: true,
+    accessNotice: "Proprietary Security Architecture (Source Protected / Available Under NDA)",
     status: "Production Concept",
     caseStudy: {
       overview: "SecureMyPC is a private, remote surveillance and hardware control system for Windows workstations, managed entirely through Telegram. It combines intrusion detection, hardware watchdogs, speech synthesis, and Google Gemini AI assistance into a lightweight daemon running silently with zero open network ports.",

@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Project } from "@/types";
-import { ArrowUpRight, ExternalLink, Sparkles } from "lucide-react";
+import { ArrowUpRight, ExternalLink, Sparkles, Lock } from "lucide-react";
 import { GithubIcon } from "../ui/SocialIcons";
 
 interface ProjectCardProps {
@@ -124,6 +124,16 @@ export function ProjectCard({ project, featured = false }: ProjectCardProps) {
               <GithubIcon className="w-3.5 h-3.5 text-cyan group-hover/btn:scale-110 transition-transform" />
               <span>Source Code</span>
             </a>
+          )}
+          {project.isPrivateRepo && (
+            <span
+              data-no-card-nav="true"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-amber-950/40 border border-amber-500/30 text-[11px] font-mono text-amber-300 select-none shadow-sm"
+              title={project.accessNotice || "Proprietary Architecture (Protected under NDA)"}
+            >
+              <Lock className="w-3 h-3 text-amber-400" />
+              <span>NDA Protected</span>
+            </span>
           )}
           {project.links.live && (
             <a

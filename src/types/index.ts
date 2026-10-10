@@ -99,6 +99,8 @@ export interface Project {
     live?: string;
     demoVideo?: string;
   };
+  isPrivateRepo?: boolean;
+  accessNotice?: string;
   status: "In Active Development" | "Production Concept" | "Exploratory Architecture" | "Completed Credential Build";
   caseStudy: CaseStudy;
 }
