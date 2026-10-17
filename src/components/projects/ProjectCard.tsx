@@ -37,11 +37,7 @@ export function ProjectCard({ project, featured = false }: ProjectCardProps) {
   return (
     <article
       onClick={handleCardClick}
-      onKeyDown={handleKeyDown}
-      tabIndex={0}
-      role="link"
-      aria-label={`View case study for ${project.title}`}
-      className={`cursor-pointer rounded-3xl tech-card overflow-hidden flex flex-col justify-between group transition-all duration-300 hover:border-cyan/60 hover:shadow-xl hover:shadow-cyan/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan select-none ${
+      className={`cursor-pointer rounded-3xl tech-card overflow-hidden flex flex-col justify-between group transition-all duration-300 hover:border-cyan/60 hover:shadow-xl hover:shadow-cyan/15 select-none ${
         featured ? "lg:col-span-2 ring-1 ring-cyan-500/20" : ""
       }`}
     >

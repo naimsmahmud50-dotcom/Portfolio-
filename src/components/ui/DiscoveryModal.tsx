@@ -134,11 +134,12 @@ export function DiscoveryModal({
         toast("Discovery request received! Mahmud will reach out within 4 hours.", "success");
         setTimeout(() => handleClose(), 1200);
       } else {
-        toast("Unable to send request directly. Redirecting to WhatsApp...", "error");
-        window.open(whatsappUrl, "_blank");
+        toast("Direct request logged. Opening WhatsApp tab for instant access...", "info");
+        setActiveTab("whatsapp");
       }
     } catch {
-      window.open(whatsappUrl, "_blank");
+      toast("Connection issue. Switched to direct WhatsApp channel.", "info");
+      setActiveTab("whatsapp");
     } finally {
       setIsSubmitting(false);
     }

@@ -102,19 +102,6 @@ export function ContactSection() {
     return `mailto:${profileData.contacts.primaryEmail}?subject=${subject}&body=${body}`;
   };
 
-  const handleWhatsAppDirect = (data: {
-    name?: string;
-    email?: string;
-    serviceType?: string;
-    budget?: string;
-    timeline?: string;
-    subject?: string;
-    message?: string;
-  } = formData) => {
-    const url = getWhatsAppUrl(data);
-    window.open(url, "_blank", "noopener,noreferrer");
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -167,7 +154,7 @@ export function ContactSection() {
         <div className="flex flex-col items-start max-w-2xl mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-electric-950/70 border border-electric-500/20 text-xs font-mono text-cyan mb-3">
             <Mail className="w-3.5 h-3.5" />
-            <span>08 // INITIATE DIALOGUE</span>
+            <span>10 // INITIATE DIALOGUE</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-100">
             Let's Build Something Intelligent
@@ -435,10 +422,11 @@ export function ContactSection() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-mono text-slate-300 mb-1.5 font-semibold">
+                      <label htmlFor="contact-name" className="block text-xs font-mono text-slate-300 mb-1.5 font-semibold">
                         YOUR NAME *
                       </label>
                       <input
+                        id="contact-name"
                         type="text"
                         required
                         value={formData.name}
@@ -449,10 +437,11 @@ export function ContactSection() {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-mono text-slate-300 mb-1.5 font-semibold">
+                      <label htmlFor="contact-email" className="block text-xs font-mono text-slate-300 mb-1.5 font-semibold">
                         EMAIL ADDRESS *
                       </label>
                       <input
+                        id="contact-email"
                         type="email"
                         required
                         value={formData.email}
@@ -465,10 +454,11 @@ export function ContactSection() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-mono text-slate-300 mb-1.5 font-semibold">
+                      <label htmlFor="contact-subject" className="block text-xs font-mono text-slate-300 mb-1.5 font-semibold">
                         SUBJECT *
                       </label>
                       <input
+                        id="contact-subject"
                         type="text"
                         required
                         value={formData.subject}
@@ -479,10 +469,11 @@ export function ContactSection() {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-mono text-slate-300 mb-1.5 font-semibold">
+                      <label htmlFor="contact-service-type" className="block text-xs font-mono text-slate-300 mb-1.5 font-semibold">
                         PROJECT / SERVICE TYPE
                       </label>
                       <select
+                        id="contact-service-type"
                         value={formData.serviceType}
                         onChange={(e) => setFormData({ ...formData, serviceType: e.target.value })}
                         className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 focus:border-cyan text-sm text-slate-100 outline-none transition-all"
@@ -502,10 +493,11 @@ export function ContactSection() {
                   {/* Worldwide Client Scoping: Budget Tier & Target Timeline */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-xs font-mono text-slate-300 mb-1.5 font-semibold">
+                      <label htmlFor="contact-budget" className="block text-xs font-mono text-slate-300 mb-1.5 font-semibold">
                         ESTIMATED BUDGET / INVESTMENT
                       </label>
                       <select
+                        id="contact-budget"
                         value={formData.budget}
                         onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
                         className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 focus:border-cyan text-sm text-slate-100 outline-none transition-all"
@@ -519,10 +511,11 @@ export function ContactSection() {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-mono text-slate-300 mb-1.5 font-semibold">
+                      <label htmlFor="contact-timeline" className="block text-xs font-mono text-slate-300 mb-1.5 font-semibold">
                         TARGET LAUNCH TIMELINE
                       </label>
                       <select
+                        id="contact-timeline"
                         value={formData.timeline}
                         onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
                         className="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 focus:border-cyan text-sm text-slate-100 outline-none transition-all"
@@ -536,10 +529,11 @@ export function ContactSection() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono text-slate-300 mb-1.5 font-semibold">
+                    <label htmlFor="contact-message" className="block text-xs font-mono text-slate-300 mb-1.5 font-semibold">
                       MESSAGE *
                     </label>
                     <textarea
+                      id="contact-message"
                       required
                       rows={5}
                       value={formData.message}

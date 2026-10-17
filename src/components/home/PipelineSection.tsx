@@ -157,7 +157,7 @@ export function PipelineSection() {
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-electric-950/70 border border-electric-500/20 text-xs font-mono text-cyan mb-3">
               <Workflow className="w-3.5 h-3.5" />
-              <span>05 // ARCHITECTURAL BLUEPRINT</span>
+              <span>07 // ARCHITECTURAL PIPELINE</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-100">
               How I Build Intelligent Systems

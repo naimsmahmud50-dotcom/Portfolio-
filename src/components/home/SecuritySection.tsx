@@ -28,7 +28,7 @@ export function SecuritySection() {
         <div className="flex flex-col items-start max-w-2xl mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-electric-950/70 border border-electric-500/20 text-xs font-mono text-cyan mb-3">
             <ShieldCheck className="w-3.5 h-3.5" />
-            <span>07 // DEFENSIVE ARCHITECTURE</span>
+            <span>08 // DEFENSIVE SECURITY</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-100">
             Built With Security in Mind

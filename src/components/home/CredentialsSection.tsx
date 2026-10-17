@@ -16,7 +16,7 @@ export function CredentialsSection() {
         <div className="flex flex-col items-start max-w-2xl mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-electric-950/70 border border-electric-500/20 text-xs font-mono text-cyan mb-3">
             <GraduationCap className="w-3.5 h-3.5" />
-            <span>02 // CREDENTIALS &amp; LEARNING</span>
+            <span>05 // CREDENTIALS &amp; RESEARCH</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-100">
             Education, Focus &amp; Practical Training

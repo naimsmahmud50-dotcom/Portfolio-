@@ -61,40 +61,6 @@ export function HeroSection() {
     return () => clearTimeout(timer);
   }, [roleText, isRoleDeleting, roleIndex, subRoles]);
 
-  // =========================================================================
-  // TYPEWRITER ENGINE 2: Under-Image Name Typewriter
-  // =========================================================================
-  const fullName = profileData.name;
-  const [nameTyped, setNameTyped] = useState("");
-  const [isNameDeleting, setIsNameDeleting] = useState(false);
-
-  useEffect(() => {
-    let timer: NodeJS.Timeout;
-
-    if (!isNameDeleting) {
-      if (nameTyped.length < fullName.length) {
-        timer = setTimeout(() => {
-          setNameTyped(fullName.slice(0, nameTyped.length + 1));
-        }, 85);
-      } else {
-        // Hold on completed name for 4 seconds
-        timer = setTimeout(() => {
-          setIsNameDeleting(true);
-        }, 4000);
-      }
-    } else {
-      if (nameTyped.length > 0) {
-        timer = setTimeout(() => {
-          setNameTyped(fullName.slice(0, nameTyped.length - 1));
-        }, 45);
-      } else {
-        setIsNameDeleting(false);
-      }
-    }
-
-    return () => clearTimeout(timer);
-  }, [nameTyped, isNameDeleting, fullName]);
-
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(profileData.contacts.primaryEmail);
     toast("Primary email copied to clipboard!", "success");
@@ -151,7 +117,7 @@ export function HeroSection() {
             {/* Primary Action Buttons: High-conversion streamlined layout */}
             <div className="mt-8 flex flex-wrap items-center gap-3.5 w-full sm:w-auto">
               <Link
-                href="#projects"
+                href="/projects"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 via-cyan-600 to-teal-500 dark:from-electric-600 dark:via-cyan dark:to-teal-400 text-white dark:text-slate-950 font-bold text-sm shadow-xl shadow-blue-500/20 dark:shadow-cyan/25 hover:shadow-blue-500/35 dark:hover:shadow-cyan/45 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
               >
                 <span>View Featured Work</span>
@@ -159,10 +125,10 @@ export function HeroSection() {
               </Link>
 
               <Link
-                href="#contact"
+                href="/contact"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-slate-900/90 border border-slate-700/80 hover:border-cyan text-slate-100 hover:text-cyan font-semibold text-sm hover:bg-slate-800 transition-all cursor-pointer"
               >
-                <span>Let's Work Together</span>
+                <span>Let&apos;s Work Together</span>
                 <Sparkles className="w-4 h-4 text-cyan" />
               </Link>
 
@@ -245,17 +211,17 @@ export function HeroSection() {
               <div className="relative rounded-2xl overflow-hidden bg-slate-900/90 border border-cyan-500/30 group-hover:border-cyan-400/60 shadow-2xl transition-all duration-500">
                 
                 {/* Top Floating Status Pill */}
-                <div className="absolute top-3 left-3 z-20 flex items-center gap-2 px-2.5 py-1 rounded-full bg-slate-950/85 backdrop-blur-md border border-emerald-500/40 text-[11px] font-mono font-medium text-emerald-300 shadow-md">
+                <div className="absolute top-3 left-3 z-20 flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950/85 backdrop-blur-md border border-emerald-500/40 text-[11px] font-mono font-medium text-emerald-300 shadow-md">
                   <span className="relative flex h-2 w-2">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
                   </span>
-                  <span>VERIFIED PRO</span>
+                  <span>OPEN FOR CONTRACTS</span>
                 </div>
 
-                {/* Top Right ID Tag */}
-                <div className="absolute top-3 right-3 z-20 px-2 py-0.5 rounded-md bg-slate-950/80 backdrop-blur-md border border-slate-700/80 text-[10px] font-mono text-slate-300">
-                  MH-2026
+                {/* Top Right Location Tag */}
+                <div className="absolute top-3 right-3 z-20 px-2.5 py-1 rounded-md bg-slate-950/80 backdrop-blur-md border border-slate-700/80 text-[10px] font-mono text-slate-300">
+                  DHAKA (UTC+6)
                 </div>
 
                 {/* Portrait Image (Golden Ratio 4:5 with top focus) */}
@@ -282,18 +248,17 @@ export function HeroSection() {
                   ========================================================================= */}
               <div className="mt-3.5 w-full rounded-2xl bg-white/95 dark:bg-slate-950/70 backdrop-blur-xl border border-slate-200/90 dark:border-cyan-500/30 p-4 sm:p-5 shadow-xl shadow-slate-200/60 dark:shadow-2xl dark:shadow-cyan/15 flex flex-col items-center justify-center text-center group hover:border-cyan-500/50 hover:shadow-cyan/25 transition-all">
                 
-                {/* Luminous Animated Name */}
-                <div className="flex items-center justify-center min-h-[40px]">
+                {/* Crisp Authoritative Name */}
+                <div className="flex items-center justify-center min-h-[38px]">
                   <span className="text-2xl sm:text-3xl font-extrabold tracking-tight font-sans">
-                    <span className="bg-gradient-to-r from-slate-900 via-blue-700 to-cyan-600 dark:from-white dark:via-cyan dark:to-teal-300 bg-clip-text text-transparent drop-shadow-sm dark:drop-shadow-[0_0_20px_rgba(6,182,212,0.45)]">
-                      {nameTyped}
+                    <span className="bg-gradient-to-r from-slate-900 via-blue-700 to-cyan-600 dark:from-white dark:via-cyan dark:to-teal-300 bg-clip-text text-transparent drop-shadow-sm dark:drop-shadow-[0_0_20px_rgba(6,182,212,0.35)]">
+                      {profileData.name}
                     </span>
-                    <span className="inline-block w-2.5 h-6 sm:h-7 ml-1 bg-cyan-600 dark:bg-cyan animate-terminal-blink align-middle rounded-sm shadow-sm shadow-cyan" />
                   </span>
                 </div>
 
                 {/* Refined Executive Role Subtitle */}
-                <div className="mt-1.5 flex items-center justify-center gap-2 text-xs text-slate-600 dark:text-slate-300 font-medium">
+                <div className="mt-1 flex items-center justify-center gap-2 text-xs text-slate-600 dark:text-slate-300 font-medium">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse" />
                   <span>Full-Stack Web &amp; Android Apps Engineer</span>
                 </div>

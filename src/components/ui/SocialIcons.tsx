@@ -3,6 +3,8 @@ import React from "react";
 export function GithubIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
     <svg
+      width="16"
+      height="16"
       className={className}
       viewBox="0 0 24 24"
       fill="none"
@@ -21,6 +23,8 @@ export function GithubIcon({ className = "w-4 h-4" }: { className?: string }) {
 export function LinkedinIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
     <svg
+      width="16"
+      height="16"
       className={className}
       viewBox="0 0 24 24"
       fill="none"

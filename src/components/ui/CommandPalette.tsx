@@ -84,18 +84,9 @@ export function CommandPalette() {
     }
   }, [isOpen]);
 
-  const navigateToHash = (hash: string) => {
+  const navigateToRoute = (route: string) => {
     setIsOpen(false);
-    const element = document.getElementById(hash.replace("#", ""));
-    if (element) {
-      const navOffset = 75;
-      const elementTop = element.getBoundingClientRect().top + window.scrollY;
-      window.scrollTo({
-        top: Math.max(0, elementTop - navOffset),
-        behavior: "smooth",
-      });
-      window.history.replaceState(null, "", hash);
-    }
+    router.push(route);
   };
 
   const allItems: PaletteItem[] = [
@@ -104,81 +95,65 @@ export function CommandPalette() {
       id: "nav-hero",
       category: "Navigation",
       title: "Home",
-      subtitle: "Executive introduction & live sandbox",
+      subtitle: "Executive introduction & portal hub",
       icon: <Sparkles className="w-4 h-4 text-cyan" />,
-      action: () => navigateToHash("#hero"),
-    },
-    {
-      id: "nav-about",
-      category: "Navigation",
-      title: "About Me",
-      subtitle: "Architectural philosophy & impact metrics",
-      icon: <Cpu className="w-4 h-4 text-electric-400" />,
-      action: () => navigateToHash("#about"),
-    },
-    {
-      id: "nav-credentials",
-      category: "Navigation",
-      title: "Credentials",
-      subtitle: "Applied research & certified training",
-      icon: <Shield className="w-4 h-4 text-emerald-400" />,
-      action: () => navigateToHash("#credentials"),
-    },
-    {
-      id: "nav-skills",
-      category: "Navigation",
-      title: "Technical Stack & Skills",
-      subtitle: "AI, Full-Stack, Mobile, and Security proficiencies",
-      icon: <Layers className="w-4 h-4 text-purple-400" />,
-      action: () => navigateToHash("#skills"),
-    },
-    {
-      id: "nav-services",
-      category: "Navigation",
-      title: "Engineered Services",
-      subtitle: "10 outcome-focused solution modules",
-      icon: <Workflow className="w-4 h-4 text-amber-400" />,
-      action: () => navigateToHash("#services"),
-    },
-    {
-      id: "nav-engagement",
-      category: "Navigation",
-      title: "Corporate Engagement Models & Sprints",
-      subtitle: "Web Development, Android Apps, Bug Fixing & Automation",
-      icon: <Layers className="w-4 h-4 text-cyan" />,
-      action: () => navigateToHash("#engagement"),
-    },
-    {
-      id: "nav-pipeline",
-      category: "Navigation",
-      title: "Intelligent Systems Pipeline",
-      subtitle: "8-step automated engineering workflow",
-      icon: <Workflow className="w-4 h-4 text-cyan" />,
-      action: () => navigateToHash("#pipeline"),
+      action: () => navigateToRoute("/"),
     },
     {
       id: "nav-projects",
       category: "Navigation",
       title: "Featured Projects & Case Studies",
       subtitle: "Production codebases and real architectures",
-      icon: <FolderGit2 className="w-4 h-4 text-blue-400" />,
-      action: () => navigateToHash("#projects"),
+      icon: <FolderGit2 className="w-4 h-4 text-cyan" />,
+      action: () => navigateToRoute("/projects"),
     },
     {
-      id: "nav-security",
+      id: "nav-services",
       category: "Navigation",
-      title: "Defensive Security Posture",
-      subtitle: "Zero-trust principles and threat modeling",
-      icon: <Shield className="w-4 h-4 text-emerald-400" />,
-      action: () => navigateToHash("#security"),
+      title: "Services & Sprints",
+      subtitle: "10 outcome-focused solution modules & ROI estimator",
+      icon: <Workflow className="w-4 h-4 text-emerald-400" />,
+      action: () => navigateToRoute("/services"),
+    },
+    {
+      id: "nav-skills",
+      category: "Navigation",
+      title: "Technical Stack & Skills Matrix",
+      subtitle: "Next.js, Flutter, Python, Docker, and Security proficiencies",
+      icon: <Layers className="w-4 h-4 text-purple-400" />,
+      action: () => navigateToRoute("/skills"),
+    },
+    {
+      id: "nav-about",
+      category: "Navigation",
+      title: "About Mahmud Hasan",
+      subtitle: "Mission statement, builder mindset & impact metrics",
+      icon: <Cpu className="w-4 h-4 text-amber-400" />,
+      action: () => navigateToRoute("/about"),
+    },
+    {
+      id: "nav-credentials",
+      category: "Navigation",
+      title: "Credentials & Research",
+      subtitle: "Applied research & certified training milestones",
+      icon: <Shield className="w-4 h-4 text-electric-400" />,
+      action: () => navigateToRoute("/credentials"),
+    },
+    {
+      id: "nav-systems",
+      category: "Navigation",
+      title: "Systems Architecture & Pipeline",
+      subtitle: "8-stage automated workflow & zero-trust security",
+      icon: <Workflow className="w-4 h-4 text-cyan" />,
+      action: () => navigateToRoute("/systems"),
     },
     {
       id: "nav-contact",
       category: "Navigation",
-      title: "Contact Dialogue",
-      subtitle: "Initiate dialogue via email, WhatsApp, or form",
+      title: "Contact Dialogue & WhatsApp",
+      subtitle: "Initiate dialogue via email, WhatsApp, or discovery call",
       icon: <Mail className="w-4 h-4 text-cyan" />,
-      action: () => navigateToHash("#contact"),
+      action: () => navigateToRoute("/contact"),
     },
 
     // Project deep links

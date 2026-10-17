@@ -86,13 +86,19 @@ export default function AdminPage() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simple client session gate for demo / owner login
-    if (passphrase === "mahmud2026" || passphrase.length >= 6) {
+    // Strict passkey check for admin console showcase
+    const validKey = process.env.NEXT_PUBLIC_ADMIN_DEMO_KEY || "mahmud2026";
+    if (passphrase === validKey) {
       setIsAuthenticated(true);
       toast("Authenticated into private administration console.", "success");
     } else {
-      toast("Invalid passcode. Enter 6+ characters.", "error");
+      toast("Invalid passkey. Use the demo passkey 'mahmud2026' or click Prototype Preview below.", "error");
     }
+  };
+
+  const handleEnterDemoMode = () => {
+    setIsAuthenticated(true);
+    toast("Entered Administration Console in Interactive Prototype Mode.", "info");
   };
 
   const handleTestimonialStatus = (id: string, newStatus: "Pending" | "Approved" | "Rejected") => {
@@ -126,9 +132,12 @@ export default function AdminPage() {
           <div className="w-12 h-12 rounded-2xl bg-electric-950 border border-electric-500/40 flex items-center justify-center mb-4 text-cyan">
             <Lock className="w-6 h-6" />
           </div>
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-cyan/10 border border-cyan/30 text-[11px] font-mono text-cyan font-bold mb-3">
+            <span>ADMIN ARCHITECTURE DEMO</span>
+          </div>
           <h1 className="text-2xl font-bold text-slate-100">Private Administration</h1>
           <p className="mt-2 text-xs sm:text-sm text-slate-400">
-            Authorized management console for Mahmud Hasan portfolio content and analytics.
+            Authorized management console for Mahmud Hasan portfolio content, workflow staging, and telemetry.
           </p>
 
           <form onSubmit={handleLogin} className="mt-6 space-y-4">
@@ -141,20 +150,27 @@ export default function AdminPage() {
                 required
                 value={passphrase}
                 onChange={(e) => setPassphrase(e.target.value)}
-                placeholder="Enter admin passkey..."
+                placeholder="Enter admin passkey (e.g. mahmud2026)"
                 className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 focus:border-cyan text-sm text-slate-100 outline-none"
               />
             </div>
             <button
               type="submit"
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-electric-600 to-cyan text-white text-sm font-semibold hover:opacity-95 transition-opacity"
+              className="w-full py-3 rounded-xl bg-gradient-to-r from-electric-600 to-cyan text-white text-sm font-semibold hover:opacity-95 transition-opacity cursor-pointer"
             >
-              Verify &amp; Enter Console
+              Verify Passkey &amp; Enter
             </button>
           </form>
 
-          <div className="mt-6 pt-6 border-t border-slate-800 text-center">
-            <Link href="/" className="text-xs text-slate-400 hover:text-cyan font-mono">
+          <div className="mt-4 pt-4 border-t border-slate-800 space-y-3 text-center">
+            <button
+              type="button"
+              onClick={handleEnterDemoMode}
+              className="w-full py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 hover:border-cyan text-xs font-mono text-cyan hover:text-white transition-colors cursor-pointer"
+            >
+              Explore Console (Prototype Preview) &rarr;
+            </button>
+            <Link href="/" className="inline-block text-xs text-slate-400 hover:text-cyan font-mono">
               &larr; Return to Public Portfolio
             </Link>
           </div>

@@ -52,7 +52,7 @@ export function RoiCalculator() {
             
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-electric-950/70 border border-electric-500/20 text-xs font-mono text-cyan">
               <Calculator className="w-3.5 h-3.5" />
-              <span>BUSINESS VALUE METRICS // ROI CALCULATOR</span>
+              <span>09 // BUSINESS VALUE &amp; ROI</span>
             </div>
 
             <div>

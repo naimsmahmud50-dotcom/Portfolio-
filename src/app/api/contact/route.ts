@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { parseContactSubmission } from "@/utils/contact-schema";
 import { checkRateLimit } from "@/utils/rate-limiter";
+import { escapeHtml, sanitizeOrigin } from "@/utils/sanitize";
 
 const MAX_PAYLOAD_BYTES = 10 * 1024; // 10 Kilobytes maximum payload guard
 
@@ -75,6 +76,14 @@ export async function POST(req: NextRequest) {
     const resendApiKey = process.env.RESEND_API_KEY;
     if (resendApiKey) {
       try {
+        const safeName = escapeHtml(sanitizedData.name);
+        const safeEmail = escapeHtml(sanitizedData.email);
+        const safeService = escapeHtml(sanitizedData.serviceType);
+        const safeBudget = escapeHtml(sanitizedData.budget || "Flexible");
+        const safeTimeline = escapeHtml(sanitizedData.timeline || "Flexible");
+        const safeSubject = escapeHtml(sanitizedData.subject);
+        const safeMessage = escapeHtml(sanitizedData.message);
+
         const resendRes = await fetch("https://api.resend.com/emails", {
           method: "POST",
           headers: {
@@ -90,15 +99,15 @@ export async function POST(req: NextRequest) {
               <div style="font-family: sans-serif; max-width: 600px; padding: 20px; border: 1px solid #e2e8f0; border-radius: 12px; color: #0f172a;">
                 <h2 style="color: #0284c7; margin-top: 0;">📬 New Portfolio Client Inquiry</h2>
                 <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 16px 0;" />
-                <p><strong>Client Name:</strong> ${sanitizedData.name}</p>
-                <p><strong>Email Address:</strong> <a href="mailto:${sanitizedData.email}">${sanitizedData.email}</a></p>
-                <p><strong>Service Type:</strong> ${sanitizedData.serviceType}</p>
-                <p><strong>Budget Tier:</strong> ${sanitizedData.budget || "Flexible"}</p>
-                <p><strong>Target Timeline:</strong> ${sanitizedData.timeline || "Flexible"}</p>
-                <p><strong>Subject:</strong> ${sanitizedData.subject}</p>
+                <p><strong>Client Name:</strong> ${safeName}</p>
+                <p><strong>Email Address:</strong> <a href="mailto:${safeEmail}">${safeEmail}</a></p>
+                <p><strong>Service Type:</strong> ${safeService}</p>
+                <p><strong>Budget Tier:</strong> ${safeBudget}</p>
+                <p><strong>Target Timeline:</strong> ${safeTimeline}</p>
+                <p><strong>Subject:</strong> ${safeSubject}</p>
                 <div style="background-color: #f8fafc; padding: 16px; border-radius: 8px; margin-top: 16px; border: 1px solid #e2e8f0;">
                   <strong style="display: block; margin-bottom: 8px; color: #334155;">Message Content:</strong>
-                  <p style="white-space: pre-wrap; margin: 0; color: #0f172a; line-height: 1.6;">${sanitizedData.message}</p>
+                  <p style="white-space: pre-wrap; margin: 0; color: #0f172a; line-height: 1.6;">${safeMessage}</p>
                 </div>
                 <p style="font-size: 12px; color: #64748b; margin-top: 24px;">Dispatched from Mahmud Hasan's Portfolio Sentinel.</p>
               </div>
@@ -117,12 +126,12 @@ export async function POST(req: NextRequest) {
     }
 
     // Route B: Autonomous Zero-Config Direct HTTP Forwarding (FormSubmit AJAX Transport)
-    // Supplies origin/referer headers to satisfy bot protection and deliver to naimsmahmud50@gmail.com
-    const appOrigin =
+    // Supplies sanitized origin/referer headers to satisfy bot protection and deliver to naimsmahmud50@gmail.com
+    const rawOrigin =
       req.nextUrl?.origin ||
       req.headers.get("origin") ||
-      req.headers.get("referer") ||
-      "https://mahmud-portfolio.vercel.app";
+      req.headers.get("referer");
+    const appOrigin = sanitizeOrigin(rawOrigin);
 
     if (!emailDispatched) {
       try {

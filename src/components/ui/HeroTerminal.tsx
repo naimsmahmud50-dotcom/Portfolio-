@@ -11,7 +11,7 @@ interface TerminalLine {
   timestamp?: string;
 }
 
-const PRESET_COMMANDS = ["status", "run-agent", "sprints", "book", "resume", "clear"];
+const PRESET_COMMANDS = ["status", "projects", "skills", "services", "contact", "clear"];
 
 export function HeroTerminal() {
   const [inputVal, setInputVal] = useState("");
@@ -20,17 +20,17 @@ export function HeroTerminal() {
     {
       id: "init-1",
       type: "system",
-      text: "⚡ MAHMUD-SENTINEL DAEMON v3.14 [INITIALIZED]",
+      text: "[SYSTEM] MAHMUD ENGINEERING SENTINEL v2.6.0 [INITIALIZED]",
     },
     {
       id: "init-2",
       type: "system",
-      text: "🛡️ Zero Inbound Ports Tunnel: ACTIVE | Hardware Watchdog: ARMED",
+      text: "[SECURITY] Outbound MTProto Tunnel: ACTIVE | Runtime Zod Defense: ARMED",
     },
     {
       id: "init-3",
       type: "output",
-      text: 'Type a command or click a quick chip below (e.g. "status", "run-agent")',
+      text: 'Type a command or click a quick chip below (e.g. "projects", "status", "skills")',
     },
   ]);
 
@@ -62,7 +62,39 @@ export function HeroTerminal() {
         {
           id: `init-${Date.now()}`,
           type: "system",
-          text: "Terminal display cleared. Ready for next command.",
+          text: "[SYSTEM] Terminal display cleared. Ready for next command.",
+        },
+      ]);
+      return;
+    }
+
+    if (trimmed === "projects") {
+      setLines((prev) => [
+        ...prev,
+        {
+          id: `out-${Date.now()}-1`,
+          type: "system",
+          text: "[FLAGSHIP ARCHITECTURES & CASE STUDIES]",
+        },
+        {
+          id: `out-${Date.now()}-2`,
+          type: "output",
+          text: "  1. SecureMyPC: Remote surveillance & hardware watchdog daemon via Telegram & Gemini AI",
+        },
+        {
+          id: `out-${Date.now()}-3`,
+          type: "output",
+          text: "  2. Madrasa Ecosystem: Offline-first Flutter mobile client (Drift SQLite) + NestJS backend",
+        },
+        {
+          id: `out-${Date.now()}-4`,
+          type: "output",
+          text: "  3. Personal AI Agent: Bounded autonomous tool-calling assistant with schema validation",
+        },
+        {
+          id: `out-${Date.now()}-5`,
+          type: "output",
+          text: '  -> Visit /projects to view complete architectures and live case studies.',
         },
       ]);
       return;
@@ -74,69 +106,69 @@ export function HeroTerminal() {
         {
           id: `out-${Date.now()}-1`,
           type: "output",
-          text: "● SYSTEM VITALS: 100% HEALTHY",
+          text: "[STATUS] SYSTEM VITALS: 100% HEALTHY",
         },
         {
           id: `out-${Date.now()}-2`,
           type: "output",
-          text: "  - Host: mahmud-workstation.local (Windows 11 x64 / Python 3.14)",
+          text: "  - Environment: Next.js 15 (React 19) / TypeScript 5 / Tailwind CSS",
         },
         {
           id: `out-${Date.now()}-3`,
           type: "output",
-          text: "  - Sentinel Daemon: Running (Zero Inbound Open Ports / MTProto Tunnel)",
+          text: "  - Sentinel Service: Active (Zero Inbound Open Ports / Tunnel Isolated)",
         },
         {
           id: `out-${Date.now()}-4`,
           type: "output",
-          text: "  - Hardware Watchdog: USB Flash Sensor Armed (<2.0s Response)",
+          text: "  - Hardware Watchdog: USB Sensor Engine Operational (<2.0s Response)",
         },
         {
           id: `out-${Date.now()}-5`,
           type: "output",
-          text: "  - Security Posture: Strict Sliding-Window Throttling + Runtime Zod Guard",
+          text: "  - Security Posture: Sliding-Window IP Throttling + Runtime Zod Sanitization",
         },
         {
           id: `out-${Date.now()}-6`,
           type: "system",
-          text: "  - Autonomous Availability: READY FOR HIGH-TICKET CONTRACTS",
+          text: "  - Availability: Available for Web, Mobile, Problem Solving & Automation Contracts",
         },
       ]);
       return;
     }
 
-    if (trimmed === "skills") {
+    if (trimmed === "skills" || trimmed === "stack") {
       setLines((prev) => [
         ...prev,
         {
           id: `out-${Date.now()}-1`,
           type: "output",
-          text: "⚙️ ARCHITECTURAL COMPETENCIES & STACK:",
+          text: "[TECH STACK & CORE COMPETENCIES]",
         },
         {
           id: `out-${Date.now()}-2`,
           type: "output",
-          text: "  • [Websites & Web Apps] Next.js 15, React 19, TypeScript, Tailwind CSS, PostgreSQL, REST APIs",
+          text: "  - Web Applications : Next.js 15, React 19, TypeScript, Tailwind CSS, REST APIs",
         },
         {
           id: `out-${Date.now()}-3`,
           type: "output",
-          text: "  • [Mobile Engineering] Android Native, Flutter, Drift SQLite, Riverpod, Offline-First Sync",
+          text: "  - Mobile Systems   : Android Native, Flutter, Drift SQLite, Riverpod, Offline Sync",
         },
         {
           id: `out-${Date.now()}-4`,
           type: "output",
-          text: "  • [Problem Solving] Website Debugging, Critical Bug Fixes, Speed Optimization, Error Repair",
+          text: "  - Problem Solving  : Website Debugging, Critical Bug Fixes, Core Web Vitals Speed Boost",
         },
         {
           id: `out-${Date.now()}-5`,
           type: "output",
-          text: "  • [Workflow Automation] API Pipelines, Automated Webhooks, Python/Node, AI Tool Agents",
+          text: "  - Automation       : Workflow Webhooks, Python/Node Daemons, AI Tool Agents",
         },
         {
           id: `out-${Date.now()}-6`,
           type: "output",
-          text: "  • [Defensive Security] Input Sanitization, Zero Open Ports, Rate Limiting, Threat Mitigation",
+          text: "  - Security         : Input Sanitization, Rate Limiting, Threat Mitigation, OWASP Best Practices",
         },
       ]);
       return;
@@ -147,8 +179,8 @@ export function HeroTerminal() {
         ...prev,
         {
           id: `out-${Date.now()}-1`,
-          type: "output",
-          text: "📫 DIRECT EXECUTIVE CHANNELS:",
+          type: "system",
+          text: "[DIRECT CONTACT CHANNELS]",
         },
         {
           id: `out-${Date.now()}-2`,
@@ -163,7 +195,7 @@ export function HeroTerminal() {
         {
           id: `out-${Date.now()}-4`,
           type: "output",
-          text: `  • GitHub         : ${profileData.socials.github}`,
+          text: `  • GitHub Profile : ${profileData.socials.github}`,
         },
       ]);
       return;
@@ -178,7 +210,7 @@ export function HeroTerminal() {
         {
           id: `out-${Date.now()}-1`,
           type: "system",
-          text: "📄 LAUNCHING VERIFIED EXECUTIVE RESUME MODAL...",
+          text: "[RESUME MODAL] Launching Executive Resume Preview...",
         },
         {
           id: `out-${Date.now()}-2`,
@@ -195,7 +227,7 @@ export function HeroTerminal() {
         {
           id: `out-${Date.now()}-1`,
           type: "system",
-          text: "🛠️ CORE SERVICES & OFFERINGS:",
+          text: "[CORE SERVICES & CAPABILITIES]",
         },
         {
           id: `out-${Date.now()}-2`,
@@ -232,7 +264,7 @@ export function HeroTerminal() {
         {
           id: `out-${Date.now()}-1`,
           type: "system",
-          text: "📦 CORPORATE ENGAGEMENT SPRINTS & SCOPES:",
+          text: "[SPRINT ENGAGEMENT MODELS & SCOPES]",
         },
         {
           id: `out-${Date.now()}-2`,
@@ -266,7 +298,7 @@ export function HeroTerminal() {
         {
           id: `out-${Date.now()}-1`,
           type: "system",
-          text: "📅 LAUNCHING 15-MINUTE STRATEGY DISCOVERY MODAL...",
+          text: "[STRATEGY CALL] Launching 15-Minute Strategy Discovery Dialogue...",
         },
         {
           id: `out-${Date.now()}-2`,
@@ -283,24 +315,24 @@ export function HeroTerminal() {
         {
           id: `out-${Date.now()}-1`,
           type: "output",
-          text: "AVAILABLE COMMANDS: status, services, sprints, skills, run-agent, book, resume, contact, clear, help",
+          text: "AVAILABLE COMMANDS: projects, status, skills, services, sprints, diagnostics, book, resume, contact, clear, help",
         },
       ]);
       return;
     }
 
-    if (trimmed === "run-agent") {
+    if (trimmed === "diagnostics" || trimmed === "run-agent" || trimmed === "benchmark") {
       setIsRunning(true);
       const steps = [
-        "1. [PLANNER] Decomposing objective: 'Synthesize automated lead verification pipeline'...",
-        "2. [ORCHESTRATOR] Invoking LLM Reasoning Model with strict structured schema constraints...",
-        "3. [TOOL_CALL] Querying SQLite local store & validating against Zod contract...",
-        "4. [SECURITY] Checking zero-inbound MTProto tunnel & token isolation boundaries...",
-        "5. [VERIFICATION] Outcome verified with zero runtime exceptions. Latency: 142ms.",
+        "1. [VALIDATION] Verifying Next.js 15 App Router endpoints and strict TypeScript types... OK",
+        "2. [DATABASE] Checking Drift SQLite offline-first sync schema and transaction safety... OK",
+        "3. [DEFENSE] Inspecting IP sliding-window limiter and input sanitization boundaries... OK",
+        "4. [ACCESSIBILITY] Testing WCAG 2.1 AA keyboard focus, contrast tokens, and reduced-motion... OK",
+        "5. [BENCHMARK] All architectural diagnostics passed. 0 anomalies detected.",
       ];
 
       for (let i = 0; i < steps.length; i++) {
-        await new Promise((r) => setTimeout(r, 450));
+        await new Promise((r) => setTimeout(r, 380));
         setLines((prev) => [
           ...prev,
           {
@@ -404,9 +436,9 @@ export function HeroTerminal() {
             key={cmd}
             disabled={isRunning}
             onClick={() => executeCommand(cmd)}
-            className="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-800/90 hover:bg-slate-700 text-slate-200 hover:text-cyan border border-slate-700/80 transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-40 font-medium"
+            className="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-800/90 hover:bg-slate-700 text-slate-200 hover:text-cyan border border-slate-700/80 transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-40 font-medium cursor-pointer"
           >
-            {cmd === "run-agent" ? "⚡ run-agent" : cmd}
+            {cmd}
           </button>
         ))}
       </div>
