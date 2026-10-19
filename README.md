@@ -4,7 +4,7 @@ A premium, production-grade personal portfolio website for **Mahmud Hasan** (*AI
 
 ---
 
-## 🚀 Key Architectural Features
+##  Key Architectural Features
 
 - **Dark-First Modern Tech Aesthetic:** Deep navy canvas (`#070A13`), Electric Blue (`#3B82F6`), Cyan (`#06B6D4`), and subtle Violet accents.
 - **Dynamic Content Engine:** All data (Profile, Skills, Services, Credentials, Projects, Pipeline, Security) lives in modular, type-safe stores under `src/data/`.
